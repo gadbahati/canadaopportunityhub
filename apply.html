@@ -3,8 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apply Now | Global Opportunity Hub</title>
+    <title>Complete Your Application | Global Opportunity Hub</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        .apply-container { padding: 80px 0; background: var(--bg-light); min-height: 80vh; }
+        .apply-card { background: white; padding: 48px; border-radius: 32px; border: 1px solid var(--border); max-width: 800px; margin: 0 auto; box-shadow: var(--shadow-lg); }
+        .payment-notice { background: #FFFBEB; border: 1px solid #FEF3C7; padding: 24px; border-radius: 16px; margin-bottom: 32px; color: #92400E; }
+        .payment-methods-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 3000; align-items: center; justify-content: center; padding: 20px; overflow-y: auto; }
+        .modal-content { background: white; padding: 40px; border-radius: 32px; max-width: 700px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative; }
+        .payment-option { border: 1px solid var(--border); padding: 24px; border-radius: 20px; margin-bottom: 20px; transition: var(--transition); }
+        .payment-option:hover { border-color: var(--primary); background: var(--bg-light); }
+        @media (max-width: 768px) { .apply-card { padding: 32px 20px; } }
+    </style>
 </head>
 <body>
 
@@ -20,9 +30,7 @@
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="contact.html">Contact</a></li>
     </ul>
-    <div id="sidebarAuth" style="margin-top: auto; padding-top: 40px;">
-        <a href="signup.html" class="btn btn-primary" style="width: 100%;">Get Started</a>
-    </div>
+    <div id="sidebarAuth" style="margin-top: auto; padding-top: 40px;"></div>
 </aside>
 
 <header>
@@ -32,143 +40,186 @@
                 <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
                 <span>MENU</span>
             </div>
-            <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 10px; font-size: 1.5rem; font-weight: 800;">
+            <a href="index.html" class="logo">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z"/></svg>
                 Global Hub
             </a>
-            <div id="navAuth" style="display: flex; gap: 16px;">
-                <a href="signin.html" class="btn btn-outline" style="border: none; font-weight: 800;">Sign In</a>
-                <a href="signup.html" class="btn btn-primary">Get Started</a>
-            </div>
+            <div id="navAuth" style="display: flex; gap: 16px;"></div>
         </nav>
     </div>
 </header>
 
-<main style="padding: 100px 0; background: var(--bg-light);">
+<main class="apply-container">
     <div class="container">
-        <div style="max-width: 800px; margin: 0 auto;">
-            <div class="job-card" style="text-align: left; padding: 60px;">
-                <h1 style="font-size: 2.5rem; margin-bottom: 12px;"><b>Complete Your Application</b></h1>
-                <p style="color: var(--text-muted); margin-bottom: 40px;"><b>You are applying for: <span id="jobTitleDisplay" style="color: var(--primary); font-weight: 800;">Job Title</span></b></p>
-                
-                <form id="applyForm">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px;">
-                        <div>
-                            <label style="display: block; margin-bottom: 10px; font-weight: 700;">Full Legal Name</label>
-                            <input type="text" id="applicantName" required style="width: 100%; padding: 16px; border: 2px solid var(--border); border-radius: 12px; font-family: inherit;">
-                        </div>
-                        <div>
-                            <label style="display: block; margin-bottom: 10px; font-weight: 700;">Email Address</label>
-                            <input type="email" id="applicantEmail" required style="width: 100%; padding: 16px; border: 2px solid var(--border); border-radius: 12px; font-family: inherit;">
-                        </div>
-                    </div>
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px;">
-                        <div>
-                            <label style="display: block; margin-bottom: 10px; font-weight: 700;">Phone Number</label>
-                            <input type="tel" id="applicantPhone" required style="width: 100%; padding: 16px; border: 2px solid var(--border); border-radius: 12px; font-family: inherit;">
-                        </div>
-                        <div>
-                            <label style="display: block; margin-bottom: 10px; font-weight: 700;">Current Nationality</label>
-                            <input type="text" id="applicantNationality" required style="width: 100%; padding: 16px; border: 2px solid var(--border); border-radius: 12px; font-family: inherit;">
-                        </div>
-                    </div>
-                    <div style="margin-bottom: 24px;">
-                        <label style="display: block; margin-bottom: 10px; font-weight: 700;">Upload CV / Resume (PDF)</label>
-                        <input type="file" id="cvFile" accept=".pdf" required style="width: 100%; padding: 12px; border: 2px dashed var(--border); border-radius: 12px; font-family: inherit;">
-                    </div>
-                    <div style="margin-bottom: 24px;">
-                        <label style="display: block; margin-bottom: 10px; font-weight: 700;">Upload Passport Bio Page (JPG/PDF)</label>
-                        <input type="file" id="passportFile" accept=".jpg,.jpeg,.png,.pdf" required style="width: 100%; padding: 12px; border: 2px dashed var(--border); border-radius: 12px; font-family: inherit;">
-                    </div>
-                    <div style="margin-bottom: 32px;">
-                        <label style="display: block; margin-bottom: 10px; font-weight: 700;">Cover Letter / Personal Statement</label>
-                        <textarea id="coverLetter" rows="6" required style="width: 100%; padding: 16px; border: 2px solid var(--border); border-radius: 12px; font-family: inherit; resize: vertical;" placeholder="Tell us why you are the best fit for this role..."></textarea>
-                    </div>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;"><b>Submit Final Application</b></button>
-                </form>
+        <div class="apply-card">
+            <h1 style="margin-bottom: 12px;"><b>Complete Your Application</b></h1>
+            <p id="jobDisplay" style="color: var(--primary); font-weight: 800; font-size: 1.2rem; margin-bottom: 32px;">Applying for: [Job Title]</p>
+
+            <div class="payment-notice">
+                <p><b>⚠️ IMPORTANT NOTICE:</b> A processing fee of <b>180 CAD</b> is required to finalize your application. This covers visa assessment, document verification, and priority processing.</p>
             </div>
+
+            <form id="finalApplyForm">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px;">
+                    <div>
+                        <label style="display: block; margin-bottom: 8px; font-weight: 800;">Full Legal Name</label>
+                        <input type="text" id="fullName" required style="width: 100%; padding: 14px; border: 1px solid var(--border); border-radius: 12px;">
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 8px; font-weight: 800;">Email Address</label>
+                        <input type="email" id="email" required style="width: 100%; padding: 14px; border: 1px solid var(--border); border-radius: 12px;">
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px;">
+                    <div>
+                        <label style="display: block; margin-bottom: 8px; font-weight: 800;">Phone Number</label>
+                        <input type="tel" id="phone" required style="width: 100%; padding: 14px; border: 1px solid var(--border); border-radius: 12px;">
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 8px; font-weight: 800;">Current Nationality</label>
+                        <input type="text" id="nationality" required style="width: 100%; padding: 14px; border: 1px solid var(--border); border-radius: 12px;">
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 24px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 800;">Upload CV / Resume (PDF)</label>
+                    <input type="file" id="cvFile" accept=".pdf" required style="width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 12px;">
+                </div>
+
+                <div style="margin-bottom: 24px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 800;">Upload Passport Bio Page (JPG/PDF)</label>
+                    <input type="file" id="passportFile" accept=".jpg,.jpeg,.png,.pdf" required style="width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 12px;">
+                </div>
+
+                <div style="margin-bottom: 32px;">
+                    <label style="display: block; margin-bottom: 8px; font-weight: 800;">Cover Letter / Personal Statement</label>
+                    <textarea id="coverLetter" rows="5" placeholder="Tell us why you are the best fit for this role..." style="width: 100%; padding: 14px; border: 1px solid var(--border); border-radius: 12px; font-family: inherit; resize: vertical;"></textarea>
+                </div>
+
+                <div style="background: var(--bg-light); padding: 24px; border-radius: 20px; border: 2px solid var(--primary); margin-bottom: 32px;">
+                    <h3 style="margin-bottom: 16px; color: var(--primary);"><b>Payment Verification</b></h3>
+                    <p style="margin-bottom: 16px; font-size: 0.9rem;">Please pay <b>180 CAD</b> using any method below and input your <b>Transaction Reference Code</b>.</p>
+                    
+                    <button type="button" onclick="showPaymentMethods()" class="btn btn-outline" style="width: 100%; margin-bottom: 20px; border-color: var(--primary); color: var(--primary);">
+                        <b>VIEW PAYMENT METHODS</b>
+                    </button>
+
+                    <label style="display: block; margin-bottom: 8px; font-weight: 800;">Transaction Reference Code</label>
+                    <input type="text" id="txnCode" placeholder="Enter the code from your receipt" style="width: 100%; padding: 14px; border: 1px solid var(--primary); border-radius: 12px; font-weight: 800; color: var(--primary);">
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 20px; font-size: 1.1rem;"><b>SUBMIT FINAL APPLICATION</b></button>
+            </form>
         </div>
     </div>
 </main>
 
-<footer>
-    <div class="container">
-        <div class="footer-brand">
-            <a href="index.html" class="logo" style="color: white; margin-bottom: 24px; justify-content: center;">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z"/></svg>
-                Global Hub
-            </a>
-            <p style="color: #94A3B8; margin-bottom: 32px;">The premier platform for international professionals seeking legitimate and rewarding career opportunities across North America.</p>
-            <ul class="footer-links">
-                <li><a href="about.html"><b>About Us</b></a></li>
-                <li><a href="jobs-ca.html"><b>Canada Jobs</b></a></li>
-                <li><a href="jobs-us.html"><b>USA Jobs</b></a></li>
-                <li><a href="faq.html"><b>FAQ Center</b></a></li>
-                <li><a href="contact.html"><b>Contact Support</b></a></li>
-            </ul>
+<!-- Payment Methods Modal -->
+<div class="payment-methods-modal" id="paymentModal">
+    <div class="modal-content">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px;">
+            <h2 style="color: var(--primary);"><b>PAYMENT OPTIONS</b></h2>
+            <button onclick="closePaymentMethods()" style="background: none; border: none; cursor: pointer; color: var(--text-muted);">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
         </div>
-        <div class="footer-bottom">
-            <p><b>&copy; 2026 Global Opportunity Hub. All rights reserved.</b></p>
+
+        <p style="text-align: center; margin-bottom: 32px; font-weight: 800; color: var(--primary);">FAST • SECURE • RELIABLE</p>
+
+        <div class="payment-option">
+            <h3><b>1. BANK TRANSFER (RBC)</b></h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px;">Recommended for large payments</p>
+            <p><b>Bank Name:</b> Royal Bank of Canada</p>
+            <p><b>Account Name:</b> Patrick</p>
+            <p><b>Account Number:</b> 4867456911462184</p>
+            <p><b>Address:</b> 68 Thompson Ave, Toronto, ON M8Z 3T4</p>
+        </div>
+
+        <div class="payment-option">
+            <h3><b>2. MPESA / GLOBAL (KENYA)</b></h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px;">Fast & Convenient</p>
+            <p><b>Send Money To:</b> +254 700 619 572</p>
+            <p><b>Name:</b> Abdia Abdi</p>
+        </div>
+
+        <div class="payment-option">
+            <h3><b>3. ZELLE (NORTH AMERICA)</b></h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px;">Quick & Easy Transfers</p>
+            <p><b>Mobile Number:</b> +1 365 809 2009</p>
+            <p><b>Name:</b> Abdia</p>
+        </div>
+
+        <div class="payment-option">
+            <h3><b>4. VODACOM M-PESA (TANZANIA)</b></h3>
+            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px;">Local & Fast</p>
+            <p><b>Mobile Number:</b> +255 797 175 336</p>
+            <p><b>Name:</b> Chacha Getabo</p>
+        </div>
+
+        <div style="background: #F1F5F9; padding: 24px; border-radius: 16px; font-size: 0.9rem;">
+            <p><b>NOTICE:</b> Processing begins only after <b>full payment is confirmed</b>. Ensure all details are entered correctly.</p>
         </div>
     </div>
-</footer>
+</div>
 
 <script src="js/auth.js"></script>
 <script>
-    const openBtn = document.getElementById('openSidebar');
-    const closeBtn = document.getElementById('closeSidebar');
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('overlay');
-
-    openBtn.addEventListener('click', () => {
-        sidebar.classList.add('active');
-        overlay.classList.add('active');
-    });
-
-    closeBtn.addEventListener('click', () => {
-        sidebar.classList.remove('active');
-        overlay.classList.remove('active');
-    });
-
-    overlay.addEventListener('click', () => {
-        sidebar.classList.remove('active');
-        overlay.classList.remove('active');
-    });
-
-    // Get job title from URL
     const urlParams = new URLSearchParams(window.location.search);
-    const jobTitle = urlParams.get('job') ? decodeURIComponent(urlParams.get('job')) : 'Professional Role';
-    document.getElementById('jobTitleDisplay').innerText = jobTitle;
+    const jobTitle = urlParams.get('job') ? decodeURIComponent(urlParams.get('job')) : 'General Application';
+    document.getElementById('jobDisplay').innerText = `Applying for: ${jobTitle}`;
 
-    // Prefill user data if logged in
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (currentUser) {
-        document.getElementById('applicantName').value = currentUser.fullName || (currentUser.firstName + ' ' + currentUser.lastName);
-        document.getElementById('applicantEmail').value = currentUser.email;
+        document.getElementById('fullName').value = currentUser.fullName || (currentUser.firstName + ' ' + currentUser.lastName);
+        document.getElementById('email').value = currentUser.email;
     }
 
-    document.getElementById('applyForm').addEventListener('submit', function(e) {
+    function showPaymentMethods() {
+        document.getElementById('paymentModal').style.display = 'flex';
+    }
+
+    function closePaymentMethods() {
+        document.getElementById('paymentModal').style.display = 'none';
+    }
+
+    document.getElementById('finalApplyForm').addEventListener('submit', function(e) {
         e.preventDefault();
         
+        const txnCode = document.getElementById('txnCode').value.trim();
+        if (!txnCode) {
+            alert('Please pay the 180 CAD processing fee and enter your Transaction Reference Code before submitting.');
+            return;
+        }
+
         const applicationData = {
             jobTitle: jobTitle,
-            fullName: document.getElementById('applicantName').value,
-            email: document.getElementById('applicantEmail').value,
-            phone: document.getElementById('applicantPhone').value,
-            nationality: document.getElementById('applicantNationality').value,
+            fullName: document.getElementById('fullName').value,
+            email: document.getElementById('email').value,
+            phone: document.getElementById('phone').value,
+            nationality: document.getElementById('nationality').value,
+            txnCode: txnCode,
+            paymentStatus: 'Awaiting Verification',
             cvName: document.getElementById('cvFile').files[0].name,
             passportName: document.getElementById('passportFile').files[0].name,
             coverLetter: document.getElementById('coverLetter').value
         };
 
         if (saveApplication(applicationData)) {
-            alert('Application submitted successfully! You can track your status in the User Dashboard.');
+            alert('Application submitted successfully! Our team will verify your payment and contact you within 24-48 hours.');
             window.location.href = 'dashboard.html';
-        } else {
-            alert('There was an error submitting your application. Please ensure you are logged in.');
-            window.location.href = 'signin.html';
         }
     });
+
+    // Sidebar Logic
+    const openBtn = document.getElementById('openSidebar');
+    const closeBtn = document.getElementById('closeSidebar');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+
+    openBtn.addEventListener('click', () => { sidebar.classList.add('active'); overlay.classList.add('active'); });
+    closeBtn.addEventListener('click', () => { sidebar.classList.remove('active'); overlay.classList.remove('active'); });
+    overlay.addEventListener('click', () => { sidebar.classList.remove('active'); overlay.classList.remove('active'); });
 </script>
 
 </body>

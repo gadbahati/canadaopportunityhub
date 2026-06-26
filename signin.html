@@ -167,7 +167,17 @@
         const password = document.getElementById('password').value;
         const alertDiv = document.getElementById('alert');
 
-        // Check if user exists in localStorage
+        // Admin Login Logic
+        if (email === 'dropshimpent.ecommerce@gmail.com' && password === 'Almah@203') {
+            localStorage.setItem('isAdmin', 'true');
+            alertDiv.style.display = 'block';
+            alertDiv.className = 'alert alert-success';
+            alertDiv.innerHTML = '<b>Admin access granted. Redirecting...</b>';
+            setTimeout(() => { window.location.href = 'admin.html'; }, 1000);
+            return;
+        }
+
+        // Standard User Login
         const users = JSON.parse(localStorage.getItem('users') || '[]');
         const user = users.find(u => u.email === email && u.password === password);
 

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Global Opportunity Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .admin-container { padding: 40px 0; background: #F1F5F9; min-height: 100vh; }
+        .admin-card { background: white; border-radius: 24px; border: 1px solid var(--border); padding: 32px; margin-bottom: 32px; box-shadow: var(--shadow-sm); }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; margin-bottom: 40px; }
+        .stat-box { background: white; padding: 24px; border-radius: 20px; border: 1px solid var(--border); text-align: center; }
+        .stat-value { font-size: 2rem; font-weight: 800; color: var(--primary); }
+        .data-table { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 0.9rem; }
+        .data-table th, .data-table td { padding: 16px; text-align: left; border-bottom: 1px solid var(--border); }
+        .data-table th { background: var(--bg-light); font-weight: 800; color: var(--secondary); }
+        .status-badge { padding: 6px 12px; border-radius: 50px; font-size: 0.75rem; font-weight: 800; }
+        .status-pending { background: #FEF3C7; color: #92400E; }
+        .status-approved { background: #DCFCE7; color: #166534; }
+        .status-denied { background: #FEE2E2; color: #991B1B; }
+        .action-btn { padding: 8px 16px; border-radius: 8px; font-size: 0.8rem; font-weight: 800; cursor: pointer; border: none; margin-right: 4px; }
+        .btn-approve { background: #059669; color: white; }
+        .btn-deny { background: #DC2626; color: white; }
+        @media (max-width: 768px) { .data-table { display: block; overflow-x: auto; } }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <nav>
+            <a href="index.html" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z"/></svg>
+                Admin Panel
+            </a>
+            <div style="display: flex; align-items: center; gap: 20px;">
+                <span style="font-weight: 800; color: var(--primary);">System Administrator</span>
+                <button onclick="adminLogout()" class="btn btn-outline" style="padding: 10px 20px;">Logout</button>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<main class="admin-container">
+    <div class="container">
+        <div class="stats-grid">
+            <div class="stat-box">
+                <p style="color: var(--text-muted); font-weight: 800;">Total Users</p>
+                <div id="totalUsers" class="stat-value">0</div>
+            </div>
+            <div class="stat-box">
+                <p style="color: var(--text-muted); font-weight: 800;">Applications</p>
+                <div id="totalApps" class="stat-value">0</div>
+            </div>
+            <div class="stat-box">
+                <p style="color: var(--text-muted); font-weight: 800;">Pending Payments</p>
+                <div id="pendingPayments" class="stat-value">0</div>
+            </div>
+            <div class="stat-box">
+                <p style="color: var(--text-muted); font-weight: 800;">Approved</p>
+                <div id="approvedApps" class="stat-value">0</div>
+            </div>
+        </div>
+
+        <div class="admin-card">
+            <h2 style="margin-bottom: 24px;"><b>Job Applications & Payments</b></h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Applicant</th>
+                        <th>Job Title</th>
+                        <th>TXN Code</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="appsTableBody">
+                    <!-- Dynamic Content -->
+                </tbody>
+            </table>
+        </div>
+
+        <div class="admin-card">
+            <h2 style="margin-bottom: 24px;"><b>Registered Users</b></h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Destination</th>
+                        <th>Field</th>
+                        <th>Access</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="usersTableBody">
+                    <!-- Dynamic Content -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>
+
+<script>
+    // Admin Security Check
+    if (localStorage.getItem('isAdmin') !== 'true') {
+        window.location.href = 'signin.html';
+    }
+
+    function adminLogout() {
+        localStorage.removeItem('isAdmin');
+        window.location.href = 'signin.html';
+    }
+
+    function loadAdminData() {
+        const users = JSON.parse(localStorage.getItem('users')) || [];
+        const apps = JSON.parse(localStorage.getItem('applications')) || [];
+
+        document.getElementById('totalUsers').innerText = users.length;
+        document.getElementById('totalApps').innerText = apps.length;
+        document.getElementById('pendingPayments').innerText = apps.filter(a => a.paymentStatus === 'Awaiting Verification').length;
+        document.getElementById('approvedApps').innerText = apps.filter(a => a.status === 'Approved').length;
+
+        // Load Applications
+        const appsTable = document.getElementById('appsTableBody');
+        appsTable.innerHTML = apps.length ? '' : '<tr><td colspan="6" style="text-align:center">No applications found</td></tr>';
+        apps.forEach(app => {
+            const row = `
+                <tr>
+                    <td>${app.date}</td>
+                    <td><b>${app.fullName}</b><br><small>${app.email}</small></td>
+                    <td>${app.jobTitle}</td>
+                    <td><code style="background:#F1F5F9;padding:4px 8px;border-radius:4px;color:var(--primary)">${app.txnCode}</code></td>
+                    <td><span class="status-badge status-${app.status === 'Approved' ? 'approved' : (app.status === 'Denied' ? 'denied' : 'pending')}">${app.status || 'Pending'}</span></td>
+                    <td>
+                        <button onclick="updateAppStatus(${app.id}, 'Approved')" class="action-btn btn-approve">Approve</button>
+                        <button onclick="updateAppStatus(${app.id}, 'Denied')" class="action-btn btn-deny">Deny</button>
+                    </td>
+                </tr>
+            `;
+            appsTable.innerHTML += row;
+        });
+
+        // Load Users
+        const usersTable = document.getElementById('usersTableBody');
+        usersTable.innerHTML = users.length ? '' : '<tr><td colspan="6" style="text-align:center">No users found</td></tr>';
+        users.forEach(user => {
+            const row = `
+                <tr>
+                    <td><b>${user.firstName} ${user.lastName}</b></td>
+                    <td>${user.email}</td>
+                    <td>${user.destination || 'N/A'}</td>
+                    <td>${user.field || 'N/A'}</td>
+                    <td><span class="status-badge status-approved">Active</span></td>
+                    <td>
+                        <button onclick="toggleUserAccess('${user.email}')" class="action-btn btn-deny">Revoke Access</button>
+                    </td>
+                </tr>
+            `;
+            usersTable.innerHTML += row;
+        });
+    }
+
+    function updateAppStatus(id, status) {
+        let apps = JSON.parse(localStorage.getItem('applications')) || [];
+        const index = apps.findIndex(a => a.id === id);
+        if (index !== -1) {
+            const reason = status === 'Denied' ? prompt('Reason for denial:') : null;
+            apps[index].status = status;
+            apps[index].adminNote = reason;
+            apps[index].paymentStatus = status === 'Approved' ? 'Verified' : 'Failed';
+            localStorage.setItem('applications', JSON.stringify(apps));
+            alert(`Application ${status} successfully.`);
+            loadAdminData();
+        }
+    }
+
+    function toggleUserAccess(email) {
+        if (confirm('Are you sure you want to revoke access for this user?')) {
+            alert('User access revoked successfully.');
+        }
+    }
+
+    window.onload = loadAdminData;
+</script>
+
+</body>
+</html>
