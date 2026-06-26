@@ -5,6 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Account | Global Opportunity Hub</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        .auth-container {
+            padding: 80px 0;
+            background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6)), url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 80px);
+        }
+
+        .auth-card {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            padding: 48px;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            width: 100%;
+            max-width: 640px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
 </head>
 <body>
 
@@ -12,30 +35,18 @@
     <div class="container">
         <nav>
             <a href="index.html" class="logo">Global Hub</a>
-            <ul class="nav-links">
-                <li><a href="about.html">About</a></li>
-                <li><a href="jobs-ca.html">Canada Jobs</a></li>
-                <li><a href="jobs-us.html">US Jobs</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
             <div class="nav-auth">
                 <a href="signin.html" class="btn btn-outline">Sign In</a>
-                <a href="signup.html" class="btn btn-primary">Get Started</a>
             </div>
         </nav>
     </div>
 </header>
 
 <main class="auth-container">
-    <div class="auth-card" style="max-width: 640px;">
+    <div class="auth-card">
         <div class="auth-header">
-            <h1>Join the Global Hub</h1>
-            <p>Access verified career opportunities in the US & Canada.</p>
-        </div>
-
-        <div style="background: #F0FDF4; border-left: 4px solid #16A34A; padding: 20px; border-radius: 8px; margin-bottom: 32px; font-size: 0.9rem; color: #166534;">
-            <strong>Financial Success:</strong> Our platform is dedicated to your growth. We've helped thousands of professionals secure their first $1,000+ CAD/USD in North America.
+            <h1>Start Your Journey</h1>
+            <p>Join the 2,000+ professionals we've helped place in North America.</p>
         </div>
 
         <form action="#">
@@ -99,35 +110,8 @@
 
 <footer>
     <div class="container">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <a href="index.html" class="logo">Global Hub</a>
-                <p>Legitimate professional and skilled-trade career placements across North America.</p>
-            </div>
-            <div>
-                <h4 class="footer-heading">Portals</h4>
-                <ul class="footer-links">
-                    <li><a href="jobs-ca.html">Canada Jobs</a></li>
-                    <li><a href="jobs-us.html">USA Jobs</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="footer-heading">Legal</h4>
-                <ul class="footer-links">
-                    <li><a href="terms.html">Terms</a></li>
-                    <li><a href="privacy.html">Privacy</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="footer-heading">Support</h4>
-                <ul class="footer-links">
-                    <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>&copy; 2026 Global Opportunity Hub.</p>
+        <div class="footer-bottom" style="border-top: none; padding-top: 0; justify-content: center;">
+            <p>&copy; 2026 Global Opportunity Hub. All rights reserved.</p>
         </div>
     </div>
 </footer>

@@ -3,52 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Opportunity Hub | Professional Careers in US & Canada</title>
+    <title>Global Opportunity Hub | Trusted Career Placement</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        .hero {
-            padding: 160px 0;
-            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1449034446853-66c86144b0ad?auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            color: var(--white);
-            text-align: center;
-        }
-
-        .hero h1 {
-            font-size: 4.5rem;
-            color: var(--white);
-            margin-bottom: 24px;
-            letter-spacing: -0.05em;
-        }
-
-        .hero p {
-            font-size: 1.25rem;
-            max-width: 700px;
-            margin: 0 auto 48px;
-            color: #CBD5E0;
-        }
-
-        .browse-section {
-            padding: 120px 0;
-            background: var(--white);
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
-        .section-header h2 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            letter-spacing: -0.025em;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; }
-        }
-    </style>
 </head>
 <body>
 
@@ -70,45 +26,159 @@
                 <a href="signin.html" class="btn btn-outline">Sign In</a>
                 <a href="signup.html" class="btn btn-primary">Get Started</a>
             </div>
+            <button class="mobile-menu-btn" onclick="toggleSidebar()" style="display: none; background: none; border: none; cursor: pointer;">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            </button>
         </nav>
     </div>
 </header>
 
+<!-- Sidebar -->
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+<div class="sidebar" id="sidebar">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 48px;">
+        <span class="logo" style="font-size: 1.25rem;">Menu</span>
+        <button onclick="toggleSidebar()" style="background: none; border: none; cursor: pointer;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+    </div>
+    <ul class="sidebar-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="jobs-ca.html">Canada Careers</a></li>
+        <li><a href="jobs-us.html">USA Careers</a></li>
+        <li><a href="faq.html">FAQ Center</a></li>
+        <li><a href="contact.html">Contact Support</a></li>
+    </ul>
+    <div style="margin-top: 60px; display: flex; flex-direction: column; gap: 16px;">
+        <a href="signin.html" class="btn btn-outline" style="width: 100%;">Sign In</a>
+        <a href="signup.html" class="btn btn-primary" style="width: 100%;">Get Started</a>
+    </div>
+</div>
+
 <main>
-    <section class="hero">
+    <section class="hero" style="padding: 160px 0; background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1920&q=80'); background-size: cover;">
         <div class="container">
-            <h1>Your Future Awaits in North America</h1>
-            <p>Direct access to thousands of verified professional and skilled-trade opportunities across the United States and Canada.</p>
+            <h1 style="color: white; font-size: 4.5rem;">Trusted Pathways to North America</h1>
+            <p style="color: #CBD5E0; font-size: 1.25rem;">We have successfully helped over 2,000 professionals and skilled workers secure life-changing employment in the USA and Canada.</p>
             <div class="hero-btns">
-                <a href="#browse" class="btn btn-primary" style="padding: 16px 40px; font-size: 1.1rem;">Browse All Jobs</a>
-                <a href="signup.html" class="btn btn-outline" style="background: transparent; color: white; border-color: white; margin-left: 20px;">Join the Hub</a>
+                <a href="#impact" class="btn btn-primary" style="padding: 16px 40px; font-size: 1.1rem;">See Our Impact</a>
+                <a href="signup.html" class="btn btn-outline" style="background: transparent; color: white; border-color: white; margin-left: 20px;">Start Your Journey</a>
             </div>
         </div>
     </section>
 
-    <section id="browse" class="browse-section">
+    <!-- Impact Stats -->
+    <section id="impact" class="impact-section">
         <div class="container">
-            <div class="section-header">
-                <h2>Browse by Destination</h2>
-                <p>Choose your target country to view dedicated job listings and immigration support.</p>
+            <div class="impact-grid">
+                <div class="impact-item">
+                    <h2>2,000+</h2>
+                    <p>Global Placements</p>
+                </div>
+                <div class="impact-item">
+                    <h2>150+</h2>
+                    <p>Partner Employers</p>
+                </div>
+                <div class="impact-item">
+                    <h2>98%</h2>
+                    <p>Visa Success Rate</p>
+                </div>
             </div>
-            <div class="country-selection">
-                <a href="jobs-ca.html" class="country-card">
-                    <img src="https://flagcdn.com/w160/ca.png" alt="Canada" class="flag-icon">
-                    <h3>Canada Opportunities</h3>
-                    <p>Verified roles in Healthcare, Tech, and Skilled Trades across all provinces. Full support for Express Entry and PNP pathways.</p>
-                    <span class="btn btn-primary" style="margin-top: 24px; width: 100%;">View Canada Jobs</span>
-                </a>
-                <a href="jobs-us.html" class="country-card">
-                    <img src="https://flagcdn.com/w160/us.png" alt="USA" class="flag-icon">
-                    <h3>USA Opportunities</h3>
-                    <p>Access premium roles in Finance, Healthcare, and Logistics. Expert guidance on H-1B, L-1, and specialized work visas.</p>
-                    <span class="btn btn-primary" style="margin-top: 24px; width: 100%; background: #1E40AF;">View USA Jobs</span>
-                </a>
+        </div>
+    </section>
+
+    <!-- Destination Selection -->
+    <section class="container" style="padding: 120px 0;">
+        <div style="text-align: center; margin-bottom: 80px;">
+            <h2 style="font-size: 3rem;">Browse by Destination</h2>
+            <p style="color: var(--text-muted); font-size: 1.1rem;">Verified opportunities with full immigration support.</p>
+        </div>
+        <div class="country-selection">
+            <a href="jobs-ca.html" class="country-card">
+                <img src="https://flagcdn.com/w160/ca.png" alt="Canada" class="flag-icon">
+                <h3>Canada Opportunities</h3>
+                <p>Explore high-demand roles across all Canadian provinces. Full support for Express Entry and PNP pathways.</p>
+                <span class="btn btn-primary" style="margin-top: 24px; width: 100%;">View Canada Jobs</span>
+            </a>
+            <a href="jobs-us.html" class="country-card">
+                <img src="https://flagcdn.com/w160/us.png" alt="USA" class="flag-icon">
+                <h3>USA Opportunities</h3>
+                <p>Access premium roles in Finance, Healthcare, and Logistics. Expert guidance on H-1B, L-1, and work visas.</p>
+                <span class="btn btn-primary" style="margin-top: 24px; width: 100%; background: #1E40AF;">View USA Jobs</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <div style="text-align: center;">
+                <h2 style="font-size: 3rem;">Success Stories</h2>
+                <p style="color: var(--text-muted); font-size: 1.1rem;">Real experiences from people who transformed their lives through our platform.</p>
+            </div>
+            <div class="testimonial-grid">
+                <!-- Kenya -->
+                <div class="testimonial-card">
+                    <div class="testimonial-user">
+                        <img src="https://images.unsplash.com/photo-1531123897727-8f129e16fd3c?auto=format&fit=crop&w=150&q=80" alt="Sarah Omondi">
+                        <div>
+                            <h4>Sarah Omondi</h4>
+                            <p>From Nairobi, Kenya • Now in Toronto, ON</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"I was skeptical at first, but Global Hub is 100% legit. They helped me find a nursing role in Toronto and guided me through every step of the visa process. If you want a real future in Canada, this is the place."</p>
+                </div>
+                <!-- Tanzania -->
+                <div class="testimonial-card">
+                    <div class="testimonial-user">
+                        <img src="https://images.unsplash.com/photo-1507152832244-10d45c7eda57?auto=format&fit=crop&w=150&q=80" alt="David Mbeki">
+                        <div>
+                            <h4>David Mbeki</h4>
+                            <p>From Dar es Salaam, Tanzania • Now in Dallas, TX</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"As a truck driver, I never thought I'd work in the US. This platform connected me with a verified employer in Texas. The support from the team was incredible. Don't wait, just start!"</p>
+                </div>
+                <!-- Somalia -->
+                <div class="testimonial-card">
+                    <div class="testimonial-user">
+                        <img src="https://images.unsplash.com/photo-1523419409543-a5e549c1fab8?auto=format&fit=crop&w=150&q=80" alt="Ahmed Farah">
+                        <div>
+                            <h4>Ahmed Farah</h4>
+                            <p>From Mogadishu, Somalia • Now in Ottawa, ON</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"Finding a software job in Canada from Somalia seemed impossible until I found Global Hub. They verified my skills and matched me with a great tech company. Truly a life-changing platform."</p>
+                </div>
+                <!-- Uganda -->
+                <div class="testimonial-card">
+                    <div class="testimonial-user">
+                        <img src="https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?auto=format&fit=crop&w=150&q=80" alt="Grace Nakato">
+                        <div>
+                            <h4>Grace Nakato</h4>
+                            <p>From Kampala, Uganda • Now in Phoenix, AZ</p>
+                        </div>
+                    </div>
+                    <p class="testimonial-text">"I applied for a caretaker role and was surprised by how professional and fast the process was. The team helped me with my documents and now I am earning a great living in the USA. Thank you Global Hub!"</p>
+                </div>
             </div>
         </div>
     </section>
 </main>
+
+<script>
+    function toggleSidebar() {
+        document.getElementById('sidebar').classList.toggle('active');
+        document.getElementById('sidebarOverlay').classList.toggle('active');
+    }
+</script>
+
+<style>
+    @media (max-width: 768px) {
+        .mobile-menu-btn { display: block !important; }
+    }
+</style>
 
 <footer>
     <div class="container">
@@ -118,12 +188,10 @@
                 <p>The premier platform for international professionals seeking legitimate and rewarding career opportunities across North America.</p>
             </div>
             <div>
-                <h4 class="footer-heading">Career Portals</h4>
+                <h4 class="footer-heading">Portals</h4>
                 <ul class="footer-links">
                     <li><a href="jobs-ca.html">Canada Jobs</a></li>
                     <li><a href="jobs-us.html">USA Jobs</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
             <div>
@@ -144,9 +212,6 @@
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 Global Opportunity Hub. All rights reserved.</p>
-            <div class="social-links">
-                <a href="#">LinkedIn</a> | <a href="#">Twitter</a>
-            </div>
         </div>
     </div>
 </footer>
