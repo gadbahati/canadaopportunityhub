@@ -8,32 +8,82 @@
     <style>
         .page-header {
             padding: 100px 0;
-            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1485738422979-f5c462d49f74?auto=format&fit=crop&w=1920&q=80');
+            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('https://images.unsplash.com/photo-1485738422979-f5c462d49f74?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             color: var(--white);
             text-align: center;
         }
 
-        .jobs-layout {
-            padding: 80px 0;
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 48px;
-        }
-
-        .filters {
+        .category-nav {
             background: var(--white);
-            padding: 32px;
-            border-radius: 20px;
-            border: 1px solid var(--border);
-            height: fit-content;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
             position: sticky;
-            top: 100px;
+            top: 80px;
+            z-index: 900;
         }
 
-        @media (max-width: 992px) {
-            .jobs-layout { grid-template-columns: 1fr; }
-            .filters { position: static; }
+        .category-nav .container {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+        }
+
+        .category-link {
+            font-weight: 700;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            cursor: pointer;
+            padding: 8px 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        .category-link.active {
+            color: #1E40AF;
+            border-bottom-color: #1E40AF;
+        }
+
+        .jobs-section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title h2 { font-size: 2rem; }
+
+        .job-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        /* Auth Modal Placeholder */
+        .auth-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .auth-modal {
+            background: var(--white);
+            padding: 48px;
+            border-radius: 24px;
+            max-width: 480px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
         }
     </style>
 </head>
@@ -46,13 +96,13 @@
             <ul class="nav-links">
                 <li><a href="about.html">About</a></li>
                 <li><a href="jobs-ca.html">Canada Jobs</a></li>
-                <li><a href="jobs-us.html" style="color: var(--primary);">US Jobs</a></li>
+                <li><a href="jobs-us.html" style="color: #1E40AF;">US Jobs</a></li>
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
             <div class="nav-auth">
                 <a href="signin.html" class="btn btn-outline">Sign In</a>
-                <a href="signup.html" class="btn btn-primary">Get Started</a>
+                <a href="signup.html" class="btn btn-primary" style="background: #1E40AF;">Get Started</a>
             </div>
         </nav>
     </div>
@@ -61,105 +111,137 @@
 <section class="page-header">
     <div class="container">
         <img src="https://flagcdn.com/w80/us.png" alt="USA" style="width: 48px; margin-bottom: 24px; border-radius: 4px;">
-        <h1 style="color: white; font-size: 3.5rem;">USA Career Portal</h1>
-        <p style="color: #E2E8F0; font-size: 1.25rem;">Premium professional and accessible career opportunities across the United States.</p>
+        <h1 style="color: white;">USA Career Portal</h1>
+        <p style="color: #E2E8F0;">Direct access to premium professional and accessible roles in the US.</p>
     </div>
 </section>
 
-<main class="container">
-    <div class="jobs-layout">
-        <aside class="filters">
-            <h4 style="margin-bottom: 24px;">Filter Results</h4>
-            <div class="form-group">
-                <label>Job Sector</label>
-                <select>
-                    <option>All Categories</option>
-                    <option>Logistics & Driving</option>
-                    <option>Caregiving & Healthcare</option>
-                    <option>Technology</option>
-                    <option>Finance</option>
-                </select>
-            </div>
-            <button class="btn btn-primary" style="width: 100%; background: #1E40AF;">Search USA Jobs</button>
-        </aside>
+<div class="category-nav">
+    <div class="container">
+        <a href="#professional" class="category-link active">Professional Expertise</a>
+        <a href="#entry-level" class="category-link">No Experience / General</a>
+    </div>
+</div>
 
-        <section class="jobs-feed">
-            <!-- Job 1: Driver -->
-            <div class="job-card">
-                <div class="job-badge badge-us">
-                    <img src="https://flagcdn.com/w20/us.png" alt="" class="job-flag">
-                    USA • Logistics
-                </div>
+<main class="container">
+    <!-- Professional Section -->
+    <section id="professional" class="jobs-section">
+        <div class="section-title">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <h2>Professional Expertise</h2>
+        </div>
+        <div class="job-grid">
+            <div class="job-card" style="border-left: 4px solid #1E40AF;">
+                <div class="job-badge badge-us"><img src="https://flagcdn.com/w20/us.png" class="job-flag"> USA • Finance</div>
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
                     <div>
-                        <h3>CDL Class A Truck Driver</h3>
-                        <p style="color: #1E40AF; font-weight: 600;">FedEx Ground</p>
+                        <h3>Senior Financial Analyst</h3>
+                        <p style="color: #1E40AF; font-weight: 600;">Goldman Sachs</p>
                     </div>
                     <div style="text-align: right;">
-                        <p style="font-weight: 800; color: var(--secondary);">$75,000 - $95,000 / year</p>
-                        <p style="font-size: 0.8rem; color: var(--text-muted);">Sign-on Bonus Available</p>
+                        <p style="font-weight: 800; color: var(--secondary);">$145,000 - $180,000 USD</p>
                     </div>
                 </div>
-                <div style="display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">
-                    <span>Dallas, TX</span>
-                    <span>Full-time</span>
-                    <span>H-2B Eligible</span>
-                </div>
-                <p style="margin-bottom: 24px;">Join one of the largest logistics networks in the US. We are hiring experienced CDL drivers for regional routes. Assistance with H-2B visa applications provided for international candidates.</p>
-                <a href="apply.html?country=us&id=driver-us" class="btn btn-primary" style="background: #1E40AF;">Apply Now</a>
+                <p style="margin-bottom: 24px;">Strategic financial planning and analysis for investment banking division. Requires MBA or CPA and 5+ years in corporate finance.</p>
+                <button onclick="checkAuth()" class="btn btn-primary" style="background: #1E40AF;">Apply for Position</button>
             </div>
 
-            <!-- Job 2: Caretaker -->
-            <div class="job-card">
-                <div class="job-badge badge-us">
-                    <img src="https://flagcdn.com/w20/us.png" alt="" class="job-flag">
-                    USA • Caregiving
-                </div>
+            <div class="job-card" style="border-left: 4px solid #1E40AF;">
+                <div class="job-badge badge-us"><img src="https://flagcdn.com/w20/us.png" class="job-flag"> USA • Healthcare</div>
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
                     <div>
-                        <h3>Elderly Caretaker / Personal Assistant</h3>
+                        <h3>Clinical Data Scientist</h3>
+                        <p style="color: #1E40AF; font-weight: 600;">Pfizer Inc.</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <p style="font-weight: 800; color: var(--secondary);">$130,000 - $165,000 USD</p>
+                    </div>
+                </div>
+                <p style="margin-bottom: 24px;">Analyzing clinical trial data to drive drug development. Requires PhD in Statistics or Data Science and experience with R/Python.</p>
+                <button onclick="checkAuth()" class="btn btn-primary" style="background: #1E40AF;">Apply for Position</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Entry Level Section -->
+    <section id="entry-level" class="jobs-section" style="border-top: 1px solid var(--border);">
+        <div class="section-title">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <h2>No Experience / Essential Roles</h2>
+        </div>
+        <div class="job-grid">
+            <div class="job-card" style="border-left: 4px solid #1E40AF;">
+                <div class="job-badge badge-us"><img src="https://flagcdn.com/w20/us.png" class="job-flag"> USA • Logistics</div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                    <div>
+                        <h3>Delivery Associate (No Experience)</h3>
+                        <p style="color: #1E40AF; font-weight: 600;">FedEx Express</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <p style="font-weight: 800; color: var(--secondary);">$22 - $28 / hour</p>
+                    </div>
+                </div>
+                <p style="margin-bottom: 24px;">Join our delivery network. No previous experience required. Must have a valid driver's license and clean record. Training and vehicle provided.</p>
+                <button onclick="checkAuth()" class="btn btn-primary" style="background: #1E40AF;">Apply for Position</button>
+            </div>
+
+            <div class="job-card" style="border-left: 4px solid #1E40AF;">
+                <div class="job-badge badge-us"><img src="https://flagcdn.com/w20/us.png" class="job-flag"> USA • Caregiving</div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                    <div>
+                        <h3>In-Home Caregiver (Entry Level)</h3>
                         <p style="color: #1E40AF; font-weight: 600;">Home Instead USA</p>
                     </div>
                     <div style="text-align: right;">
-                        <p style="font-weight: 800; color: var(--secondary);">$20 - $25 / hour</p>
-                        <p style="font-size: 0.8rem; color: var(--text-muted);">Immediate Start</p>
+                        <p style="font-weight: 800; color: var(--secondary);">$18 - $24 / hour</p>
                     </div>
                 </div>
-                <div style="display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">
-                    <span>Phoenix, AZ</span>
-                    <span>Full-time</span>
-                    <span>Sponsorship Available</span>
-                </div>
-                <p style="margin-bottom: 24px;">Provide essential non-medical care to seniors. We value compassion and reliability. Full training and support for work authorization provided to qualified applicants.</p>
-                <a href="apply.html?country=us&id=caretaker-us" class="btn btn-primary" style="background: #1E40AF;">Apply Now</a>
+                <p style="margin-bottom: 24px;">Provide companionship and non-medical support to seniors. No certification required to start; we provide full paid training and certification support.</p>
+                <button onclick="checkAuth()" class="btn btn-primary" style="background: #1E40AF;">Apply for Position</button>
             </div>
 
-            <!-- Job 3: Software -->
-            <div class="job-card">
-                <div class="job-badge badge-us">
-                    <img src="https://flagcdn.com/w20/us.png" alt="" class="job-flag">
-                    USA • Technology
-                </div>
+            <div class="job-card" style="border-left: 4px solid #1E40AF;">
+                <div class="job-badge badge-us"><img src="https://flagcdn.com/w20/us.png" class="job-flag"> USA • Retail</div>
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
                     <div>
-                        <h3>Senior Software Engineer</h3>
-                        <p style="color: #1E40AF; font-weight: 600;">Microsoft Corporation</p>
+                        <h3>Retail Sales Associate</h3>
+                        <p style="color: #1E40AF; font-weight: 600;">Apple Inc.</p>
                     </div>
                     <div style="text-align: right;">
-                        <p style="font-weight: 800; color: var(--secondary);">$145,000 - $195,000 USD</p>
+                        <p style="font-weight: 800; color: var(--secondary);">$24 - $30 / hour</p>
                     </div>
                 </div>
-                <div style="display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">
-                    <span>Redmond, WA</span>
-                    <span>Full-time</span>
-                    <span>H-1B / L-1 Support</span>
-                </div>
-                <p style="margin-bottom: 24px;">Build the next generation of cloud computing. Microsoft provides full relocation and visa sponsorship for top-tier global talent in software engineering.</p>
-                <a href="apply.html?country=us&id=engineer-us" class="btn btn-primary" style="background: #1E40AF;">Apply Now</a>
+                <p style="margin-bottom: 24px;">Represent a world-class brand. No previous retail experience required. We look for passion, curiosity, and excellent communication skills.</p>
+                <button onclick="checkAuth()" class="btn btn-primary" style="background: #1E40AF;">Apply for Position</button>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 </main>
+
+<!-- Auth Modal -->
+<div id="authModal" class="auth-overlay">
+    <div class="auth-modal">
+        <div style="background: #EFF6FF; width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#1E40AF" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h2 style="margin-bottom: 16px;">Account Required</h2>
+        <p style="color: var(--text-muted); margin-bottom: 32px; line-height: 1.5;">To protect your professional data and process applications securely, you must sign in or create an account before applying for positions.</p>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+            <a href="signin.html" class="btn btn-primary" style="width: 100%; background: #1E40AF;">Sign In to Account</a>
+            <a href="signup.html" class="btn btn-outline" style="width: 100%;">Create New Account</a>
+            <button onclick="closeModal()" style="background: none; border: none; color: var(--text-muted); font-size: 0.875rem; cursor: pointer; margin-top: 10px;">Maybe Later</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function checkAuth() {
+        document.getElementById('authModal').style.display = 'flex';
+    }
+    function closeModal() {
+        document.getElementById('authModal').style.display = 'none';
+    }
+</script>
 
 <footer>
     <div class="container">

@@ -8,32 +8,82 @@
     <style>
         .page-header {
             padding: 100px 0;
-            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=1920&q=80');
+            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             color: var(--white);
             text-align: center;
         }
 
-        .jobs-layout {
-            padding: 80px 0;
-            display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 48px;
-        }
-
-        .filters {
+        .category-nav {
             background: var(--white);
-            padding: 32px;
-            border-radius: 20px;
-            border: 1px solid var(--border);
-            height: fit-content;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border);
             position: sticky;
-            top: 100px;
+            top: 80px;
+            z-index: 900;
         }
 
-        @media (max-width: 992px) {
-            .jobs-layout { grid-template-columns: 1fr; }
-            .filters { position: static; }
+        .category-nav .container {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+        }
+
+        .category-link {
+            font-weight: 700;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            cursor: pointer;
+            padding: 8px 0;
+            border-bottom: 2px solid transparent;
+        }
+
+        .category-link.active {
+            color: var(--primary);
+            border-bottom-color: var(--primary);
+        }
+
+        .jobs-section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            margin-bottom: 40px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title h2 { font-size: 2rem; }
+
+        .job-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 24px;
+        }
+
+        /* Auth Modal Placeholder */
+        .auth-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.8);
+            backdrop-filter: blur(4px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .auth-modal {
+            background: var(--white);
+            padding: 48px;
+            border-radius: 24px;
+            max-width: 480px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
         }
     </style>
 </head>
@@ -61,105 +111,137 @@
 <section class="page-header">
     <div class="container">
         <img src="https://flagcdn.com/w80/ca.png" alt="Canada" style="width: 48px; margin-bottom: 24px; border-radius: 4px;">
-        <h1 style="color: white; font-size: 3.5rem;">Canada Career Portal</h1>
-        <p style="color: #E2E8F0; font-size: 1.25rem;">Verified professional and skilled-trade opportunities across Canada.</p>
+        <h1 style="color: white;">Canada Career Portal</h1>
+        <p style="color: #E2E8F0;">From professional expertise to entry-level opportunities.</p>
     </div>
 </section>
 
-<main class="container">
-    <div class="jobs-layout">
-        <aside class="filters">
-            <h4 style="margin-bottom: 24px;">Filter Results</h4>
-            <div class="form-group">
-                <label>Job Sector</label>
-                <select>
-                    <option>All Categories</option>
-                    <option>Logistics & Driving</option>
-                    <option>Caregiving & Healthcare</option>
-                    <option>Construction</option>
-                    <option>Technology</option>
-                </select>
-            </div>
-            <button class="btn btn-primary" style="width: 100%;">Search Jobs</button>
-        </aside>
-
-        <section class="jobs-feed">
-            <!-- Job 1: Driver -->
-            <div class="job-card">
-                <div class="job-badge badge-ca">
-                    <img src="https://flagcdn.com/w20/ca.png" alt="" class="job-flag">
-                    Canada • Logistics
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
-                    <div>
-                        <h3>Long-Haul Truck Driver (Class 1)</h3>
-                        <p style="color: var(--primary); font-weight: 600;">Canadian Pacific Logistics</p>
-                    </div>
-                    <div style="text-align: right;">
-                        <p style="font-weight: 800; color: var(--secondary);">$28 - $35 / hour</p>
-                        <p style="font-size: 0.8rem; color: var(--text-muted);">Relocation Support</p>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">
-                    <span>Calgary, AB</span>
-                    <span>Full-time</span>
-                    <span>LMIA Approved</span>
-                </div>
-                <p style="margin-bottom: 24px;">Seeking experienced drivers for cross-province routes. Employer provides assistance with LMIA and permanent residency pathways for qualified international applicants.</p>
-                <a href="apply.html?country=ca&id=driver-ca" class="btn btn-primary">Apply Now</a>
-            </div>
-
-            <!-- Job 2: Caretaker -->
-            <div class="job-card">
-                <div class="job-badge badge-ca">
-                    <img src="https://flagcdn.com/w20/ca.png" alt="" class="job-flag">
-                    Canada • Caregiving
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
-                    <div>
-                        <h3>Home Care Provider / Caretaker</h3>
-                        <p style="color: var(--primary); font-weight: 600;">Comfort Keepers Canada</p>
-                    </div>
-                    <div style="text-align: right;">
-                        <p style="font-weight: 800; color: var(--secondary);">$22 - $26 / hour</p>
-                        <p style="font-size: 0.8rem; color: var(--text-muted);">Training Provided</p>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">
-                    <span>Vancouver, BC</span>
-                    <span>Full-time</span>
-                    <span>NOC 44101</span>
-                </div>
-                <p style="margin-bottom: 24px;">Provide essential support to seniors in their homes. No medical degree required, but compassionate nature and basic caregiving experience are essential. Visa sponsorship available.</p>
-                <a href="apply.html?country=ca&id=caretaker-ca" class="btn btn-primary">Apply Now</a>
-            </div>
-
-            <!-- Job 3: Nurse -->
-            <div class="job-card">
-                <div class="job-badge badge-ca">
-                    <img src="https://flagcdn.com/w20/ca.png" alt="" class="job-flag">
-                    Canada • Healthcare
-                </div>
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
-                    <div>
-                        <h3>Registered Nurse (Acute Care)</h3>
-                        <p style="color: var(--primary); font-weight: 600;">Unity Health Toronto</p>
-                    </div>
-                    <div style="text-align: right;">
-                        <p style="font-weight: 800; color: var(--secondary);">$85,000 - $110,000 CAD</p>
-                    </div>
-                </div>
-                <div style="display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">
-                    <span>Toronto, ON</span>
-                    <span>Full-time</span>
-                    <span>NOC 31301</span>
-                </div>
-                <p style="margin-bottom: 24px;">Join a leading research hospital. We provide comprehensive support for international nurses, including licensing guidance and Express Entry sponsorship.</p>
-                <a href="apply.html?country=ca&id=nurse-ca" class="btn btn-primary">Apply Now</a>
-            </div>
-        </section>
+<div class="category-nav">
+    <div class="container">
+        <a href="#professional" class="category-link active">Professional Expertise</a>
+        <a href="#entry-level" class="category-link">No Experience / General</a>
     </div>
+</div>
+
+<main class="container">
+    <!-- Professional Section -->
+    <section id="professional" class="jobs-section">
+        <div class="section-title">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <h2>Professional Expertise</h2>
+        </div>
+        <div class="job-grid">
+            <div class="job-card">
+                <div class="job-badge badge-ca"><img src="https://flagcdn.com/w20/ca.png" class="job-flag"> Canada • Technology</div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                    <div>
+                        <h3>Cloud Systems Architect</h3>
+                        <p style="color: var(--primary); font-weight: 600;">Telus Communications</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <p style="font-weight: 800; color: var(--secondary);">$135,000 - $170,000 CAD</p>
+                    </div>
+                </div>
+                <p style="margin-bottom: 24px;">Leading digital transformation projects. Requires 5+ years experience in AWS/Azure and degree in CS or Engineering. Visa sponsorship provided.</p>
+                <button onclick="checkAuth()" class="btn btn-primary">Apply for Position</button>
+            </div>
+
+            <div class="job-card">
+                <div class="job-badge badge-ca"><img src="https://flagcdn.com/w20/ca.png" class="job-flag"> Canada • Healthcare</div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                    <div>
+                        <h3>Senior Medical Laboratory Technologist</h3>
+                        <p style="color: var(--primary); font-weight: 600;">LifeLabs Canada</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <p style="font-weight: 800; color: var(--secondary);">$78,000 - $95,000 CAD</p>
+                    </div>
+                </div>
+                <p style="margin-bottom: 24px;">Critical role in diagnostic services. Requires provincial certification and specialized expertise in clinical chemistry or hematology.</p>
+                <button onclick="checkAuth()" class="btn btn-primary">Apply for Position</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Entry Level Section -->
+    <section id="entry-level" class="jobs-section" style="border-top: 1px solid var(--border);">
+        <div class="section-title">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            <h2>No Experience / Essential Roles</h2>
+        </div>
+        <div class="job-grid">
+            <div class="job-card">
+                <div class="job-badge badge-ca"><img src="https://flagcdn.com/w20/ca.png" class="job-flag"> Canada • Logistics</div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                    <div>
+                        <h3>Warehouse Associate (No Experience)</h3>
+                        <p style="color: var(--primary); font-weight: 600;">Amazon Canada</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <p style="font-weight: 800; color: var(--secondary);">$19.50 - $22.00 / hour</p>
+                    </div>
+                </div>
+                <p style="margin-bottom: 24px;">Immediate openings for fulfillment centers. No previous experience required. Training provided on-site. Health benefits and career growth pathways available.</p>
+                <button onclick="checkAuth()" class="btn btn-primary">Apply for Position</button>
+            </div>
+
+            <div class="job-card">
+                <div class="job-badge badge-ca"><img src="https://flagcdn.com/w20/ca.png" class="job-flag"> Canada • General Labour</div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                    <div>
+                        <h3>Construction General Labourer</h3>
+                        <p style="color: var(--primary); font-weight: 600;">EllisDon Construction</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <p style="font-weight: 800; color: var(--secondary);">$24 - $30 / hour</p>
+                    </div>
+                </div>
+                <p style="margin-bottom: 24px;">Support major infrastructure projects. No experience necessary; willingness to learn and physical fitness required. PPE and safety training provided.</p>
+                <button onclick="checkAuth()" class="btn btn-primary">Apply for Position</button>
+            </div>
+
+            <div class="job-card">
+                <div class="job-badge badge-ca"><img src="https://flagcdn.com/w20/ca.png" class="job-flag"> Canada • Hospitality</div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                    <div>
+                        <h3>Hotel Guest Service Associate</h3>
+                        <p style="color: var(--primary); font-weight: 600;">Fairmont Hotels & Resorts</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <p style="font-weight: 800; color: var(--secondary);">$21 - $25 / hour</p>
+                    </div>
+                </div>
+                <p style="margin-bottom: 24px;">Start your career in world-class hospitality. No experience required. We value positive attitude and communication skills. Staff housing options available.</p>
+                <button onclick="checkAuth()" class="btn btn-primary">Apply for Position</button>
+            </div>
+        </div>
+    </section>
 </main>
+
+<!-- Auth Modal -->
+<div id="authModal" class="auth-overlay">
+    <div class="auth-modal">
+        <div style="background: #EFF6FF; width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+        <h2 style="margin-bottom: 16px;">Account Required</h2>
+        <p style="color: var(--text-muted); margin-bottom: 32px; line-height: 1.5;">To protect your professional data and process applications securely, you must sign in or create an account before applying for positions.</p>
+        <div style="display: flex; flex-direction: column; gap: 12px;">
+            <a href="signin.html" class="btn btn-primary" style="width: 100%;">Sign In to Account</a>
+            <a href="signup.html" class="btn btn-outline" style="width: 100%;">Create New Account</a>
+            <button onclick="closeModal()" style="background: none; border: none; color: var(--text-muted); font-size: 0.875rem; cursor: pointer; margin-top: 10px;">Maybe Later</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    function checkAuth() {
+        document.getElementById('authModal').style.display = 'flex';
+    }
+    function closeModal() {
+        document.getElementById('authModal').style.display = 'none';
+    }
+</script>
 
 <footer>
     <div class="container">
