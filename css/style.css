@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lexend:wght@300;400;500;600;700;800&display=swap');
 
 :root {
-    --primary: #C53030; /* Refined Maple Red */
+    --primary: #C53030;
     --primary-dark: #9B2C2C;
-    --secondary: #1A365D; /* Professional Navy */
+    --secondary: #1A365D;
     --secondary-light: #2A4365;
     --accent: #2D3748;
     --bg-light: #F7FAFC;
@@ -149,12 +149,102 @@ nav {
     color: var(--white);
 }
 
+/* Country Selection */
+.country-selection {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    padding: 80px 0;
+}
+
+.country-card {
+    background: var(--white);
+    padding: 40px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    text-align: center;
+    transition: var(--transition);
+    cursor: pointer;
+}
+
+.country-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary);
+}
+
+.flag-icon {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+    object-fit: cover;
+    box-shadow: var(--shadow-md);
+}
+
+/* Job Cards */
+.job-card {
+    background: var(--white);
+    padding: 32px;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    margin-bottom: 24px;
+    transition: var(--transition);
+    position: relative;
+    overflow: hidden;
+}
+
+.job-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 4px;
+    height: 100%;
+    background: var(--primary);
+}
+
+.job-card.us::before {
+    background: #3182CE;
+}
+
+.job-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateX(5px);
+}
+
+.job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.job-country-flag {
+    width: 24px;
+    height: 24px;
+    border-radius: 4px;
+    vertical-align: middle;
+    margin-right: 8px;
+}
+
+.job-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.badge-ca { background: #FFF5F5; color: #C53030; }
+.badge-us { background: #EBF8FF; color: #2B6CB0; }
+
 /* Footer */
 footer {
     background: var(--secondary);
     color: var(--white);
     padding: 100px 0 50px;
-    margin-top: 0;
+    margin-top: 100px;
 }
 
 .footer-grid {
@@ -207,68 +297,6 @@ footer {
     font-size: 0.9rem;
 }
 
-/* Page Header */
-.page-header {
-    background: var(--secondary);
-    color: var(--white);
-    padding: 100px 0;
-    text-align: center;
-}
-
-.page-header h1 {
-    color: var(--white);
-    font-size: 3rem;
-    margin-bottom: 20px;
-}
-
-.page-header p {
-    font-size: 1.2rem;
-    opacity: 0.9;
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-/* Form Styles */
-.form-card {
-    background: var(--white);
-    padding: 40px;
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-lg);
-    border: 1px solid var(--border);
-}
-
-.form-group {
-    margin-bottom: 24px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: 600;
-    color: var(--secondary);
-    font-size: 0.9rem;
-}
-
-.form-group input, 
-.form-group select, 
-.form-group textarea {
-    width: 100%;
-    padding: 14px;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
-    font-family: 'Inter', sans-serif;
-    font-size: 1rem;
-    transition: var(--transition);
-}
-
-.form-group input:focus, 
-.form-group select:focus, 
-.form-group textarea:focus {
-    outline: none;
-    border-color: var(--primary);
-    box-shadow: 0 0 0 3px rgba(197, 48, 48, 0.1);
-}
-
 /* Responsive Utilities */
 @media (max-width: 1024px) {
     .footer-grid {
@@ -280,7 +308,7 @@ footer {
 @media (max-width: 768px) {
     nav { height: 80px; }
     .nav-links, .nav-auth { display: none; }
-    .page-header h1 { font-size: 2.2rem; }
+    .country-selection { grid-template-columns: 1fr; }
     .footer-bottom { flex-direction: column; gap: 20px; text-align: center; }
 }
 

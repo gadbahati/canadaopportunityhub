@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Canada Opportunity Hub | Professional Careers & Immigration</title>
+    <title>Global Opportunity Hub | Professional Careers in US & Canada</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
         .hero {
@@ -29,77 +29,23 @@
             opacity: 0.9;
         }
 
-        .stats {
-            background: var(--white);
-            padding: 60px 0;
-            margin-top: -60px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-lg);
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
+        .country-selector-section {
+            padding: 100px 0;
+            background: var(--bg-light);
+        }
+
+        .section-header {
             text-align: center;
+            margin-bottom: 60px;
         }
 
-        .stat-item h2 {
-            font-size: 2.5rem;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-
-        .stat-item p {
-            font-weight: 600;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            text-transform: uppercase;
-        }
-
-        .services {
-            padding: 120px 0;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
-        .section-title h2 {
+        .section-header h2 {
             font-size: 2.5rem;
             margin-bottom: 20px;
         }
 
-        .grid-3 {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 32px;
-        }
-
-        .service-card {
-            background: var(--white);
-            padding: 48px;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            transition: var(--transition);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-lg);
-            border-color: var(--primary);
-        }
-
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-        }
-
-        @media (max-width: 992px) {
-            .hero h1 { font-size: 3rem; }
-            .grid-3, .stats { grid-template-columns: 1fr 1fr; }
-            .stats { margin-top: 0; border-radius: 0; }
-        }
-
-        @media (max-width: 576px) {
-            .grid-3, .stats { grid-template-columns: 1fr; }
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
         }
     </style>
 </head>
@@ -110,11 +56,12 @@
         <nav>
             <a href="index.html" class="logo">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z"/></svg>
-                Canada Hub
+                Opportunity Hub
             </a>
             <ul class="nav-links">
                 <li><a href="about.html">About</a></li>
-                <li><a href="jobs.html">Browse Jobs</a></li>
+                <li><a href="jobs-ca.html">Canada Jobs</a></li>
+                <li><a href="jobs-us.html">US Jobs</a></li>
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -129,55 +76,34 @@
 <main>
     <section class="hero">
         <div class="container">
-            <h1>Build Your Professional Future in Canada</h1>
-            <p>Direct access to premium career opportunities and comprehensive immigration support for skilled global professionals.</p>
+            <h1>Your Professional Gateway to North America</h1>
+            <p>Direct access to verified career opportunities in the United States and Canada. Start your international journey with expert support.</p>
             <div class="hero-btns">
-                <a href="jobs.html" class="btn btn-primary" style="padding: 16px 40px; font-size: 1.1rem;">Browse Real Opportunities</a>
-                <a href="signup.html" class="btn btn-outline" style="color: white; border-color: white; margin-left: 20px;">Create Profile</a>
+                <a href="#explore" class="btn btn-primary" style="padding: 16px 40px; font-size: 1.1rem;">Explore Opportunities</a>
+                <a href="about.html" class="btn btn-outline" style="color: white; border-color: white; margin-left: 20px;">Learn More</a>
             </div>
         </div>
     </section>
 
-    <div class="container">
-        <section class="stats">
-            <div class="stat-item">
-                <h2>5,000+</h2>
-                <p>Verified Jobs</p>
-            </div>
-            <div class="stat-item">
-                <h2>120+</h2>
-                <p>Partner Employers</p>
-            </div>
-            <div class="stat-item">
-                <h2>98%</h2>
-                <p>Success Rate</p>
-            </div>
-            <div class="stat-item">
-                <h2>24/7</h2>
-                <p>Expert Support</p>
-            </div>
-        </section>
-    </div>
-
-    <section class="services">
+    <section id="explore" class="country-selector-section">
         <div class="container">
-            <div class="section-title">
-                <h2>Professional Solutions</h2>
-                <p>Tailored services designed to facilitate your successful integration into the Canadian workforce.</p>
+            <div class="section-header">
+                <h2>Choose Your Destination</h2>
+                <p>Select a country to view dedicated job listings and immigration pathways.</p>
             </div>
-            <div class="grid-3">
-                <div class="service-card">
-                    <h3>Strategic Placement</h3>
-                    <p>We connect you directly with employers in high-demand sectors like Healthcare, Technology, and Infrastructure.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Legal Compliance</h3>
-                    <p>Expert guidance on work permits, visa sponsorship, and permanent residency pathways for skilled workers.</p>
-                </div>
-                <div class="service-card">
-                    <h3>Career Optimization</h3>
-                    <p>Professional resume tailoring, interview coaching, and market insights specifically for the Canadian landscape.</p>
-                </div>
+            <div class="country-selection">
+                <a href="jobs-ca.html" class="country-card">
+                    <img src="https://flagcdn.com/w160/ca.png" alt="Canada Flag" class="flag-icon">
+                    <h3>Canada Opportunities</h3>
+                    <p>Explore high-demand roles in Ontario, BC, Alberta, and more. Full support for Express Entry and PNP pathways.</p>
+                    <span class="btn btn-outline" style="margin-top: 20px;">View Canada Jobs</span>
+                </a>
+                <a href="jobs-us.html" class="country-card">
+                    <img src="https://flagcdn.com/w160/us.png" alt="USA Flag" class="flag-icon">
+                    <h3>USA Opportunities</h3>
+                    <p>Access premium roles in Tech, Healthcare, and Finance. Guidance on H-1B, EB-2, and specialized work visas.</p>
+                    <span class="btn btn-outline" style="margin-top: 20px;">View USA Jobs</span>
+                </a>
             </div>
         </div>
     </section>
@@ -187,15 +113,15 @@
     <div class="container">
         <div class="footer-grid">
             <div class="footer-brand">
-                <a href="index.html" class="logo">Canada Hub</a>
-                <p>The premier platform for international professionals seeking legitimate and rewarding career opportunities across Canada.</p>
+                <a href="index.html" class="logo">Opportunity Hub</a>
+                <p>The premier platform for international professionals seeking legitimate and rewarding career opportunities across North America.</p>
             </div>
             <div>
-                <h4 class="footer-heading">Platform</h4>
+                <h4 class="footer-heading">Destinations</h4>
                 <ul class="footer-links">
-                    <li><a href="jobs.html">Browse Jobs</a></li>
+                    <li><a href="jobs-ca.html">Canada Career Portal</a></li>
+                    <li><a href="jobs-us.html">USA Career Portal</a></li>
                     <li><a href="about.html">Our Mission</a></li>
-                    <li><a href="faq.html">Help Center</a></li>
                     <li><a href="contact.html">Contact Support</a></li>
                 </ul>
             </div>
@@ -215,7 +141,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Canada Opportunity Hub. All professional placements adhere to federal labor standards.</p>
+            <p>&copy; 2026 Opportunity Hub. All professional placements adhere to international labor standards.</p>
             <div class="social-links">
                 <a href="#">LinkedIn</a> | <a href="#">Twitter</a>
             </div>

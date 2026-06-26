@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canada Careers | Opportunity Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .jobs-container {
+            padding: 80px 0;
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 40px;
+        }
+
+        .filters {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            height: fit-content;
+            position: sticky;
+            top: 110px;
+        }
+
+        .job-card {
+            background: var(--white);
+            padding: 32px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            margin-bottom: 24px;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .job-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: #C53030;
+        }
+
+        .job-meta {
+            display: flex;
+            gap: 24px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 992px) {
+            .jobs-container { grid-template-columns: 1fr; }
+            .filters { position: static; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <nav>
+            <a href="index.html" class="logo">Opportunity Hub</a>
+            <ul class="nav-links">
+                <li><a href="about.html">About</a></li>
+                <li><a href="jobs-ca.html" style="color: var(--primary);">Canada Jobs</a></li>
+                <li><a href="jobs-us.html">US Jobs</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-auth">
+                <a href="signin.html" class="btn btn-outline">Sign In</a>
+                <a href="signup.html" class="btn btn-primary">Get Started</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<section class="page-header" style="background: linear-gradient(rgba(26, 54, 93, 0.8), rgba(26, 54, 93, 0.8)), url('https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=1920&q=80'); background-size: cover;">
+    <div class="container">
+        <img src="https://flagcdn.com/w80/ca.png" alt="Canada Flag" style="width: 60px; margin-bottom: 20px; border-radius: 4px;">
+        <h1>Professional Careers in Canada</h1>
+        <p>Explore verified high-demand roles across all Canadian provinces.</p>
+    </div>
+</section>
+
+<main class="container">
+    <div class="jobs-container">
+        <aside class="filters">
+            <div class="filter-group">
+                <h4>Sector</h4>
+                <select class="form-group" style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid var(--border); border-radius: 4px;">
+                    <option>All Sectors</option>
+                    <option>Healthcare</option>
+                    <option>Technology</option>
+                    <option>Construction</option>
+                </select>
+            </div>
+            <button class="btn btn-primary" style="width: 100%;">Search Canada Jobs</button>
+        </aside>
+
+        <section class="jobs-feed">
+            <div class="job-card">
+                <div class="job-header">
+                    <div>
+                        <span class="job-badge badge-ca">Canada • High Demand</span>
+                        <h3 style="margin-top: 10px;">Registered Nurse (Acute Care)</h3>
+                        <p style="color: var(--primary); font-weight: 600;">Toronto General Hospital</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <p style="font-weight: 700; color: var(--secondary);">$82,000 - $105,000 CAD</p>
+                    </div>
+                </div>
+                <div class="job-meta">
+                    <span>Toronto, ON</span>
+                    <span>Full-time</span>
+                    <span>NOC 31301</span>
+                </div>
+                <p style="margin-bottom: 24px;">Actively seeking experienced RNs for critical care units. Comprehensive relocation support and assistance with provincial licensing provided.</p>
+                <div class="job-footer">
+                    <a href="apply.html?country=ca&id=31301" class="btn btn-primary">Apply for Position</a>
+                </div>
+            </div>
+
+            <div class="job-card">
+                <div class="job-header">
+                    <div>
+                        <span class="job-badge badge-ca">Canada • Verified</span>
+                        <h3 style="margin-top: 10px;">Senior Cloud Architect</h3>
+                        <p style="color: var(--primary); font-weight: 600;">Shopify Inc.</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <p style="font-weight: 700; color: var(--secondary);">$140,000 - $185,000 CAD</p>
+                    </div>
+                </div>
+                <div class="job-meta">
+                    <span>Remote / Ottawa, ON</span>
+                    <span>Full-time</span>
+                    <span>NOC 21231</span>
+                </div>
+                <p style="margin-bottom: 24px;">Leading the evolution of global commerce. Join our infrastructure team to build highly resilient cloud systems. Visa sponsorship available for qualified seniors.</p>
+                <div class="job-footer">
+                    <a href="apply.html?country=ca&id=21231" class="btn btn-primary">Apply for Position</a>
+                </div>
+            </div>
+        </section>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">Opportunity Hub</a>
+                <p>Empowering global talent to find meaningful employment and build successful lives in North America through professional placement and comprehensive support.</p>
+            </div>
+            <div>
+                <h4 class="footer-heading">Destinations</h4>
+                <ul class="footer-links">
+                    <li><a href="jobs-ca.html">Canada Careers</a></li>
+                    <li><a href="jobs-us.html">USA Careers</a></li>
+                    <li><a href="about.html">Our Mission</a></li>
+                    <li><a href="contact.html">Contact Support</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-heading">Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-heading">Account</h4>
+                <ul class="footer-links">
+                    <li><a href="signin.html">Sign In</a></li>
+                    <li><a href="signup.html">Create Account</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Opportunity Hub. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>
