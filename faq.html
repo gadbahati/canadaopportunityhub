@@ -3,72 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FAQ | Global Opportunity Hub</title>
+    <title>FAQ Center | Global Opportunity Hub</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        .faq-accordion {
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            background: var(--white);
-            border-radius: 16px;
-            margin-bottom: 16px;
-            border: 1px solid var(--border);
-            overflow: hidden;
-            transition: var(--transition);
-        }
-
-        .faq-question {
-            padding: 24px 32px;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: none;
-            border: none;
-            cursor: pointer;
-            text-align: left;
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            font-size: 1.15rem;
-            font-weight: 800;
-            color: var(--secondary);
-        }
-
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            background: #F8FAFC;
-        }
-
-        .faq-answer-content {
-            padding: 32px;
-            color: var(--text-main);
-            line-height: 1.8;
-            font-weight: 500;
-        }
-
-        .faq-item.active {
-            border-color: var(--primary);
-            box-shadow: var(--shadow-md);
-        }
-
-        .faq-item.active .faq-answer {
-            max-height: 500px;
-            border-top: 1px solid var(--border);
-        }
-
-        .faq-icon {
-            transition: var(--transition);
-            color: var(--primary);
-        }
-
-        .faq-item.active .faq-icon {
-            transform: rotate(180deg);
-        }
-    </style>
 </head>
 <body>
 
@@ -84,7 +20,7 @@
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="contact.html">Contact</a></li>
     </ul>
-    <div style="margin-top: auto; padding-top: 40px;">
+    <div id="sidebarAuth" style="margin-top: auto; padding-top: 40px;">
         <a href="signup.html" class="btn btn-primary" style="width: 100%;">Get Started</a>
     </div>
 </aside>
@@ -100,7 +36,7 @@
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z"/></svg>
                 Global Hub
             </a>
-            <div style="display: flex; gap: 16px;">
+            <div id="navAuth" style="display: flex; gap: 16px;">
                 <a href="signin.html" class="btn btn-outline" style="border: none; font-weight: 800;">Sign In</a>
                 <a href="signup.html" class="btn btn-primary">Get Started</a>
             </div>
@@ -109,79 +45,30 @@
 </header>
 
 <main>
-    <section class="page-header" style="padding: 120px 0; background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.85)), url('https://images.unsplash.com/photo-1454165833767-027ffea9e77b?auto=format&fit=crop&w=1920&q=80'); background-size: cover; text-align: center; color: white;">
+    <section class="page-header" style="padding: 120px 0; background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1454165833762-02147d9b6020?auto=format&fit=crop&w=1920&q=80'); background-size: cover; text-align: center; color: white;">
         <div class="container">
-            <h1 style="font-size: 3.5rem; color: white;"><b>Help Center & FAQ</b></h1>
-            <p style="font-size: 1.25rem; max-width: 800px; margin: 24px auto 0; color: #CBD5E0;"><b>Everything you need to know about starting your career in North America.</b></p>
+            <h1 style="font-size: 3.5rem; color: white;"><b>Help & FAQ Center</b></h1>
+            <p style="font-size: 1.25rem; max-width: 800px; margin: 24px auto 0; color: #CBD5E0;"><b>Find answers to common questions about our platform, application process, and relocation support.</b></p>
         </div>
     </section>
 
     <section style="padding: 100px 0; background: var(--bg-light);">
         <div class="container">
-            <div class="faq-accordion">
+            <div style="max-width: 800px; margin: 0 auto;">
                 <!-- FAQ Item 1 -->
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>How do I apply for a job?</span>
-                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            To apply for a job, you first need to create a free account on our platform. Once registered, you can browse available listings and submit your application along with your CV and supporting documents directly through our secure portal.
-                        </div>
-                    </div>
+                <div class="job-card" style="text-align: left; padding: 40px; margin-bottom: 24px;">
+                    <h3 style="margin-bottom: 16px;"><b>How do I apply for a job?</b></h3>
+                    <p style="color: var(--text-muted);"><b>To apply for a job, you first need to create a free account on our platform. Once registered, you can browse available listings and submit your application along with your CV and supporting documents.</b></p>
                 </div>
-
                 <!-- FAQ Item 2 -->
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Do I need a work permit before applying?</span>
-                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            While some employers prefer candidates who already have work authorization, many of the opportunities on our hub include employer sponsorship. We provide expert guidance on the permit application process and connect you with immigration specialists.
-                        </div>
-                    </div>
+                <div class="job-card" style="text-align: left; padding: 40px; margin-bottom: 24px;">
+                    <h3 style="margin-bottom: 16px;"><b>Do I need a work permit before applying?</b></h3>
+                    <p style="color: var(--text-muted);"><b>While some employers prefer candidates who already have work authorization, many of the opportunities on our hub include employer sponsorship. We provide expert guidance on the permit application process.</b></p>
                 </div>
-
                 <!-- FAQ Item 3 -->
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>How long does the placement process take?</span>
-                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            The timeline varies depending on the sector and visa type. Typically, the process from application to placement takes between 3 to 6 months. We provide real-time updates through your dashboard at every stage.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 4 -->
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>Are the job listings verified?</span>
-                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            Yes, 100%. Every employer and job listing on Global Opportunity Hub undergoes a rigorous verification process to ensure legitimacy and compliance with North American labor laws.
-                        </div>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 5 -->
-                <div class="faq-item">
-                    <button class="faq-question">
-                        <span>What support do you offer after placement?</span>
-                        <svg class="faq-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="6 9 12 15 18 9"/></svg>
-                    </button>
-                    <div class="faq-answer">
-                        <div class="faq-answer-content">
-                            We provide comprehensive relocation support, including assistance with finding housing, setting up local bank accounts, and community integration programs to help you settle into your new life in the USA or Canada.
-                        </div>
-                    </div>
+                <div class="job-card" style="text-align: left; padding: 40px; margin-bottom: 24px;">
+                    <h3 style="margin-bottom: 16px;"><b>Are these jobs verified?</b></h3>
+                    <p style="color: var(--text-muted);"><b>Yes, every employer and job listing on Global Opportunity Hub undergoes a rigorous verification process to ensure legitimacy and compliance with North American labor laws.</b></p>
                 </div>
             </div>
         </div>
@@ -210,6 +97,7 @@
     </div>
 </footer>
 
+<script src="js/auth.js"></script>
 <script>
     const openBtn = document.getElementById('openSidebar');
     const closeBtn = document.getElementById('closeSidebar');
@@ -229,17 +117,6 @@
     overlay.addEventListener('click', () => {
         sidebar.classList.remove('active');
         overlay.classList.remove('active');
-    });
-
-    // Accordion Logic
-    const faqItems = document.querySelectorAll('.faq-item');
-    faqItems.forEach(item => {
-        const question = item.querySelector('.faq-question');
-        question.addEventListener('click', () => {
-            const isActive = item.classList.contains('active');
-            faqItems.forEach(i => i.classList.remove('active'));
-            if (!isActive) item.classList.add('active');
-        });
     });
 </script>
 

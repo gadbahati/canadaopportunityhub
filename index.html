@@ -174,7 +174,7 @@
                         <h4><b>Fatima Ali</b></h4>
                         <p><b>From Mogadishu, Somalia • Now in Minneapolis, MN</b></p>
                     </div>
-                    <p class="testimonial-text">"I moved to Minnesota with my family. Global Hub helped us with the entire relocation and settlement process."</p>
+                    <p class="testimonial-text">"I moved to Minneapolis with my family. Global Hub helped us with the entire relocation and settlement process."</p>
                 </div>
                 <div class="testimonial-card">
                     <div class="testimonial-user" style="display: flex; flex-direction: column; align-items: center; gap: 16px; margin-bottom: 24px;">
@@ -243,6 +243,7 @@
     </div>
 </footer>
 
+<script src="js/auth.js"></script>
 <script>
     const openBtn = document.getElementById('openSidebar');
     const closeBtn = document.getElementById('closeSidebar');
@@ -263,29 +264,6 @@
         sidebar.classList.remove('active');
         overlay.classList.remove('active');
     });
-
-    // Dynamic Auth Logic
-    function updateAuthUI() {
-        const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-        const navAuth = document.getElementById('navAuth');
-        const sidebarAuth = document.getElementById('sidebarAuth');
-
-        if (currentUser) {
-            const signOutBtn = `<button onclick="signOut()" class="btn btn-outline" style="border: none; font-weight: 800;">Sign Out</button>`;
-            const welcomeText = `<span style="display: flex; align-items: center; font-weight: 700; color: var(--secondary);">Welcome, ${currentUser.firstName}</span>`;
-            
-            if (navAuth) navAuth.innerHTML = welcomeText + signOutBtn;
-            if (sidebarAuth) sidebarAuth.innerHTML = signOutBtn;
-        }
-    }
-
-    function signOut() {
-        localStorage.removeItem('currentUser');
-        window.location.reload();
-    }
-
-    // Initialize UI on load
-    window.addEventListener('DOMContentLoaded', updateAuthUI);
 </script>
 
 </body>
