@@ -3,175 +3,111 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us | Canada Opportunity Hub</title>
+    <title>About Us | Global Opportunity Hub</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        .page-header {
-            padding: 80px 0;
-            background: var(--secondary);
-            color: var(--white);
-            text-align: center;
-        }
-
-        .page-header h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-
-        .content-section {
-            padding: 80px 0;
-        }
-
-        .about-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .about-text h2 {
-            font-size: 2rem;
-            color: var(--secondary);
-            margin-bottom: 20px;
-        }
-
-        .about-text p {
-            margin-bottom: 20px;
-            color: var(--text-light);
-        }
-
-        .mission-vision {
-            background: var(--white);
-            padding: 60px 0;
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
-        }
-
-        .mv-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-        }
-
-        .mv-item {
-            padding: 30px;
-            background: var(--bg);
-            border-radius: var(--radius);
-        }
-
-        .mv-item h3 {
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-
-        @media (max-width: 768px) {
-            .about-grid, .mv-grid { grid-template-columns: 1fr; }
-        }
-    </style>
 </head>
 <body>
 
 <header>
     <div class="container">
         <nav>
-            <a href="index.html" class="logo">Canada Hub</a>
-            <ul class="nav-links">
-                <li><a href="about.html">About</a></li>
-                <li><a href="jobs.html">Browse Jobs</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="contact.html">Contact</a></li>
+            <a href="index.html" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z"/></svg>
+                Global Hub
+            </a>
+            <ul class="nav-menu">
+                <li><a href="about.html"><b>About</b></a></li>
+                <li><a href="jobs-ca.html"><b>Canada Jobs</b></a></li>
+                <li><a href="jobs-us.html"><b>US Jobs</b></a></li>
+                <li><a href="faq.html"><b>FAQ</b></a></li>
+                <li><a href="contact.html"><b>Contact</b></a></li>
             </ul>
-            <div class="nav-auth">
-                <a href="signin.html" class="btn btn-outline">Sign In</a>
+            <div style="display: flex; gap: 16px;">
+                <a href="signin.html" class="btn btn-outline" style="border: none; font-weight: 700;">Sign In</a>
                 <a href="signup.html" class="btn btn-primary">Get Started</a>
             </div>
         </nav>
     </div>
 </header>
 
-<section class="page-header">
-    <div class="container">
-        <h1>About Canada Opportunity Hub</h1>
-        <p>Your trusted partner in Canadian professional migration</p>
-    </div>
-</section>
-
 <main>
-    <section class="content-section">
+    <section class="page-header" style="padding: 120px 0; background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1920&q=80'); background-size: cover; text-align: center; color: white;">
         <div class="container">
-            <div class="about-grid">
-                <div class="about-text">
-                    <h2>Our Commitment to Your Success</h2>
-                    <p>Canada Opportunity Hub was founded with a singular mission: to bridge the gap between skilled global talent and the thriving Canadian labor market. We understand that relocating to a new country is a monumental life decision, which is why we provide more than just job listings.</p>
-                    <p>Our team consists of industry experts, legal consultants, and career advisors who work tirelessly to ensure that every candidate we represent is positioned for long-term professional success in Canada.</p>
-                </div>
-                <div class="about-image">
-                    <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&w=800&q=80" alt="Professional meeting" style="border-radius: var(--radius); box-shadow: var(--shadow);">
+            <h1 style="font-size: 3.5rem; color: white;"><b>About Global Opportunity Hub</b></h1>
+            <p style="font-size: 1.25rem; max-width: 800px; margin: 24px auto 0; color: #CBD5E0;"><b>Empowering global talent to achieve their professional dreams in North America.</b></p>
+        </div>
+    </section>
+
+    <section style="padding: 100px 0; background: var(--white);">
+        <div class="container">
+            <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+                <h2 style="font-size: 2.5rem; margin-bottom: 32px;"><b>Our Mission</b></h2>
+                <p style="font-size: 1.15rem; color: var(--text-main); margin-bottom: 40px; line-height: 1.8;"><b>Global Opportunity Hub was founded with a single goal: to bridge the gap between ambitious professionals worldwide and the incredible career opportunities available in the USA and Canada. We believe that everyone, regardless of their background, deserves a legitimate and supported pathway to success.</b></p>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 60px;">
+                    <div>
+                        <h3 style="color: var(--primary); font-size: 2.5rem; margin-bottom: 8px;"><b>2,000+</b></h3>
+                        <p style="font-weight: 700;"><b>People Placed</b></p>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--primary); font-size: 2.5rem; margin-bottom: 8px;"><b>15+</b></h3>
+                        <p style="font-weight: 700;"><b>Countries Served</b></p>
+                    </div>
+                    <div>
+                        <h3 style="color: var(--primary); font-size: 2.5rem; margin-bottom: 8px;"><b>4.9</b></h3>
+                        <p style="font-weight: 700;"><b>Trustpilot Score</b></p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="mission-vision">
+    <section style="padding: 100px 0; background: var(--bg-light);">
         <div class="container">
-            <div class="mv-grid">
-                <div class="mv-item">
-                    <h3>Our Mission</h3>
-                    <p>To provide a transparent, efficient, and professional platform that empowers skilled individuals worldwide to access legitimate career opportunities in Canada while supporting Canadian employers in finding the talent they need.</p>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center;">
+                <div>
+                    <h2 style="font-size: 2.5rem; margin-bottom: 24px;"><b>Why Choose Us?</b></h2>
+                    <p style="margin-bottom: 32px; font-size: 1.1rem;"><b>We are more than just a recruitment agency. We are your dedicated partners throughout the entire journey—from the moment you apply until you settle into your new role.</b></p>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 16px; display: flex; align-items: center; gap: 12px;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                            <b>Verified Employer Network</b>
+                        </li>
+                        <li style="margin-bottom: 16px; display: flex; align-items: center; gap: 12px;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                            <b>Expert Immigration Guidance</b>
+                        </li>
+                        <li style="margin-bottom: 16px; display: flex; align-items: center; gap: 12px;">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+                            <b>Full Relocation Support</b>
+                        </li>
+                    </ul>
                 </div>
-                <div class="mv-item">
-                    <h3>Our Vision</h3>
-                    <p>To become the most trusted global gateway for Canadian employment, recognized for our integrity, professional standards, and the successful long-term integration of international talent into the Canadian economy.</p>
+                <div>
+                    <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" alt="Team Work" style="width: 100%; border-radius: 32px; box-shadow: var(--shadow-lg);">
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section class="content-section">
-        <div class="container" style="text-align: center; max-width: 800px;">
-            <h2>Why Choose Us?</h2>
-            <p style="margin-top: 20px;">We offer a comprehensive suite of services including job matching, resume tailoring for the Canadian market, work permit guidance, and post-arrival support. Our platform is built on the principles of professionalism, transparency, and results.</p>
-            <a href="signup.html" class="btn btn-primary" style="margin-top: 30px;">Start Your Journey Today</a>
         </div>
     </section>
 </main>
 
 <footer>
     <div class="container">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <a href="index.html" class="logo">Canada Hub</a>
-                <p>Empowering global talent to find meaningful employment and build successful lives in Canada through professional placement and comprehensive support.</p>
-            </div>
-            <div>
-                <h4 class="footer-heading">Quick Links</h4>
-                <ul class="footer-links">
-                    <li><a href="jobs.html">Browse Jobs</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="footer-heading">Legal</h4>
-                <ul class="footer-links">
-                    <li><a href="terms.html">Terms & Conditions</a></li>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="footer-heading">Account</h4>
-                <ul class="footer-links">
-                    <li><a href="signin.html">Sign In</a></li>
-                    <li><a href="signup.html">Sign Up</a></li>
-                </ul>
-            </div>
+        <div class="footer-brand">
+            <a href="index.html" class="logo" style="color: white; margin-bottom: 24px; justify-content: center;">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z"/></svg>
+                Global Hub
+            </a>
+            <p style="color: #94A3B8; margin-bottom: 32px;">The premier platform for international professionals seeking legitimate and rewarding career opportunities across North America.</p>
+            <ul class="footer-links">
+                <li><a href="about.html"><b>About Us</b></a></li>
+                <li><a href="jobs-ca.html"><b>Canada Jobs</b></a></li>
+                <li><a href="jobs-us.html"><b>USA Jobs</b></a></li>
+                <li><a href="faq.html"><b>FAQ Center</b></a></li>
+                <li><a href="contact.html"><b>Contact Support</b></a></li>
+            </ul>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Canada Opportunity Hub. All rights reserved. All professional placements are subject to Canadian immigration laws.</p>
+            <p><b>&copy; 2026 Global Opportunity Hub. All rights reserved.</b></p>
         </div>
     </div>
 </footer>
