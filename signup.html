@@ -3,31 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Account | Global Opportunity Hub</title>
+    <title>Start Your Journey | Global Opportunity Hub</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        .auth-container {
-            padding: 80px 0;
-            background: linear-gradient(rgba(15, 23, 42, 0.6), rgba(15, 23, 42, 0.6)), url('https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: calc(100vh - 80px);
-        }
-
-        .auth-card {
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            padding: 48px;
-            border-radius: 24px;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            width: 100%;
-            max-width: 640px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-    </style>
 </head>
 <body>
 
@@ -35,18 +12,39 @@
     <div class="container">
         <nav>
             <a href="index.html" class="logo">Global Hub</a>
-            <div class="nav-auth">
-                <a href="signin.html" class="btn btn-outline">Sign In</a>
+            <div style="display: flex; align-items: center; gap: 24px;">
+                <a href="signin.html" class="btn btn-outline" style="border: none; font-weight: 600;">Sign In</a>
+                <button onclick="toggleSidebar()" style="background: none; border: none; cursor: pointer; padding: 8px;">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                </button>
             </div>
         </nav>
     </div>
 </header>
 
-<main class="auth-container">
+<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+<div class="sidebar" id="sidebar">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <span class="logo" style="font-size: 1.25rem;">Main Menu</span>
+        <button onclick="toggleSidebar()" style="background: none; border: none; cursor: pointer;">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+    </div>
+    <ul class="sidebar-menu">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Global Hub</a></li>
+        <li><a href="jobs-ca.html">Canada Careers</a></li>
+        <li><a href="jobs-us.html">USA Careers</a></li>
+        <li><a href="faq.html">FAQ Center</a></li>
+        <li><a href="contact.html">Contact Support</a></li>
+    </ul>
+</div>
+
+<main class="auth-wrapper">
     <div class="auth-card">
-        <div class="auth-header">
-            <h1>Start Your Journey</h1>
-            <p>Join the 2,000+ professionals we've helped place in North America.</p>
+        <div class="auth-header" style="text-align: center; margin-bottom: 40px;">
+            <h1 style="color: var(--secondary);">Start Your Journey</h1>
+            <p style="color: var(--text-muted);">Join the 2,000+ professionals we've helped place in North America.</p>
         </div>
 
         <form action="#">
@@ -99,22 +97,21 @@
                 </label>
             </div>
 
-            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 16px; font-size: 1rem;">Create Professional Account</button>
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 18px; font-size: 1.1rem;">Create Professional Account</button>
         </form>
 
-        <div style="text-align: center; margin-top: 32px; font-size: 0.9rem; color: var(--text-muted);">
+        <div style="text-align: center; margin-top: 32px; font-size: 0.95rem; color: var(--text-muted);">
             Already have an account? <a href="signin.html" style="color: var(--primary); font-weight: 700;">Sign in here</a>
         </div>
     </div>
 </main>
 
-<footer>
-    <div class="container">
-        <div class="footer-bottom" style="border-top: none; padding-top: 0; justify-content: center;">
-            <p>&copy; 2026 Global Opportunity Hub. All rights reserved.</p>
-        </div>
-    </div>
-</footer>
+<script>
+    function toggleSidebar() {
+        document.getElementById('sidebar').classList.toggle('active');
+        document.getElementById('sidebarOverlay').classList.toggle('active');
+    }
+</script>
 
 </body>
 </html>
