@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Global Opportunity Hub | Professional North American Careers</title>
+    <title>Global Opportunity Hub | The Future of Global Jobs</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -15,66 +15,70 @@
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z"/></svg>
                 Global Hub
             </a>
-            <div style="display: flex; align-items: center; gap: 24px;">
+            <ul class="nav-menu">
+                <li><a href="about.html"><b>About</b></a></li>
+                <li><a href="jobs-ca.html"><b>Canada Jobs</b></a></li>
+                <li><a href="jobs-us.html"><b>US Jobs</b></a></li>
+                <li><a href="faq.html"><b>FAQ</b></a></li>
+                <li><a href="contact.html"><b>Contact</b></a></li>
+            </ul>
+            <div style="display: flex; gap: 16px;">
                 <a href="signin.html" class="btn btn-outline" style="border: none; font-weight: 700;">Sign In</a>
                 <a href="signup.html" class="btn btn-primary">Get Started</a>
-                <button onclick="toggleSidebar()" style="background: none; border: none; cursor: pointer; padding: 8px;">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-                </button>
             </div>
         </nav>
     </div>
 </header>
 
-<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
-<div class="sidebar" id="sidebar">
-    <div style="display: flex; justify-content: space-between; align-items: center;">
-        <span class="logo" style="font-size: 1.25rem;">Main Menu</span>
-        <button onclick="toggleSidebar()" style="background: none; border: none; cursor: pointer;">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
-    </div>
-    <ul class="sidebar-menu">
-        <li><a href="index.html"><b>Home</b></a></li>
-        <li><a href="about.html"><b>About Global Hub</b></a></li>
-        <li><a href="jobs-ca.html"><b>Canada Careers</b></a></li>
-        <li><a href="jobs-us.html"><b>USA Careers</b></a></li>
-        <li><a href="faq.html"><b>FAQ Center</b></a></li>
-        <li><a href="contact.html"><b>Contact Support</b></a></li>
-    </ul>
-    <div style="margin-top: 80px; padding-top: 40px; border-top: 1px solid var(--border);">
-        <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 24px;"><b>Trusted by 2,000+ professionals.</b></p>
-        <a href="signup.html" class="btn btn-primary" style="width: 100%;">Get Started Now</a>
-    </div>
-</div>
-
 <main>
+    <!-- Hero Section -->
     <section class="hero" style="padding: 160px 0; background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1920&q=80'); background-size: cover; text-align: center; color: white;">
         <div class="container">
-            <h1 style="font-size: 4.5rem; margin-bottom: 24px; color: white;"><b>Your Future in North America</b></h1>
-            <p style="font-size: 1.25rem; max-width: 800px; margin: 0 auto 32px; color: #CBD5E0;"><b>We have successfully helped over 2,000 professionals and skilled workers secure verified employment in the USA and Canada.</b></p>
-            
-            <!-- Trustpilot Badge -->
-            <div class="trustpilot-widget">
-                <span style="font-weight: 800; color: #000; font-size: 1.1rem;">Trustpilot</span>
-                <div style="display: flex; gap: 4px;">
-                    <div class="tp-star"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/></svg></div>
-                    <div class="tp-star"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/></svg></div>
-                    <div class="tp-star"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/></svg></div>
-                    <div class="tp-star"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/></svg></div>
-                    <div class="tp-star"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/></svg></div>
+            <h1 style="font-size: 4.5rem; margin-bottom: 24px; color: white;"><b>The Future of Global Jobs</b></h1>
+            <p style="font-size: 1.25rem; max-width: 850px; margin: 0 auto 48px; color: #CBD5E0;"><b>Global Opportunity Hub is a premier career placement platform dedicated to connecting ambitious talent from around the world with verified employers in the USA and Canada. We have successfully guided over 2,000 individuals toward their professional dreams.</b></p>
+            <a href="#explore" class="btn btn-primary" style="padding: 18px 48px; font-size: 1.1rem;">Explore All Opportunities</a>
+        </div>
+    </section>
+
+    <!-- CEO Message Section -->
+    <section class="ceo-section">
+        <div class="container">
+            <div class="ceo-grid">
+                <div class="ceo-image-container">
+                    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=800&q=80" alt="CEO Global Hub" class="ceo-image">
                 </div>
-                <span style="font-weight: 700; color: #475569; margin-left: 8px;">TrustScore 4.9 | 1,240 Reviews</span>
+                <div class="ceo-content">
+                    <span style="color: var(--primary); font-weight: 800; text-transform: uppercase; letter-spacing: 2px;">A Message From Our CEO</span>
+                    <h2 style="font-size: 3rem; margin: 16px 0 32px;"><b>Welcome to Your Future</b></h2>
+                    <blockquote>
+                        "At Global Opportunity Hub, we believe that talent knows no borders. Whether you are from Kenya, Tanzania, Somalia, or anywhere else in the world—and whether you are black, white, or red—our mission is to provide you with a legitimate pathway to success in North America. This is the future of jobs."
+                    </blockquote>
+                    <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 32px;"><b>We are more than just a job board; we are your dedicated partners in immigration and career growth. Our team works tirelessly to ensure that every placement is verified and every candidate is supported from application to arrival.</b></p>
+                    <div>
+                        <h4 style="font-size: 1.25rem; margin-bottom: 4px;"><b>James Anderson</b></h4>
+                        <p style="color: var(--primary); font-weight: 700;">Founder & CEO • Virginia, USA</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Trustpilot Testimonials Section -->
+    <!-- Trustpilot Section -->
     <section class="trust-section">
         <div class="container">
-            <div style="text-align: center; margin-bottom: 40px;">
-                <h2 style="font-size: 2.5rem;"><b>Verified on Trustpilot</b></h2>
-                <p style="color: var(--text-muted); font-size: 1.1rem;"><b>Our users love us for our transparency and results.</b></p>
+            <div style="text-align: center; margin-bottom: 60px;">
+                <div style="display: flex; justify-content: center; align-items: center; gap: 12px; margin-bottom: 24px;">
+                    <span style="font-weight: 800; color: #000; font-size: 1.5rem;">Trustpilot</span>
+                    <div style="display: flex; gap: 4px;">
+                        <div class="tp-star"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/></svg></div>
+                        <div class="tp-star"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/></svg></div>
+                        <div class="tp-star"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/></svg></div>
+                        <div class="tp-star"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/></svg></div>
+                        <div class="tp-star"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/></svg></div>
+                    </div>
+                </div>
+                <h2 style="font-size: 3rem;"><b>Verified by Our Community</b></h2>
+                <p style="color: var(--text-muted); font-size: 1.1rem;"><b>TrustScore 4.9 | Based on 1,240 verified reviews.</b></p>
             </div>
             <div class="tp-grid">
                 <div class="tp-card">
@@ -117,10 +121,11 @@
         </div>
     </section>
 
-    <section id="explore" style="padding: 120px 0; background: var(--bg-light);">
+    <!-- Destination Section -->
+    <section id="explore" style="padding: 120px 0; background: var(--white);">
         <div class="container">
             <div style="text-align: center; margin-bottom: 80px;">
-                <h2 style="font-size: 3rem;"><b>Choose Your Destination</b></h2>
+                <h2 style="font-size: 3.5rem;"><b>Choose Your Destination</b></h2>
                 <p style="color: var(--text-muted); font-size: 1.1rem;"><b>Select a country to view dedicated job listings and immigration support.</b></p>
             </div>
             <div class="country-selection">
@@ -139,126 +144,7 @@
             </div>
         </div>
     </section>
-
-    <section class="testimonials-section">
-        <div class="container">
-            <div style="text-align: center; margin-bottom: 80px;">
-                <h2 style="font-size: 3rem;"><b>Verified Testimonials</b></h2>
-                <p style="color: var(--text-muted); font-size: 1.1rem;"><b>Real experiences from people who transformed their lives through our platform.</b></p>
-            </div>
-            <div class="testimonial-grid">
-                <!-- Testimonials 1-10 -->
-                <div class="testimonial-card">
-                    <div class="testimonial-user">
-                        <img src="https://images.unsplash.com/photo-1531123897727-8f129e16fd3c?auto=format&fit=crop&w=150&q=80" alt="Sarah">
-                        <div>
-                            <h4><b>Sarah Omondi</b></h4>
-                            <p><b>From Kisumu, Kenya • Now in Toronto, ON</b></p>
-                        </div>
-                    </div>
-                    <p class="testimonial-text">"Global Hub is 100% legit. They helped me find a nursing role in Toronto and guided me through every step of the visa process."</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-user">
-                        <img src="https://images.unsplash.com/photo-1507152832244-10d45c7eda57?auto=format&fit=crop&w=150&q=80" alt="David">
-                        <div>
-                            <h4><b>David Mbeki</b></h4>
-                            <p><b>From Mwanza, Tanzania • Now in Dallas, TX</b></p>
-                        </div>
-                    </div>
-                    <p class="testimonial-text">"As a truck driver, I never thought I'd work in the US. This platform connected me with a verified employer in Texas. Truly life-changing!"</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-user">
-                        <img src="https://images.unsplash.com/photo-1523419409543-a5e549c1fab8?auto=format&fit=crop&w=150&q=80" alt="Ahmed">
-                        <div>
-                            <h4><b>Ahmed Farah</b></h4>
-                            <p><b>From Baidoa, Somalia • Now in Ottawa, ON</b></p>
-                        </div>
-                    </div>
-                    <p class="testimonial-text">"Finding a tech job from Somalia seemed impossible. Global Hub verified my skills and matched me with a great company."</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-user">
-                        <img src="https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?auto=format&fit=crop&w=150&q=80" alt="Grace">
-                        <div>
-                            <h4><b>Grace Nakato</b></h4>
-                            <p><b>From Jinja, Uganda • Now in Phoenix, AZ</b></p>
-                        </div>
-                    </div>
-                    <p class="testimonial-text">"I applied for a caretaker role and was surprised by how professional the process was. I'm now earning a great living in the USA."</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-user">
-                        <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=150&q=80" alt="Samuel">
-                        <div>
-                            <h4><b>Samuel Okoro</b></h4>
-                            <p><b>From Eldoret, Kenya • Now in Vancouver, BC</b></p>
-                        </div>
-                    </div>
-                    <p class="testimonial-text">"The warehouse associate program is fantastic. I had no experience, but Global Hub helped me get trained and placed."</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-user">
-                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&q=80" alt="John">
-                        <div>
-                            <h4><b>John Magu</b></h4>
-                            <p><b>From Arusha, Tanzania • Now in Edmonton, AB</b></p>
-                        </div>
-                    </div>
-                    <p class="testimonial-text">"I am now working as a welder in Alberta thanks to this platform. The documentation support was the best I've ever seen."</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-user">
-                        <img src="https://images.unsplash.com/photo-1540569014015-19a7be504e3a?auto=format&fit=crop&w=150&q=80" alt="Fatima">
-                        <div>
-                            <h4><b>Fatima Hassan</b></h4>
-                            <p><b>From Kismayo, Somalia • Now in Seattle, WA</b></p>
-                        </div>
-                    </div>
-                    <p class="testimonial-text">"Global Hub opened doors for me that I thought were closed forever. I'm now a hospitality manager in Washington state."</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-user">
-                        <img src="https://images.unsplash.com/photo-1531384441138-2736e62e0919?auto=format&fit=crop&w=150&q=80" alt="Moses">
-                        <div>
-                            <h4><b>Moses Waiswa</b></h4>
-                            <p><b>From Mbale, Uganda • Now in Calgary, AB</b></p>
-                        </div>
-                    </div>
-                    <p class="testimonial-text">"Legitimacy is everything. Global Hub proved they are the leaders in North American placements."</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-user">
-                        <img src="https://images.unsplash.com/photo-1504199367641-aba8151af406?auto=format&fit=crop&w=150&q=80" alt="Lydia">
-                        <div>
-                            <h4><b>Lydia Njeri</b></h4>
-                            <p><b>From Nakuru, Kenya • Now in Chicago, IL</b></p>
-                        </div>
-                    </div>
-                    <p class="testimonial-text">"From a small town in Kenya to a professional office in Chicago. This platform made my dream a reality."</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-user">
-                        <img src="https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=150&q=80" alt="Amina">
-                        <div>
-                            <h4><b>Amina Yusuf</b></h4>
-                            <p><b>From Garowe, Somalia • Now in Winnipeg, MB</b></p>
-                        </div>
-                    </div>
-                    <p class="testimonial-text">"I recommend Global Hub to everyone. They are professional, honest, and truly care about your success."</p>
-                </div>
-            </div>
-        </div>
-    </section>
 </main>
-
-<script>
-    function toggleSidebar() {
-        document.getElementById('sidebar').classList.toggle('active');
-        document.getElementById('sidebarOverlay').classList.toggle('active');
-    }
-</script>
 
 <footer>
     <div class="container">
