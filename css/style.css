@@ -17,6 +17,7 @@
     --radius: 16px;
     --max-width: 1200px;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --trustpilot-green: #00b67a;
 }
 
 * {
@@ -138,6 +139,56 @@ nav {
 .sidebar-menu a:hover {
     color: var(--primary);
     transform: translateX(8px);
+}
+
+/* Trustpilot Badge & Section */
+.trustpilot-widget {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--white);
+    padding: 12px 24px;
+    border-radius: 50px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border);
+    margin-top: 32px;
+}
+
+.tp-star {
+    background: var(--trustpilot-green);
+    color: white;
+    padding: 4px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.trust-section {
+    padding: 100px 0;
+    background: var(--white);
+    text-align: center;
+}
+
+.tp-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-top: 60px;
+}
+
+.tp-card {
+    background: var(--bg-light);
+    padding: 32px;
+    border-radius: 24px;
+    text-align: left;
+    border: 1px solid var(--border);
+    transition: var(--transition);
+}
+
+.tp-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-md);
 }
 
 /* Centered Flag Selection */
@@ -342,10 +393,12 @@ footer {
 
 @media (max-width: 992px) {
     .footer-grid { grid-template-columns: 1fr 1fr; }
+    .tp-grid { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 768px) {
     .country-selection, .testimonial-grid { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr; }
+    .tp-grid { grid-template-columns: 1fr; }
     .auth-card { padding: 40px 24px; }
 }
