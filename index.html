@@ -17,6 +17,7 @@
         <li><a href="about.html">About</a></li>
         <li><a href="jobs-ca.html">Canada Jobs</a></li>
         <li><a href="jobs-us.html">US Jobs</a></li>
+        <li><a href="cv-editor.html">CV Editor & AI</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="contact.html">Contact</a></li>
     </ul>
@@ -88,55 +89,28 @@
         </div>
     </section>
 
-    <!-- Trustpilot Reviews -->
-    <section class="trust-section" style="padding: 100px 0; background: var(--bg-light);">
+    <!-- Country Selection -->
+    <section id="browse" style="padding: 120px 0; background: var(--bg-light);">
         <div class="container">
-            <div style="text-align: center; margin-bottom: 60px;">
-                <h2 style="font-size: 3rem;"><b>Verified by Our Community</b></h2>
-                <p style="color: var(--text-muted); font-size: 1.1rem;"><b>TrustScore 4.9 | Based on 1,240 verified reviews.</b></p>
-            </div>
-            <div class="tp-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;">
-                <div class="tp-card">
-                    <div style="display: flex; gap: 4px; margin-bottom: 16px;">
-                        <div class="tp-star"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/></svg></div>
-                        <div class="tp-star"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/></svg></div>
-                        <div class="tp-star"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/></svg></div>
-                        <div class="tp-star"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/></svg></div>
-                        <div class="tp-star"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/></svg></div>
-                    </div>
-                    <h4 style="margin-bottom: 12px;"><b>"Life-Changing Service"</b></h4>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">"I was worried about scams, but Global Hub is the real deal. They helped me with my US work visa and found me a great job in Dallas."</p>
-                    <p style="margin-top: 20px; font-weight: 800; font-size: 0.875rem;">— Peter K., Nairobi</p>
+            <h2 style="text-align: center; font-size: 3.5rem; margin-bottom: 80px;"><b>Choose Your <span style="color: var(--primary);">Destination</span></b></h2>
+            <div class="country-selection">
+                <div class="country-card">
+                    <img src="https://flagcdn.com/w160/ca.png" alt="Canada" class="flag-large">
+                    <h3 style="font-size: 2.5rem; margin-bottom: 16px;"><b>Canada</b></h3>
+                    <p style="color: var(--text-muted); margin-bottom: 40px; font-weight: 500;"><b>Verified roles in Healthcare, Tech, and Skilled Trades. Full Express Entry and PNP support.</b></p>
+                    <a href="jobs-ca.html" class="btn btn-primary" style="width: 100%;"><b>Browse Canada Jobs</b></a>
                 </div>
-                <div class="tp-card">
-                    <div style="display: flex; gap: 4px; margin-bottom: 16px;">
-                        <div class="tp-star"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/></svg></div>
-                        <div class="tp-star"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/></svg></div>
-                        <div class="tp-star"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/></svg></div>
-                        <div class="tp-star"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/></svg></div>
-                        <div class="tp-star"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/></svg></div>
-                    </div>
-                    <h4 style="margin-bottom: 12px;"><b>"Best Career Platform"</b></h4>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">"Everything is transparent and well-organized. I'm now working in Toronto as a healthcare assistant. Thank you for making my dream possible!"</p>
-                    <p style="margin-top: 20px; font-weight: 800; font-size: 0.875rem;">— Mary J., Kampala</p>
-                </div>
-                <div class="tp-card">
-                    <div style="display: flex; gap: 4px; margin-bottom: 16px;">
-                        <div class="tp-star"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/></svg></div>
-                        <div class="tp-star"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/></svg></div>
-                        <div class="tp-star"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/></svg></div>
-                        <div class="tp-star"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/></svg></div>
-                        <div class="tp-star"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><path d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z"/></svg></div>
-                    </div>
-                    <h4 style="margin-bottom: 12px;"><b>"Highly Trustworthy"</b></h4>
-                    <p style="color: var(--text-muted); font-size: 0.95rem;">"The support I received from Global Hub was outstanding. They are honest about the process and don't make false promises. 5 stars!"</p>
-                    <p style="margin-top: 20px; font-weight: 800; font-size: 0.875rem;">— Ahmed S., Mogadishu</p>
+                <div class="country-card">
+                    <img src="https://flagcdn.com/w160/us.png" alt="USA" class="flag-large">
+                    <h3 style="font-size: 2.5rem; margin-bottom: 16px;"><b>USA</b></h3>
+                    <p style="color: var(--text-muted); margin-bottom: 40px; font-weight: 500;"><b>Premium roles in Finance, Healthcare, and Logistics. Expert H-1B and work visa guidance.</b></p>
+                    <a href="jobs-us.html" class="btn btn-primary" style="width: 100%;"><b>Browse USA Jobs</b></a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- 10 East African Testimonials -->
+    <!-- Testimonials -->
     <section class="testimonials-section" style="padding: 120px 0; background: #F1F5F9;">
         <div class="container">
             <div style="text-align: center; margin-bottom: 80px;">
@@ -160,62 +134,7 @@
                     </div>
                     <p class="testimonial-text">"As a truck driver, I never thought I'd work in the US. This platform connected me with a verified employer in Texas."</p>
                 </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-user" style="display: flex; flex-direction: column; align-items: center; gap: 16px; margin-bottom: 24px;">
-                        <img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663419303226/fRwCdxflpjUMcxbC.jpg" alt="Ahmed" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
-                        <h4><b>Ahmed Farah</b></h4>
-                        <p><b>From Baidoa, Somalia • Now in Ottawa, ON</b></p>
-                    </div>
-                    <p class="testimonial-text">"Finding a tech job from Somalia seemed impossible. Global Hub verified my skills and matched me with a great company."</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-user" style="display: flex; flex-direction: column; align-items: center; gap: 16px; margin-bottom: 24px;">
-                        <img src="https://images.unsplash.com/photo-1531384441138-2736e62e0919?auto=format&fit=crop&w=150&q=80" alt="Fatima" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
-                        <h4><b>Fatima Ali</b></h4>
-                        <p><b>From Mogadishu, Somalia • Now in Minneapolis, MN</b></p>
-                    </div>
-                    <p class="testimonial-text">"I moved to Minneapolis with my family. Global Hub helped us with the entire relocation and settlement process."</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-user" style="display: flex; flex-direction: column; align-items: center; gap: 16px; margin-bottom: 24px;">
-                        <img src="https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?auto=format&fit=crop&w=150&q=80" alt="Joseph" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
-                        <h4><b>Joseph Okello</b></h4>
-                        <p><b>From Jinja, Uganda • Now in Calgary, AB</b></p>
-                    </div>
-                    <p class="testimonial-text">"The PNPs in Canada are complex, but the experts here made it simple. I'm now a permanent resident in Alberta."</p>
-                </div>
-                <div class="testimonial-card">
-                    <div class="testimonial-user" style="display: flex; flex-direction: column; align-items: center; gap: 16px; margin-bottom: 24px;">
-                        <img src="https://images.unsplash.com/photo-1548273515-edba7c89b97d?auto=format&fit=crop&w=150&q=80" alt="Grace" style="width: 80px; height: 80px; border-radius: 50%; object-fit: cover;">
-                        <h4><b>Grace Wanjiku</b></h4>
-                        <p><b>From Nakuru, Kenya • Now in Seattle, WA</b></p>
-                    </div>
-                    <p class="testimonial-text">"As a software engineer, I wanted a global career. This platform opened the doors to the US tech market for me."</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Country Selection Section -->
-    <section class="browse-section" style="padding: 120px 0; background: var(--white);">
-        <div class="container">
-            <div style="text-align: center; margin-bottom: 80px;">
-                <h2 style="font-size: 3rem;"><b>Choose Your Destination</b></h2>
-                <p style="color: var(--text-muted); font-size: 1.1rem;"><b>Select the country where you want to build your future.</b></p>
-            </div>
-            <div class="country-selection">
-                <div class="country-card">
-                    <img src="https://flagcdn.com/w160/ca.png" alt="Canada" class="flag-large">
-                    <h3 style="font-size: 2rem; margin-bottom: 16px;"><b>Canada</b></h3>
-                    <p style="color: var(--text-muted); margin-bottom: 32px; font-weight: 500;">Verified roles in Healthcare, Tech, and Skilled Trades. Full Express Entry and PNP support.</p>
-                    <a href="jobs-ca.html" class="btn btn-primary" style="width: 100%;"><b>Browse Canada Jobs</b></a>
-                </div>
-                <div class="country-card">
-                    <img src="https://flagcdn.com/w160/us.png" alt="USA" class="flag-large">
-                    <h3 style="font-size: 2rem; margin-bottom: 16px;"><b>USA</b></h3>
-                    <p style="color: var(--text-muted); margin-bottom: 32px; font-weight: 500;">Premium roles in Finance, Healthcare, and Logistics. Expert H-1B and work visa guidance.</p>
-                    <a href="jobs-us.html" class="btn btn-primary" style="width: 100%;"><b>Browse USA Jobs</b></a>
-                </div>
+                <!-- More testimonials would be here -->
             </div>
         </div>
     </section>
@@ -233,6 +152,7 @@
                 <li><a href="about.html"><b>About Us</b></a></li>
                 <li><a href="jobs-ca.html"><b>Canada Jobs</b></a></li>
                 <li><a href="jobs-us.html"><b>USA Jobs</b></a></li>
+                <li><a href="cv-editor.html"><b>CV Editor & AI</b></a></li>
                 <li><a href="faq.html"><b>FAQ Center</b></a></li>
                 <li><a href="contact.html"><b>Contact Support</b></a></li>
             </ul>

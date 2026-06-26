@@ -13,6 +13,13 @@ function updateAuthUI() {
         if (navAuth) navAuth.innerHTML = welcomeText + signOutBtn;
         if (sidebarAuth) sidebarAuth.innerHTML = signOutBtn;
 
+        // Ensure CV Editor is in the sidebar
+        if (sidebarMenu && !Array.from(sidebarMenu.querySelectorAll('a')).some(a => a.href.includes('cv-editor.html'))) {
+            const cvLi = document.createElement('li');
+            cvLi.innerHTML = '<a href="cv-editor.html">CV Editor & AI</a>';
+            sidebarMenu.insertBefore(cvLi, sidebarMenu.children[3] || null);
+        }
+
         // Add Dashboard link to sidebar if not already there
         if (sidebarMenu && !document.getElementById('sidebarDashboard')) {
             const dashboardLi = document.createElement('li');

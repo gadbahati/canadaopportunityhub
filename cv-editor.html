@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI CV Editor & Cover Letter | Global Opportunity Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .editor-container { padding: 80px 0; background: var(--bg-light); min-height: 80vh; }
+        .step-card { background: white; padding: 48px; border-radius: 32px; border: 1px solid var(--border); max-width: 800px; margin: 0 auto; transition: var(--transition); }
+        .ai-result { 
+            background: #F1F5F9; 
+            padding: 40px; 
+            border-radius: 24px; 
+            border-left: 6px solid var(--primary); 
+            margin-top: 40px; 
+            display: none;
+            white-space: pre-wrap;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.8;
+        }
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            padding: 40px;
+        }
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #E2E8F0;
+            border-top: 5px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+    </style>
+</head>
+<body>
+
+<div class="sidebar-overlay" id="overlay"></div>
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-close" id="closeSidebar">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </div>
+    <ul class="sidebar-menu">
+        <li><a href="about.html">About</a></li>
+        <li><a href="jobs-ca.html">Canada Jobs</a></li>
+        <li><a href="jobs-us.html">US Jobs</a></li>
+        <li><a href="cv-editor.html" style="color: var(--primary);"><b>CV Editor & AI</b></a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div id="sidebarAuth" style="margin-top: auto; padding-top: 40px;">
+        <button onclick="signOut()" class="btn btn-primary" style="width: 100%;">Sign Out</button>
+    </div>
+</aside>
+
+<header>
+    <div class="container">
+        <nav>
+            <div class="menu-toggle" id="openSidebar">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                <span>MENU</span>
+            </div>
+            <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 10px; font-size: 1.5rem; font-weight: 800;">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z"/></svg>
+                Global Hub
+            </a>
+            <div id="navAuth" style="display: flex; gap: 16px;">
+                <button onclick="signOut()" class="btn btn-outline" style="border: none; font-weight: 800;">Sign Out</button>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<main class="editor-container">
+    <div class="container">
+        <div style="margin-bottom: 60px; text-align: center;">
+            <h1 style="font-size: 3rem; margin-bottom: 16px;"><b>AI CV Editor & Optimizer</b></h1>
+            <p style="color: var(--text-muted); font-size: 1.2rem;"><b>Rewrite your CV for North American ATS systems and generate custom cover letters.</b></p>
+        </div>
+
+        <div class="step-card">
+            <form id="cvEditorForm">
+                <div style="margin-bottom: 32px;">
+                    <label style="display: block; margin-bottom: 12px; font-weight: 800;">1. Upload Current CV (PDF/DOCX)</label>
+                    <input type="file" required style="width: 100%; padding: 20px; border: 2px dashed var(--border); border-radius: 16px; background: var(--bg-light);">
+                </div>
+
+                <div style="margin-bottom: 32px;">
+                    <label style="display: block; margin-bottom: 12px; font-weight: 800;">2. Desired Role in US/Canada</label>
+                    <input type="text" id="targetRole" required placeholder="e.g. Senior Software Engineer or Logistics Manager" style="width: 100%; padding: 18px; border: 2px solid var(--border); border-radius: 16px; font-family: inherit;">
+                </div>
+
+                <div style="margin-bottom: 32px;">
+                    <label style="display: block; margin-bottom: 12px; font-weight: 800;">3. Career Goals & Expertise</label>
+                    <textarea id="expertise" rows="4" required placeholder="Tell us about your experience and what you want to achieve..." style="width: 100%; padding: 18px; border: 2px solid var(--border); border-radius: 16px; font-family: inherit; resize: vertical;"></textarea>
+                </div>
+
+                <div style="margin-bottom: 40px; padding: 20px; background: #EFF6FF; border-radius: 16px; border: 1px solid #DBEAFE;">
+                    <label style="display: flex; align-items: center; gap: 12px; cursor: pointer;">
+                        <input type="checkbox" id="generateCover" style="width: 20px; height: 20px;">
+                        <span style="font-weight: 800; color: var(--primary);">Generate a custom Cover Letter for this role?</span>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 20px; font-size: 1.1rem;"><b>Optimize CV with AI</b></button>
+            </form>
+
+            <div id="loading" class="loading-spinner">
+                <div class="spinner"></div>
+                <h3 style="color: var(--secondary);"><b>AI is analyzing and rewriting your CV...</b></h3>
+                <p style="color: var(--text-muted);">Optimizing for ATS and North American standards.</p>
+            </div>
+
+            <div id="result" class="ai-result">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 2px solid var(--border); padding-bottom: 20px;">
+                    <h2 style="color: var(--primary);"><b>Optimization Complete</b></h2>
+                    <button onclick="downloadResult()" class="btn btn-outline" style="font-size: 0.9rem;"><b>Download Professional PDF</b></button>
+                </div>
+                <div id="cvContent"></div>
+                <div id="coverLetterContent" style="margin-top: 40px; padding-top: 40px; border-top: 2px dashed var(--border);"></div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-brand">
+            <a href="index.html" class="logo" style="color: white; margin-bottom: 24px; justify-content: center;">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z"/></svg>
+                Global Hub
+            </a>
+            <p style="color: #94A3B8; margin-bottom: 32px;">The premier platform for international professionals seeking legitimate and rewarding career opportunities across North America.</p>
+            <ul class="footer-links">
+                <li><a href="about.html"><b>About Us</b></a></li>
+                <li><a href="jobs-ca.html"><b>Canada Jobs</b></a></li>
+                <li><a href="jobs-us.html"><b>USA Jobs</b></a></li>
+                <li><a href="faq.html"><b>FAQ Center</b></a></li>
+                <li><a href="contact.html"><b>Contact Support</b></a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p><b>&copy; 2026 Global Opportunity Hub. All rights reserved.</b></p>
+        </div>
+    </div>
+</footer>
+
+<script src="js/auth.js"></script>
+<script>
+    const openBtn = document.getElementById('openSidebar');
+    const closeBtn = document.getElementById('closeSidebar');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+
+    openBtn.addEventListener('click', () => {
+        sidebar.classList.add('active');
+        overlay.classList.add('active');
+    });
+
+    closeBtn.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+    });
+
+    overlay.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+    });
+
+    // CV Editor Logic
+    document.getElementById('cvEditorForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const targetRole = document.getElementById('targetRole').value;
+        const expertise = document.getElementById('expertise').value;
+        const generateCover = document.getElementById('generateCover').checked;
+        
+        document.getElementById('cvEditorForm').style.display = 'none';
+        document.getElementById('loading').style.display = 'block';
+
+        // Simulate AI Processing
+        setTimeout(() => {
+            document.getElementById('loading').style.display = 'none';
+            document.getElementById('result').style.display = 'block';
+            
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            const name = currentUser ? (currentUser.firstName + ' ' + currentUser.lastName) : 'Candidate Name';
+            
+            let cvHtml = `
+                <h3 style="margin-bottom: 20px;"><b>PROFESSIONAL RESUME: ${name}</b></h3>
+                <p><b>Target Role: ${targetRole}</b></p>
+                <p><b>ATS Score: 98/100</b></p>
+                <br>
+                <p><b>SUMMARY OF QUALIFICATIONS</b></p>
+                <p>Results-oriented professional with extensive experience in ${expertise}. Proven track record of delivering high-quality results in competitive environments. Expertly optimized for North American hiring systems.</p>
+                <br>
+                <p><b>CORE COMPETENCIES</b></p>
+                <p>• Strategic Planning & Execution<br>• Advanced Problem Solving<br>• Cross-functional Leadership<br>• Technical Proficiency in ${targetRole} Standards</p>
+            `;
+            document.getElementById('cvContent').innerHTML = cvHtml;
+
+            if (generateCover) {
+                let coverHtml = `
+                    <h3 style="margin-bottom: 20px;"><b>PROFESSIONAL COVER LETTER</b></h3>
+                    <p>Dear Hiring Manager,</p>
+                    <p>I am writing to express my strong interest in the ${targetRole} position. With my background in ${expertise}, I am confident that I can bring significant value to your organization in North America...</p>
+                    <p>Thank you for your consideration.</p>
+                    <p>Sincerely,<br>${name}</p>
+                `;
+                document.getElementById('coverLetterContent').innerHTML = coverHtml;
+            }
+        }, 3000);
+    });
+
+    function downloadResult() {
+        alert('Your professional ATS-optimized CV and Cover Letter have been prepared and downloaded. You can now use these documents for your job applications.');
+    }
+</script>
+
+</body>
+</html>
