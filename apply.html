@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Application | Canada Opportunity Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .page-header {
+            padding: 60px 0;
+            background: var(--secondary);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .form-wrapper {
+            padding: 60px 0;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .form-section {
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            color: var(--secondary);
+            border-bottom: 2px solid var(--bg);
+            padding-bottom: 15px;
+            margin-bottom: 25px;
+            font-weight: 700;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+        }
+
+        .full-width {
+            grid-column: span 2;
+        }
+
+        .file-upload {
+            border: 2px dashed var(--border);
+            padding: 20px;
+            text-align: center;
+            border-radius: var(--radius);
+            background: var(--bg);
+        }
+
+        @media (max-width: 768px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .full-width { grid-column: span 1; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <nav>
+            <a href="index.html" class="logo">Canada Hub</a>
+            <ul class="nav-links">
+                <li><a href="about.html">About</a></li>
+                <li><a href="jobs.html">Browse Jobs</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-auth">
+                <a href="signin.html" class="btn btn-outline">Sign In</a>
+                <a href="signup.html" class="btn btn-primary">Get Started</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<section class="page-header">
+    <div class="container">
+        <h1>Professional Job Application</h1>
+        <p>Complete your application for permanent placement in Canada</p>
+    </div>
+</section>
+
+<main class="container form-wrapper">
+    <form action="#">
+        <!-- Personal Information -->
+        <div class="form-section">
+            <h3 class="section-title">Personal Information</h3>
+            <div class="form-grid">
+                <div class="form-group full-width">
+                    <label for="fullname">Full Name (as per Passport)</label>
+                    <input type="text" id="fullname" required>
+                </div>
+                <div class="form-group">
+                    <label for="dob">Date of Birth</label>
+                    <input type="date" id="dob" required>
+                </div>
+                <div class="form-group">
+                    <label for="gender">Gender</label>
+                    <select id="gender">
+                        <option value="">Select</option>
+                        <option value="male">Male</option>
+                        <option value="female">Female</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="nationality">Nationality</label>
+                    <input type="text" id="nationality" required>
+                </div>
+                <div class="form-group">
+                    <label for="country">Country of Origin</label>
+                    <input type="text" id="country" required>
+                </div>
+            </div>
+        </div>
+
+        <!-- Identity Information -->
+        <div class="form-section">
+            <h3 class="section-title">Identity & Contact Information</h3>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="passport">Passport Number</label>
+                    <input type="text" id="passport" required>
+                </div>
+                <div class="form-group">
+                    <label for="nationalid">National ID Number</label>
+                    <input type="text" id="nationalid" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group full-width">
+                    <label for="address">Current Residential Address</label>
+                    <textarea id="address" rows="3" required></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Professional Information -->
+        <div class="form-section">
+            <h3 class="section-title">Professional Information</h3>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="position">Desired Job Position</label>
+                    <input type="text" id="position" required>
+                </div>
+                <div class="form-group">
+                    <label for="experience">Years of Work Experience</label>
+                    <input type="number" id="experience" required>
+                </div>
+                <div class="form-group">
+                    <label for="education">Highest Education Level</label>
+                    <select id="education">
+                        <option value="">Select</option>
+                        <option value="highschool">High School</option>
+                        <option value="diploma">Diploma</option>
+                        <option value="bachelors">Bachelor's Degree</option>
+                        <option value="masters">Master's Degree</option>
+                        <option value="phd">PhD</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="language">English Proficiency (e.g. IELTS/CLB)</label>
+                    <input type="text" id="language" required>
+                </div>
+                <div class="form-group full-width">
+                    <label for="skills">Key Professional Skills</label>
+                    <textarea id="skills" rows="3" required placeholder="List your primary professional skills..."></textarea>
+                </div>
+            </div>
+        </div>
+
+        <!-- Document Upload -->
+        <div class="form-section">
+            <h3 class="section-title">Document Upload</h3>
+            <div class="form-grid">
+                <div class="form-group">
+                    <label>Curriculum Vitae (CV/Resume)</label>
+                    <div class="file-upload">
+                        <input type="file" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Passport Copy (Bio Page)</label>
+                    <div class="file-upload">
+                        <input type="file" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Educational Certificates</label>
+                    <div class="file-upload">
+                        <input type="file" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Cover Letter</label>
+                    <div class="file-upload">
+                        <input type="file" required>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Declaration -->
+        <div class="form-section">
+            <h3 class="section-title">Declaration</h3>
+            <div class="form-group">
+                <label><input type="checkbox" required> I hereby certify that the information provided in this application is true and complete to the best of my knowledge. I understand that any false statements or omissions may result in the rejection of my application or termination of employment.</label>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 15px; font-size: 1.1rem;">Submit Professional Application</button>
+        </div>
+    </form>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">Canada Hub</a>
+                <p>Empowering global talent to find meaningful employment and build successful lives in Canada through professional placement and comprehensive support.</p>
+            </div>
+            <div>
+                <h4 class="footer-heading">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="jobs.html">Browse Jobs</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-heading">Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-heading">Account</h4>
+                <ul class="footer-links">
+                    <li><a href="signin.html">Sign In</a></li>
+                    <li><a href="signup.html">Sign Up</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Canada Opportunity Hub. All rights reserved. All professional placements are subject to Canadian immigration laws.</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

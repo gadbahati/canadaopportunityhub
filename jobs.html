@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Jobs | Canada Opportunity Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        .page-header {
+            padding: 80px 0;
+            background: var(--secondary);
+            color: var(--white);
+            text-align: center;
+        }
+
+        .filter-section {
+            padding: 40px 0;
+            background: var(--white);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 80px;
+            z-index: 100;
+        }
+
+        .filter-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .filter-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+        }
+
+        .jobs-list {
+            padding: 60px 0;
+        }
+
+        .job-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--radius);
+            border: 1px solid var(--border);
+            margin-bottom: 25px;
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            transition: 0.3s;
+        }
+
+        .job-card:hover {
+            box-shadow: var(--shadow);
+            border-color: var(--primary);
+        }
+
+        .job-info h3 {
+            font-size: 1.4rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
+        }
+
+        .job-meta {
+            display: flex;
+            gap: 20px;
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .job-tag {
+            background: var(--bg);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        @media (max-width: 768px) {
+            .filter-grid { grid-template-columns: 1fr 1fr; }
+            .job-card { grid-template-columns: 1fr; }
+            .job-actions { margin-top: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <nav>
+            <a href="index.html" class="logo">Canada Hub</a>
+            <ul class="nav-links">
+                <li><a href="about.html">About</a></li>
+                <li><a href="jobs.html">Browse Jobs</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-auth">
+                <a href="signin.html" class="btn btn-outline">Sign In</a>
+                <a href="signup.html" class="btn btn-primary">Get Started</a>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<section class="page-header">
+    <div class="container">
+        <h1>Available Opportunities in Canada</h1>
+        <p>Explore professional career paths across all Canadian provinces</p>
+    </div>
+</section>
+
+<section class="filter-section">
+    <div class="container">
+        <div class="filter-grid">
+            <div class="filter-group">
+                <select>
+                    <option>All Categories</option>
+                    <option>Healthcare</option>
+                    <option>Technology</option>
+                    <option>Construction</option>
+                    <option>Logistics</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <select>
+                    <option>All Provinces</option>
+                    <option>Ontario</option>
+                    <option>British Columbia</option>
+                    <option>Alberta</option>
+                    <option>Quebec</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <select>
+                    <option>Job Type</option>
+                    <option>Full-time</option>
+                    <option>Contract</option>
+                </select>
+            </div>
+            <div class="filter-group">
+                <button class="btn btn-primary" style="width: 100%;">Apply Filters</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<main class="jobs-list">
+    <div class="container">
+        <!-- Job 1 -->
+        <div class="job-card">
+            <div class="job-info">
+                <span class="job-tag">Healthcare</span>
+                <h3>Registered Nurse (General Practice)</h3>
+                <div class="job-meta">
+                    <span>Toronto, Ontario</span>
+                    <span>$75,000 - $95,000 CAD</span>
+                    <span>Full-time</span>
+                </div>
+                <p>Leading healthcare facility in Toronto seeking experienced Registered Nurses for permanent placement. Comprehensive relocation support provided.</p>
+            </div>
+            <div class="job-actions">
+                <a href="apply.html?job=rn-toronto" class="btn btn-primary">Apply Now</a>
+                <a href="faq.html" class="btn btn-outline" style="margin-left: 10px;">Learn More</a>
+            </div>
+        </div>
+
+        <!-- Job 2 -->
+        <div class="job-card">
+            <div class="job-info">
+                <span class="job-tag">Technology</span>
+                <h3>Senior Software Developer (Full Stack)</h3>
+                <div class="job-meta">
+                    <span>Vancouver, British Columbia</span>
+                    <span>$110,000 - $140,000 CAD</span>
+                    <span>Full-time</span>
+                </div>
+                <p>Join a fast-growing tech startup in Vancouver. Experience with React, Node.js, and cloud infrastructure required. Visa sponsorship available.</p>
+            </div>
+            <div class="job-actions">
+                <a href="apply.html?job=dev-vancouver" class="btn btn-primary">Apply Now</a>
+                <a href="faq.html" class="btn btn-outline" style="margin-left: 10px;">Learn More</a>
+            </div>
+        </div>
+
+        <!-- Job 3 -->
+        <div class="job-card">
+            <div class="job-info">
+                <span class="job-tag">Logistics</span>
+                <h3>Long-Haul Truck Driver (Class 1)</h3>
+                <div class="job-meta">
+                    <span>Calgary, Alberta</span>
+                    <span>$65,000 - $85,000 CAD</span>
+                    <span>Permanent</span>
+                </div>
+                <p>Major logistics firm seeking professional drivers for inter-provincial routes. Competitive benefits and support for permanent residency applications.</p>
+            </div>
+            <div class="job-actions">
+                <a href="apply.html?job=driver-calgary" class="btn btn-primary">Apply Now</a>
+                <a href="faq.html" class="btn btn-outline" style="margin-left: 10px;">Learn More</a>
+            </div>
+        </div>
+
+        <!-- Job 4 -->
+        <div class="job-card">
+            <div class="job-info">
+                <span class="job-tag">Construction</span>
+                <h3>Project Manager (Infrastructure)</h3>
+                <div class="job-meta">
+                    <span>Ottawa, Ontario</span>
+                    <span>$90,000 - $120,000 CAD</span>
+                    <span>Contract</span>
+                </div>
+                <p>Oversee large-scale municipal infrastructure projects in the nation's capital. PMP certification and 5+ years experience required.</p>
+            </div>
+            <div class="job-actions">
+                <a href="apply.html?job=pm-ottawa" class="btn btn-primary">Apply Now</a>
+                <a href="faq.html" class="btn btn-outline" style="margin-left: 10px;">Learn More</a>
+            </div>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <a href="index.html" class="logo">Canada Hub</a>
+                <p>Empowering global talent to find meaningful employment and build successful lives in Canada through professional placement and comprehensive support.</p>
+            </div>
+            <div>
+                <h4 class="footer-heading">Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="jobs.html">Browse Jobs</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-heading">Legal</h4>
+                <ul class="footer-links">
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="footer-heading">Account</h4>
+                <ul class="footer-links">
+                    <li><a href="signin.html">Sign In</a></li>
+                    <li><a href="signup.html">Sign Up</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Canada Opportunity Hub. All rights reserved. All professional placements are subject to Canadian immigration laws.</p>
+        </div>
+    </div>
+</footer>
+
+</body>
+</html>

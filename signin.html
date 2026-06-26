@@ -3,31 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us | Canada Opportunity Hub</title>
+    <title>Sign In | Canada Opportunity Hub</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        .page-header {
-            padding: 80px 0;
-            background: var(--secondary);
-            color: var(--white);
-            text-align: center;
+        .auth-wrapper {
+            min-height: calc(100vh - 80px - 400px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 60px 20px;
         }
 
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            padding: 80px 0;
-        }
-
-        .contact-form {
+        .auth-card {
             background: var(--white);
             padding: 40px;
             border-radius: var(--radius);
             box-shadow: var(--shadow);
+            width: 100%;
+            max-width: 450px;
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .auth-header h1 {
+            font-size: 1.75rem;
+            color: var(--secondary);
+            margin-bottom: 10px;
         }
 
         .form-group {
@@ -38,34 +45,30 @@
             display: block;
             margin-bottom: 8px;
             font-weight: 600;
-            color: var(--secondary);
         }
 
-        .form-group input, .form-group textarea {
+        .form-group input {
             width: 100%;
             padding: 12px;
             border: 1px solid var(--border);
             border-radius: var(--radius);
-            font-family: inherit;
         }
 
-        .contact-info h2 {
-            font-size: 2rem;
-            color: var(--secondary);
-            margin-bottom: 20px;
+        .auth-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
         }
 
-        .info-item {
-            margin-bottom: 30px;
-        }
-
-        .info-item h4 {
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-
-        @media (max-width: 768px) {
-            .contact-grid { grid-template-columns: 1fr; }
+        .motivational-note {
+            background: #fff5f5;
+            border-left: 4px solid var(--primary);
+            padding: 15px;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+            color: var(--primary-dark);
         }
     </style>
 </head>
@@ -89,56 +92,36 @@
     </div>
 </header>
 
-<section class="page-header">
-    <div class="container">
-        <h1>Contact Our Team</h1>
-        <p>We are here to assist with your professional journey to Canada</p>
-    </div>
-</section>
+<main class="auth-wrapper">
+    <div class="auth-card">
+        <div class="auth-header">
+            <h1>Welcome Back</h1>
+            <p>Access your professional profile</p>
+        </div>
 
-<main class="container">
-    <div class="contact-grid">
-        <div class="contact-info">
-            <h2>Get in Touch</h2>
-            <p style="margin-bottom: 40px;">Whether you have questions about job listings, the application process, or our immigration services, our dedicated support team is ready to help.</p>
-            
-            <div class="info-item">
-                <h4>Office Location</h4>
-                <p>123 Professional Way, Suite 500<br>Toronto, ON M5V 2T6, Canada</p>
-            </div>
-            
-            <div class="info-item">
-                <h4>Email Support</h4>
-                <p>support@canadaopportunityhub.com<br>info@canadaopportunityhub.com</p>
-            </div>
-            
-            <div class="info-item">
-                <h4>Business Hours</h4>
-                <p>Monday - Friday: 9:00 AM - 6:00 PM (EST)<br>Saturday: 10:00 AM - 2:00 PM (EST)</p>
-            </div>
+        <div class="motivational-note">
+            <strong>Professional Milestone:</strong> Every journey begins with a single step. We are committed to helping you earn your first thousand dollars in the Canadian market.
         </div>
-        
-        <div class="contact-form">
-            <form action="#">
-                <div class="form-group">
-                    <label for="name">Full Name</label>
-                    <input type="text" id="name" required placeholder="Enter your full name">
-                </div>
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" required placeholder="Enter your email address">
-                </div>
-                <div class="form-group">
-                    <label for="subject">Subject</label>
-                    <input type="text" id="subject" required placeholder="How can we help you?">
-                </div>
-                <div class="form-group">
-                    <label for="message">Message</label>
-                    <textarea id="message" rows="5" required placeholder="Your message here..."></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
-            </form>
-        </div>
+
+        <form action="#">
+            <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" required placeholder="Enter your email">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" required placeholder="Enter your password">
+            </div>
+            
+            <div class="auth-options">
+                <label><input type="checkbox"> Remember me</label>
+                <a href="#" style="color: var(--primary);">Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; margin-bottom: 20px;">Sign In</button>
+        </form>
+
+        <p style="text-align: center; font-size: 0.95rem;">Don't have an account? <a href="signup.html" style="color: var(--primary); font-weight: 600;">Sign Up</a></p>
     </div>
 </main>
 
