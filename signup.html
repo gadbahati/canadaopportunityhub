@@ -13,7 +13,7 @@
         <nav>
             <a href="index.html" class="logo">Global Hub</a>
             <div style="display: flex; align-items: center; gap: 24px;">
-                <a href="signin.html" class="btn btn-outline" style="border: none; font-weight: 600;">Sign In</a>
+                <a href="signin.html" class="btn btn-outline" style="border: none; font-weight: 700;">Sign In</a>
                 <button onclick="toggleSidebar()" style="background: none; border: none; cursor: pointer; padding: 8px;">
                     <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
                 </button>
@@ -31,38 +31,38 @@
         </button>
     </div>
     <ul class="sidebar-menu">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="about.html">About Global Hub</a></li>
-        <li><a href="jobs-ca.html">Canada Careers</a></li>
-        <li><a href="jobs-us.html">USA Careers</a></li>
-        <li><a href="faq.html">FAQ Center</a></li>
-        <li><a href="contact.html">Contact Support</a></li>
+        <li><a href="index.html"><b>Home</b></a></li>
+        <li><a href="about.html"><b>About Global Hub</b></a></li>
+        <li><a href="jobs-ca.html"><b>Canada Careers</b></a></li>
+        <li><a href="jobs-us.html"><b>USA Careers</b></a></li>
+        <li><a href="faq.html"><b>FAQ Center</b></a></li>
+        <li><a href="contact.html"><b>Contact Support</b></a></li>
     </ul>
 </div>
 
 <main class="auth-wrapper">
     <div class="auth-card">
         <div class="auth-header" style="text-align: center; margin-bottom: 40px;">
-            <h1 style="color: var(--secondary);">Start Your Journey</h1>
-            <p style="color: var(--text-muted);">Join the 2,000+ professionals we've helped place in North America.</p>
+            <h1 style="color: var(--secondary);"><b>Start Your Journey</b></h1>
+            <p style="color: var(--text-muted);"><b>Join the 2,000+ people we've helped place in North America.</b></p>
         </div>
 
         <form action="#">
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
                 <div class="form-group" style="grid-column: span 2;">
-                    <label for="fullname">Full Legal Name</label>
+                    <label for="fullname"><b>Full Legal Name</b></label>
                     <input type="text" id="fullname" required placeholder="Enter your full name">
                 </div>
                 <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" required placeholder="name@example.com">
+                    <label for="email"><b>Email Address</b></label>
+                    <input type="email" id="email" required placeholder="Enter your email">
                 </div>
                 <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" required placeholder="+1 (000) 000-0000">
+                    <label for="phone"><b>Phone Number</b></label>
+                    <input type="tel" id="phone" required placeholder="+254 000 000 000">
                 </div>
                 <div class="form-group">
-                    <label for="destination">Target Destination</label>
+                    <label for="destination"><b>Target Destination</b></label>
                     <select id="destination" required>
                         <option value="">Select Country</option>
                         <option value="ca">Canada</option>
@@ -71,7 +71,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="sector">Primary Sector</label>
+                    <label for="sector"><b>Primary Sector</b></label>
                     <select id="sector" required>
                         <option value="">Select Field</option>
                         <option value="logistics">Logistics / Driving</option>
@@ -81,11 +81,11 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password</label>
+                    <label for="password"><b>Password</b></label>
                     <input type="password" id="password" required placeholder="Create password">
                 </div>
-                <div class="form-group">
-                    <label for="confirm">Confirm Password</label>
+                <div class="form-group" style="grid-column: span 2;">
+                    <label for="confirm"><b>Confirm Password</b></label>
                     <input type="password" id="confirm" required placeholder="Repeat password">
                 </div>
             </div>
@@ -93,15 +93,15 @@
             <div style="margin: 24px 0 32px;">
                 <label style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer; font-size: 0.875rem; color: var(--text-muted);">
                     <input type="checkbox" required style="width: auto; margin-top: 4px;">
-                    <span>I agree to the <a href="terms.html" style="color: var(--primary); font-weight: 700;">Terms of Service</a> and <a href="privacy.html" style="color: var(--primary); font-weight: 700;">Privacy Policy</a>.</span>
+                    <span><b>I agree to the <a href="terms.html" style="color: var(--primary); font-weight: 700;">Terms</a> and <a href="privacy.html" style="color: var(--primary); font-weight: 700;">Privacy Policy</a>.</b></span>
                 </label>
             </div>
 
-            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 18px; font-size: 1.1rem;">Create Professional Account</button>
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 18px; font-size: 1.1rem;"><b>Create Account</b></button>
         </form>
 
         <div style="text-align: center; margin-top: 32px; font-size: 0.95rem; color: var(--text-muted);">
-            Already have an account? <a href="signin.html" style="color: var(--primary); font-weight: 700;">Sign in here</a>
+            <b>Already have an account?</b> <a href="signin.html" style="color: var(--primary); font-weight: 700;"><b>Sign in here</b></a>
         </div>
     </div>
 </main>
@@ -112,6 +112,14 @@
         document.getElementById('sidebarOverlay').classList.toggle('active');
     }
 </script>
+
+<footer>
+    <div class="container">
+        <div class="footer-bottom" style="border-top: none; padding-top: 0; justify-content: center;">
+            <p>&copy; 2026 Global Opportunity Hub. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
 
 </body>
 </html>
