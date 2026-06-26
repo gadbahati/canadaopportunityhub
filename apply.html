@@ -65,20 +65,24 @@
                     <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px;">
                         <div>
                             <label style="display: block; margin-bottom: 10px; font-weight: 700;">Phone Number</label>
-                            <input type="tel" required style="width: 100%; padding: 16px; border: 2px solid var(--border); border-radius: 12px; font-family: inherit;">
+                            <input type="tel" id="applicantPhone" required style="width: 100%; padding: 16px; border: 2px solid var(--border); border-radius: 12px; font-family: inherit;">
                         </div>
                         <div>
                             <label style="display: block; margin-bottom: 10px; font-weight: 700;">Current Nationality</label>
-                            <input type="text" required style="width: 100%; padding: 16px; border: 2px solid var(--border); border-radius: 12px; font-family: inherit;">
+                            <input type="text" id="applicantNationality" required style="width: 100%; padding: 16px; border: 2px solid var(--border); border-radius: 12px; font-family: inherit;">
                         </div>
                     </div>
                     <div style="margin-bottom: 24px;">
                         <label style="display: block; margin-bottom: 10px; font-weight: 700;">Upload CV / Resume (PDF)</label>
-                        <input type="file" accept=".pdf" required style="width: 100%; padding: 12px; border: 2px dashed var(--border); border-radius: 12px; font-family: inherit;">
+                        <input type="file" id="cvFile" accept=".pdf" required style="width: 100%; padding: 12px; border: 2px dashed var(--border); border-radius: 12px; font-family: inherit;">
+                    </div>
+                    <div style="margin-bottom: 24px;">
+                        <label style="display: block; margin-bottom: 10px; font-weight: 700;">Upload Passport Bio Page (JPG/PDF)</label>
+                        <input type="file" id="passportFile" accept=".jpg,.jpeg,.png,.pdf" required style="width: 100%; padding: 12px; border: 2px dashed var(--border); border-radius: 12px; font-family: inherit;">
                     </div>
                     <div style="margin-bottom: 32px;">
                         <label style="display: block; margin-bottom: 10px; font-weight: 700;">Cover Letter / Personal Statement</label>
-                        <textarea rows="6" required style="width: 100%; padding: 16px; border: 2px solid var(--border); border-radius: 12px; font-family: inherit; resize: vertical;" placeholder="Tell us why you are the best fit for this role..."></textarea>
+                        <textarea id="coverLetter" rows="6" required style="width: 100%; padding: 16px; border: 2px solid var(--border); border-radius: 12px; font-family: inherit; resize: vertical;" placeholder="Tell us why you are the best fit for this role..."></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary" style="width: 100%;"><b>Submit Final Application</b></button>
                 </form>
@@ -133,22 +137,37 @@
 
     // Get job title from URL
     const urlParams = new URLSearchParams(window.location.search);
-    const jobTitle = urlParams.get('job');
-    if (jobTitle) {
-        document.getElementById('jobTitleDisplay').innerText = decodeURIComponent(jobTitle);
-    }
+    const jobTitle = urlParams.get('job') ? decodeURIComponent(urlParams.get('job')) : 'Professional Role';
+    document.getElementById('jobTitleDisplay').innerText = jobTitle;
 
     // Prefill user data if logged in
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     if (currentUser) {
-        document.getElementById('applicantName').value = currentUser.fullName;
+        document.getElementById('applicantName').value = currentUser.fullName || (currentUser.firstName + ' ' + currentUser.lastName);
         document.getElementById('applicantEmail').value = currentUser.email;
     }
 
     document.getElementById('applyForm').addEventListener('submit', function(e) {
         e.preventDefault();
-        alert('Application submitted successfully! Our recruitment team will review your profile and contact you within 3-5 business days.');
-        window.location.href = 'index.html';
+        
+        const applicationData = {
+            jobTitle: jobTitle,
+            fullName: document.getElementById('applicantName').value,
+            email: document.getElementById('applicantEmail').value,
+            phone: document.getElementById('applicantPhone').value,
+            nationality: document.getElementById('applicantNationality').value,
+            cvName: document.getElementById('cvFile').files[0].name,
+            passportName: document.getElementById('passportFile').files[0].name,
+            coverLetter: document.getElementById('coverLetter').value
+        };
+
+        if (saveApplication(applicationData)) {
+            alert('Application submitted successfully! You can track your status in the User Dashboard.');
+            window.location.href = 'dashboard.html';
+        } else {
+            alert('There was an error submitting your application. Please ensure you are logged in.');
+            window.location.href = 'signin.html';
+        }
     });
 </script>
 

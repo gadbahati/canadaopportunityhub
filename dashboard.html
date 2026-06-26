@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard | Global Opportunity Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .dashboard-container { padding: 80px 0; background: var(--bg-light); min-height: 80vh; }
+        .app-list { display: grid; gap: 24px; }
+        .app-item { 
+            background: white; 
+            padding: 32px; 
+            border-radius: 24px; 
+            border: 1px solid var(--border); 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center;
+            transition: var(--transition);
+        }
+        .app-item:hover { transform: translateY(-5px); box-shadow: var(--shadow-md); border-color: var(--primary); }
+        .status-badge { 
+            padding: 8px 16px; 
+            border-radius: 100px; 
+            font-weight: 800; 
+            font-size: 0.85rem; 
+            text-transform: uppercase;
+        }
+        .status-pending { background: #FEF3C7; color: #92400E; }
+        .status-review { background: #DBEAFE; color: #1E40AF; }
+        @media (max-width: 768px) {
+            .app-item { flex-direction: column; text-align: center; gap: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="sidebar-overlay" id="overlay"></div>
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-close" id="closeSidebar">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </div>
+    <ul class="sidebar-menu">
+        <li><a href="about.html">About</a></li>
+        <li><a href="jobs-ca.html">Canada Jobs</a></li>
+        <li><a href="jobs-us.html">US Jobs</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div id="sidebarAuth" style="margin-top: auto; padding-top: 40px;">
+        <button onclick="signOut()" class="btn btn-primary" style="width: 100%;">Sign Out</button>
+    </div>
+</aside>
+
+<header>
+    <div class="container">
+        <nav>
+            <div class="menu-toggle" id="openSidebar">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                <span>MENU</span>
+            </div>
+            <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 10px; font-size: 1.5rem; font-weight: 800;">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z"/></svg>
+                Global Hub
+            </a>
+            <div id="navAuth" style="display: flex; gap: 16px;">
+                <button onclick="signOut()" class="btn btn-outline" style="border: none; font-weight: 800;">Sign Out</button>
+            </div>
+        </nav>
+    </div>
+</header>
+
+<main class="dashboard-container">
+    <div class="container">
+        <div style="margin-bottom: 60px; text-align: center;">
+            <h1 style="font-size: 3rem; margin-bottom: 16px;"><b>Your Dashboard</b></h1>
+            <p style="color: var(--text-muted); font-size: 1.2rem;"><b>Track your job applications and relocation status.</b></p>
+        </div>
+
+        <div id="noApplications" style="display: none; text-align: center; padding: 100px 0;">
+            <div style="background: white; padding: 60px; border-radius: 32px; border: 1px solid var(--border); max-width: 600px; margin: 0 auto;">
+                <h2 style="margin-bottom: 20px;"><b>No Applications Yet</b></h2>
+                <p style="color: var(--text-muted); margin-bottom: 40px;"><b>You haven't applied for any positions. Start your journey by browsing our verified job portals.</b></p>
+                <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
+                    <a href="jobs-ca.html" class="btn btn-primary"><b>Canada Jobs</b></a>
+                    <a href="jobs-us.html" class="btn btn-outline"><b>USA Jobs</b></a>
+                </div>
+            </div>
+        </div>
+
+        <div id="applicationsList" class="app-list">
+            <!-- Applications will be injected here -->
+        </div>
+    </div>
+</main>
+
+<footer>
+    <div class="container">
+        <div class="footer-brand">
+            <a href="index.html" class="logo" style="color: white; margin-bottom: 24px; justify-content: center;">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z"/></svg>
+                Global Hub
+            </a>
+            <p style="color: #94A3B8; margin-bottom: 32px;">The premier platform for international professionals seeking legitimate and rewarding career opportunities across North America.</p>
+            <ul class="footer-links">
+                <li><a href="about.html"><b>About Us</b></a></li>
+                <li><a href="jobs-ca.html"><b>Canada Jobs</b></a></li>
+                <li><a href="jobs-us.html"><b>USA Jobs</b></a></li>
+                <li><a href="faq.html"><b>FAQ Center</b></a></li>
+                <li><a href="contact.html"><b>Contact Support</b></a></li>
+            </ul>
+        </div>
+        <div class="footer-bottom">
+            <p><b>&copy; 2026 Global Opportunity Hub. All rights reserved.</b></p>
+        </div>
+    </div>
+</footer>
+
+<script src="js/auth.js"></script>
+<script>
+    const openBtn = document.getElementById('openSidebar');
+    const closeBtn = document.getElementById('closeSidebar');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+
+    openBtn.addEventListener('click', () => {
+        sidebar.classList.add('active');
+        overlay.classList.add('active');
+    });
+
+    closeBtn.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+    });
+
+    overlay.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+    });
+
+    // Dashboard Logic
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (!currentUser) {
+        window.location.href = 'signin.html';
+    }
+
+    const allApplications = JSON.parse(localStorage.getItem('applications')) || [];
+    const userApps = allApplications.filter(app => app.userEmail === currentUser.email);
+    const listContainer = document.getElementById('applicationsList');
+    const emptyState = document.getElementById('noApplications');
+
+    if (userApps.length === 0) {
+        emptyState.style.display = 'block';
+        listContainer.style.display = 'none';
+    } else {
+        emptyState.style.display = 'none';
+        listContainer.style.display = 'grid';
+        
+        userApps.reverse().forEach(app => {
+            const appEl = document.createElement('div');
+            appEl.className = 'app-item';
+            appEl.innerHTML = `
+                <div>
+                    <h3 style="margin-bottom: 8px;"><b>${app.jobTitle}</b></h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem;"><b>Applied on: ${app.date}</b></p>
+                    <p style="color: var(--primary); font-size: 0.9rem; margin-top: 8px;"><b>ID: #APP-${app.id.toString().slice(-6)}</b></p>
+                </div>
+                <div style="text-align: right;">
+                    <span class="status-badge status-pending"><b>${app.status}</b></span>
+                    <p style="margin-top: 12px; font-size: 0.85rem; color: var(--text-muted);"><b>Our team is reviewing your documents.</b></p>
+                </div>
+            `;
+            listContainer.appendChild(appEl);
+        });
+    }
+</script>
+
+</body>
+</html>

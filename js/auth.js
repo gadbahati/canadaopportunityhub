@@ -4,6 +4,7 @@ function updateAuthUI() {
     const currentUser = JSON.parse(localStorage.getItem('currentUser'));
     const navAuth = document.getElementById('navAuth');
     const sidebarAuth = document.getElementById('sidebarAuth');
+    const sidebarMenu = document.querySelector('.sidebar-menu');
 
     if (currentUser) {
         const signOutBtn = `<button onclick="signOut()" class="btn btn-outline" style="border: none; font-weight: 800;">Sign Out</button>`;
@@ -12,7 +13,14 @@ function updateAuthUI() {
         if (navAuth) navAuth.innerHTML = welcomeText + signOutBtn;
         if (sidebarAuth) sidebarAuth.innerHTML = signOutBtn;
 
-        // Grant apply privileges: Hide auth modal and proceed with application
+        // Add Dashboard link to sidebar if not already there
+        if (sidebarMenu && !document.getElementById('sidebarDashboard')) {
+            const dashboardLi = document.createElement('li');
+            dashboardLi.id = 'sidebarDashboard';
+            dashboardLi.innerHTML = '<a href="dashboard.html" style="color: var(--primary);"><b>User Dashboard</b></a>';
+            sidebarMenu.appendChild(dashboardLi);
+        }
+
         window.hasAccess = true;
     } else {
         window.hasAccess = false;
@@ -26,10 +34,9 @@ function signOut() {
 
 function handleApply(jobTitle) {
     if (window.hasAccess) {
-        // User is logged in, they can apply
-        alert(`Thank you for your interest in the ${jobTitle} position. Your application has been received and our team will contact you shortly.`);
+        // Redirect to real application page with job title
+        window.location.href = `apply.html?job=${encodeURIComponent(jobTitle)}`;
     } else {
-        // User is not logged in, show the auth modal
         const modal = document.getElementById('authModal');
         if (modal) {
             modal.style.display = 'flex';
@@ -42,6 +49,26 @@ function handleApply(jobTitle) {
 function hideAuthModal() {
     const modal = document.getElementById('authModal');
     if (modal) modal.style.display = 'none';
+}
+
+// Function to save application data to localStorage
+function saveApplication(applicationData) {
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (!currentUser) return false;
+
+    let applications = JSON.parse(localStorage.getItem('applications')) || [];
+    
+    const newApp = {
+        id: Date.now(),
+        userEmail: currentUser.email,
+        ...applicationData,
+        status: 'Pending Review',
+        date: new Date().toLocaleDateString()
+    };
+
+    applications.push(newApp);
+    localStorage.setItem('applications', JSON.stringify(applications));
+    return true;
 }
 
 // Initialize UI on load
