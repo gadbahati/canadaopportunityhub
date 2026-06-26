@@ -60,7 +60,7 @@ b, strong {
     font-weight: 700;
 }
 
-/* Header */
+/* Header & Sidebar Navigation */
 header {
     background: rgba(255, 255, 255, 0.9);
     backdrop-filter: blur(12px);
@@ -77,16 +77,84 @@ nav {
     height: 90px;
 }
 
-.nav-menu {
+.menu-toggle {
     display: flex;
-    gap: 40px;
-    list-style: none;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    font-weight: 800;
+    color: var(--secondary);
+    font-size: 1rem;
+    padding: 10px 16px;
+    border-radius: 12px;
+    transition: var(--transition);
 }
 
-.nav-menu a {
-    font-weight: 700;
+.menu-toggle:hover {
+    background: var(--bg-light);
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -320px;
+    width: 320px;
+    height: 100%;
+    background: var(--white);
+    z-index: 2000;
+    box-shadow: var(--shadow-lg);
+    transition: var(--transition);
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 23, 42, 0.4);
+    backdrop-filter: blur(4px);
+    z-index: 1999;
+    display: none;
+}
+
+.sidebar-overlay.active {
+    display: block;
+}
+
+.sidebar-close {
+    align-self: flex-end;
+    cursor: pointer;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+}
+
+.sidebar-menu {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+.sidebar-menu a {
+    font-size: 1.25rem;
+    font-weight: 800;
     color: var(--secondary);
-    font-size: 0.95rem;
+    display: block;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.sidebar-menu a:hover {
+    color: var(--primary);
+    padding-left: 10px;
 }
 
 /* Trustpilot Widget */
@@ -144,7 +212,7 @@ nav {
     transition: var(--transition);
     display: flex;
     flex-direction: column;
-    align-items: center; /* CENTERED FLAGS */
+    align-items: center;
 }
 
 .country-card:hover {
@@ -163,12 +231,6 @@ nav {
 }
 
 /* Job Cards & Sections */
-.job-section-header {
-    text-align: center;
-    margin-bottom: 60px;
-    padding: 40px 0;
-}
-
 .job-card {
     background: var(--white);
     padding: 40px;
@@ -244,5 +306,7 @@ footer {
 
 @media (max-width: 768px) {
     .country-selection { grid-template-columns: 1fr; }
-    .nav-menu { display: none; }
+    .ceo-grid { grid-template-columns: 1fr !important; }
+    .tp-grid { grid-template-columns: 1fr !important; }
+    .testimonial-grid { grid-template-columns: 1fr !important; }
 }

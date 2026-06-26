@@ -8,22 +8,36 @@
 </head>
 <body>
 
+<div class="sidebar-overlay" id="overlay"></div>
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-close" id="closeSidebar">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </div>
+    <ul class="sidebar-menu">
+        <li><a href="about.html">About</a></li>
+        <li><a href="jobs-ca.html">Canada Jobs</a></li>
+        <li><a href="jobs-us.html">US Jobs</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div style="margin-top: auto; padding-top: 40px;">
+        <a href="signup.html" class="btn btn-primary" style="width: 100%;">Get Started</a>
+    </div>
+</aside>
+
 <header>
     <div class="container">
         <nav>
-            <a href="index.html" class="logo">
+            <div class="menu-toggle" id="openSidebar">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                <span>MENU</span>
+            </div>
+            <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 10px; font-size: 1.5rem; font-weight: 800;">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z"/></svg>
                 Global Hub
             </a>
-            <ul class="nav-menu">
-                <li><a href="about.html"><b>About</b></a></li>
-                <li><a href="jobs-ca.html"><b>Canada Jobs</b></a></li>
-                <li><a href="jobs-us.html"><b>US Jobs</b></a></li>
-                <li><a href="faq.html"><b>FAQ</b></a></li>
-                <li><a href="contact.html"><b>Contact</b></a></li>
-            </ul>
             <div style="display: flex; gap: 16px;">
-                <a href="signin.html" class="btn btn-outline" style="border: none; font-weight: 700;">Sign In</a>
+                <a href="signin.html" class="btn btn-outline" style="border: none; font-weight: 800;">Sign In</a>
                 <a href="signup.html" class="btn btn-primary">Get Started</a>
             </div>
         </nav>
@@ -43,37 +57,17 @@
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start;">
                 <div>
                     <h2 style="font-size: 2.5rem; margin-bottom: 24px;"><b>Get in Touch</b></h2>
-                    <p style="margin-bottom: 40px; font-size: 1.1rem; color: var(--text-main);"><b>Whether you have questions about job listings, the application process, or our immigration services, our dedicated support team is ready to help.</b></p>
-                    
-                    <div style="margin-bottom: 32px;">
-                        <h4 style="color: var(--primary); margin-bottom: 8px; font-size: 1.2rem;"><b>Office Location</b></h4>
-                        <p><b>123 Professional Way, Suite 500<br>Toronto, ON M5V 2T6, Canada</b></p>
-                    </div>
-                    
+                    <p style="margin-bottom: 40px; font-size: 1.1rem; color: var(--text-main);"><b>Whether you have questions about job listings or our immigration services, our dedicated support team is ready to help.</b></p>
                     <div style="margin-bottom: 32px;">
                         <h4 style="color: var(--primary); margin-bottom: 8px; font-size: 1.2rem;"><b>Email Support</b></h4>
                         <p><b>support@globalopportunityhub.com<br>info@globalopportunityhub.com</b></p>
                     </div>
-                    
-                    <div style="margin-bottom: 32px;">
-                        <h4 style="color: var(--primary); margin-bottom: 8px; font-size: 1.2rem;"><b>Business Hours</b></h4>
-                        <p><b>Monday - Friday: 9:00 AM - 6:00 PM (EST)<br>Saturday: 10:00 AM - 2:00 PM (EST)</b></p>
-                    </div>
                 </div>
-                
                 <div class="job-card" style="text-align: left; padding: 48px;">
                     <form action="#">
                         <div style="margin-bottom: 24px;">
                             <label style="display: block; margin-bottom: 8px; font-weight: 700;">Full Name</label>
                             <input type="text" style="width: 100%; padding: 14px; border: 1px solid var(--border); border-radius: 12px; font-family: inherit;" required placeholder="Enter your full name">
-                        </div>
-                        <div style="margin-bottom: 24px;">
-                            <label style="display: block; margin-bottom: 8px; font-weight: 700;">Email Address</label>
-                            <input type="email" style="width: 100%; padding: 14px; border: 1px solid var(--border); border-radius: 12px; font-family: inherit;" required placeholder="Enter your email address">
-                        </div>
-                        <div style="margin-bottom: 24px;">
-                            <label style="display: block; margin-bottom: 8px; font-weight: 700;">Subject</label>
-                            <input type="text" style="width: 100%; padding: 14px; border: 1px solid var(--border); border-radius: 12px; font-family: inherit;" required placeholder="How can we help you?">
                         </div>
                         <div style="margin-bottom: 32px;">
                             <label style="display: block; margin-bottom: 8px; font-weight: 700;">Message</label>
@@ -108,6 +102,28 @@
         </div>
     </div>
 </footer>
+
+<script>
+    const openBtn = document.getElementById('openSidebar');
+    const closeBtn = document.getElementById('closeSidebar');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+
+    openBtn.addEventListener('click', () => {
+        sidebar.classList.add('active');
+        overlay.classList.add('active');
+    });
+
+    closeBtn.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+    });
+
+    overlay.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+    });
+</script>
 
 </body>
 </html>
