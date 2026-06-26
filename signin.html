@@ -5,88 +5,148 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In | Global Opportunity Hub</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 24px;
+            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('https://images.unsplash.com/photo-1497215728101-856f4ea42174?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .auth-card {
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(12px);
+            padding: 64px 48px;
+            border-radius: 32px;
+            width: 100%;
+            max-width: 520px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .auth-logo {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.75rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 40px;
+            text-decoration: none;
+        }
+
+        .form-group {
+            text-align: left;
+            margin-bottom: 24px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: var(--secondary);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid var(--border);
+            border-radius: 14px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: var(--transition);
+            background: var(--bg-light);
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: var(--white);
+            box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.1);
+        }
+
+        .auth-btn {
+            width: 100%;
+            padding: 18px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 14px;
+            font-size: 1.1rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: var(--transition);
+            margin-top: 12px;
+            box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+        }
+
+        .auth-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .auth-footer {
+            margin-top: 40px;
+            padding-top: 32px;
+            border-top: 1px solid var(--border);
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+
+        .auth-footer a {
+            color: var(--primary);
+            font-weight: 800;
+            text-decoration: none;
+        }
+
+        @media (max-width: 480px) {
+            .auth-card {
+                padding: 48px 24px;
+            }
+        }
+    </style>
 </head>
 <body>
 
-<header>
-    <div class="container">
-        <nav>
-            <a href="index.html" class="logo">Global Hub</a>
-            <div style="display: flex; align-items: center; gap: 24px;">
-                <a href="signup.html" class="btn btn-primary">Get Started</a>
-                <button onclick="toggleSidebar()" style="background: none; border: none; cursor: pointer; padding: 8px;">
-                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-                </button>
-            </div>
-        </nav>
-    </div>
-</header>
-
-<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
-<div class="sidebar" id="sidebar">
-    <div style="display: flex; justify-content: space-between; align-items: center;">
-        <span class="logo" style="font-size: 1.25rem;">Main Menu</span>
-        <button onclick="toggleSidebar()" style="background: none; border: none; cursor: pointer;">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
-    </div>
-    <ul class="sidebar-menu">
-        <li><a href="index.html"><b>Home</b></a></li>
-        <li><a href="about.html"><b>About Global Hub</b></a></li>
-        <li><a href="jobs-ca.html"><b>Canada Careers</b></a></li>
-        <li><a href="jobs-us.html"><b>USA Careers</b></a></li>
-        <li><a href="faq.html"><b>FAQ Center</b></a></li>
-        <li><a href="contact.html"><b>Contact Support</b></a></li>
-    </ul>
-</div>
-
-<main class="auth-wrapper">
+<div class="auth-container">
     <div class="auth-card">
-        <div class="auth-header" style="text-align: center; margin-bottom: 40px;">
-            <h1 style="color: var(--secondary);"><b>Welcome Back</b></h1>
-            <p style="color: var(--text-muted);"><b>Access your personal career portal.</b></p>
-        </div>
-
+        <a href="index.html" class="auth-logo">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="currentColor"><path d="M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z"/></svg>
+            <b>Global Hub</b>
+        </a>
+        <h2 style="font-size: 2.25rem; margin-bottom: 12px;"><b>Welcome Back</b></h2>
+        <p style="color: var(--text-muted); margin-bottom: 40px; font-weight: 500;"><b>Sign in to your secure career portal.</b></p>
+        
         <form action="#">
             <div class="form-group">
-                <label for="email"><b>Email Address</b></label>
-                <input type="email" id="email" required placeholder="Enter your email">
+                <label>Personal Email Address</label>
+                <input type="email" required placeholder="Enter your email address">
             </div>
             <div class="form-group">
-                <label for="password"><b>Password</b></label>
-                <input type="password" id="password" required placeholder="Enter your password">
+                <label>Password</label>
+                <input type="password" required placeholder="Enter your password">
             </div>
-            
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; font-size: 0.875rem;">
-                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: var(--text-muted);">
-                    <input type="checkbox" style="width: auto;"> <b>Remember me</b>
-                </label>
-                <a href="#" style="color: var(--primary); font-weight: 700;"><b>Forgot Password?</b></a>
+            <div style="text-align: right; margin-bottom: 32px;">
+                <a href="#" style="font-size: 0.9rem; color: var(--primary); font-weight: 800;">Forgot Password?</a>
             </div>
-
-            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 18px; font-size: 1.1rem;"><b>Sign In</b></button>
+            <button type="submit" class="auth-btn"><b>Sign In</b></button>
         </form>
 
-        <div style="text-align: center; margin-top: 32px; font-size: 0.95rem; color: var(--text-muted);">
-            <b>New to Global Hub?</b> <a href="signup.html" style="color: var(--primary); font-weight: 700;"><b>Create an account</b></a>
+        <div class="auth-footer">
+            <b>New to Global Hub? <a href="signup.html">Create an Account</a></b>
         </div>
     </div>
-</main>
-
-<script>
-    function toggleSidebar() {
-        document.getElementById('sidebar').classList.toggle('active');
-        document.getElementById('sidebarOverlay').classList.toggle('active');
-    }
-</script>
-
-<footer>
-    <div class="container">
-        <div class="footer-bottom" style="border-top: none; padding-top: 0; justify-content: center;">
-            <p>&copy; 2026 Global Opportunity Hub. All rights reserved.</p>
-        </div>
-    </div>
-</footer>
+</div>
 
 </body>
 </html>
