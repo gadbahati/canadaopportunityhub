@@ -11,13 +11,23 @@ function updateAuthUI() {
         const welcomeText = `<span class="welcome-msg" style="display: flex; align-items: center; font-weight: 700; color: var(--secondary);">Welcome, ${currentUser.firstName}</span>`;
         
         if (navAuth) navAuth.innerHTML = welcomeText + signOutBtn;
-        if (sidebarAuth) sidebarAuth.innerHTML = signOutBtn;
-
-        // Ensure CV Editor is in the sidebar
-        if (sidebarMenu && !Array.from(sidebarMenu.querySelectorAll('a')).some(a => a.href.includes('cv-editor.html'))) {
-            const cvLi = document.createElement('li');
-            cvLi.innerHTML = '<a href="cv-editor.html">CV Editor & AI</a>';
-            sidebarMenu.insertBefore(cvLi, sidebarMenu.children[3] || null);
+        
+        if (sidebarAuth) {
+            sidebarAuth.innerHTML = `
+                <a href="cv-editor.html" class="btn btn-primary" style="width: 100%; margin-bottom: 12px; background: #059669; border: none; box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" style="margin-right: 8px;"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    <b>AI CV Optimizer</b>
+                </a>
+                ${signOutBtn}
+            `;
+            // Adjust signOutBtn in sidebarAuth to be full width
+            const sidebarSignOut = sidebarAuth.querySelector('button');
+            if (sidebarSignOut) {
+                sidebarSignOut.style.width = '100%';
+                sidebarSignOut.style.marginTop = '12px';
+                sidebarSignOut.style.padding = '14px';
+                sidebarSignOut.style.border = '1px solid var(--border)';
+            }
         }
 
         // Add Dashboard link to sidebar if not already there

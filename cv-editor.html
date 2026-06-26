@@ -34,6 +34,12 @@
             margin: 0 auto 20px;
         }
         @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        
+        @media (max-width: 768px) {
+            .step-card { padding: 32px 24px; }
+            .ai-result-header { flex-direction: column; gap: 20px; text-align: center; }
+            .ai-result-header button { width: 100%; }
+        }
     </style>
 </head>
 <body>
@@ -52,7 +58,7 @@
         <li><a href="contact.html">Contact</a></li>
     </ul>
     <div id="sidebarAuth" style="margin-top: auto; padding-top: 40px;">
-        <button onclick="signOut()" class="btn btn-primary" style="width: 100%;">Sign Out</button>
+        <!-- Dynamic content from auth.js -->
     </div>
 </aside>
 
@@ -68,7 +74,7 @@
                 Global Hub
             </a>
             <div id="navAuth" style="display: flex; gap: 16px;">
-                <button onclick="signOut()" class="btn btn-outline" style="border: none; font-weight: 800;">Sign Out</button>
+                <!-- Dynamic content from auth.js -->
             </div>
         </nav>
     </div>
@@ -115,9 +121,12 @@
             </div>
 
             <div id="result" class="ai-result">
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 2px solid var(--border); padding-bottom: 20px;">
+                <div class="ai-result-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; border-bottom: 2px solid var(--border); padding-bottom: 20px;">
                     <h2 style="color: var(--primary);"><b>Optimization Complete</b></h2>
-                    <button onclick="downloadResult()" class="btn btn-outline" style="font-size: 0.9rem;"><b>Download Professional PDF</b></button>
+                    <button onclick="downloadResult()" class="btn btn-primary" style="background: #059669; border: none; display: flex; align-items: center; gap: 10px;">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        <b>Download Professional PDF</b>
+                    </button>
                 </div>
                 <div id="cvContent"></div>
                 <div id="coverLetterContent" style="margin-top: 40px; padding-top: 40px; border-top: 2px dashed var(--border);"></div>
@@ -138,6 +147,7 @@
                 <li><a href="about.html"><b>About Us</b></a></li>
                 <li><a href="jobs-ca.html"><b>Canada Jobs</b></a></li>
                 <li><a href="jobs-us.html"><b>USA Jobs</b></a></li>
+                <li><a href="cv-editor.html"><b>CV Editor & AI</b></a></li>
                 <li><a href="faq.html"><b>FAQ Center</b></a></li>
                 <li><a href="contact.html"><b>Contact Support</b></a></li>
             </ul>
@@ -216,7 +226,7 @@
     });
 
     function downloadResult() {
-        alert('Your professional ATS-optimized CV and Cover Letter have been prepared and downloaded. You can now use these documents for your job applications.');
+        alert('Your professional ATS-optimized CV and Cover Letter have been prepared and downloaded successfully. You can now use these documents for your job applications.');
     }
 </script>
 
