@@ -19,9 +19,20 @@
         .status-approved { background: #DCFCE7; color: #166534; }
         .status-denied { background: #FEE2E2; color: #991B1B; }
         .action-btn { padding: 8px 16px; border-radius: 8px; font-size: 0.8rem; font-weight: 800; cursor: pointer; border: none; margin-right: 4px; }
-        .btn-approve { background: #059669; color: white; }
-        .btn-deny { background: #DC2626; color: white; }
-        @media (max-width: 768px) { .data-table { display: block; overflow-x: auto; } }
+        .btn-view { background: var(--primary); color: white; }
+        
+        /* Review Modal Styling */
+        .review-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 3000; align-items: center; justify-content: center; padding: 20px; }
+        .modal-content { background: white; padding: 40px; border-radius: 32px; max-width: 800px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative; }
+        .detail-row { display: grid; grid-template-columns: 1fr 2fr; gap: 20px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+        .detail-label { font-weight: 800; color: var(--text-muted); text-transform: uppercase; font-size: 0.75rem; }
+        .detail-value { font-weight: 600; color: var(--secondary); }
+        
+        .decision-box { margin-top: 32px; padding: 24px; background: var(--bg-light); border-radius: 20px; }
+        .btn-approve { background: #059669; color: white; padding: 12px 24px; border-radius: 12px; font-weight: 800; border: none; cursor: pointer; }
+        .btn-deny { background: #DC2626; color: white; padding: 12px 24px; border-radius: 12px; font-weight: 800; border: none; cursor: pointer; }
+        
+        @media (max-width: 768px) { .data-table { display: block; overflow-x: auto; } .detail-row { grid-template-columns: 1fr; gap: 4px; } }
     </style>
 </head>
 <body>
@@ -53,7 +64,7 @@
                 <div id="totalApps" class="stat-value">0</div>
             </div>
             <div class="stat-box">
-                <p style="color: var(--text-muted); font-weight: 800;">Pending Payments</p>
+                <p style="color: var(--text-muted); font-weight: 800;">Pending Review</p>
                 <div id="pendingPayments" class="stat-value">0</div>
             </div>
             <div class="stat-box">
@@ -63,7 +74,7 @@
         </div>
 
         <div class="admin-card">
-            <h2 style="margin-bottom: 24px;"><b>Job Applications & Payments</b></h2>
+            <h2 style="margin-bottom: 24px;"><b>Manage Applications</b></h2>
             <table class="data-table">
                 <thead>
                     <tr>
@@ -90,8 +101,7 @@
                         <th>Email</th>
                         <th>Destination</th>
                         <th>Field</th>
-                        <th>Access</th>
-                        <th>Actions</th>
+                        <th>Status</th>
                     </tr>
                 </thead>
                 <tbody id="usersTableBody">
@@ -102,16 +112,34 @@
     </div>
 </main>
 
-<script>
-    // Admin Security Check
-    if (localStorage.getItem('isAdmin') !== 'true') {
-        window.location.href = 'signin.html';
-    }
+<!-- Review Modal -->
+<div class="review-modal" id="reviewModal">
+    <div class="modal-content">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px;">
+            <h2 style="color: var(--primary);"><b>Review Application</b></h2>
+            <button onclick="closeReview()" style="background: none; border: none; cursor: pointer; color: var(--text-muted);">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
 
-    function adminLogout() {
-        localStorage.removeItem('isAdmin');
-        window.location.href = 'signin.html';
-    }
+        <div id="reviewContent">
+            <!-- Dynamic Review Details -->
+        </div>
+
+        <div class="decision-box">
+            <h3 style="margin-bottom: 16px;"><b>Admin Decision</b></h3>
+            <textarea id="adminReason" rows="3" placeholder="Enter reason for approval or denial..." style="width: 100%; padding: 14px; border: 1px solid var(--border); border-radius: 12px; font-family: inherit; margin-bottom: 20px;"></textarea>
+            <div style="display: flex; gap: 12px;">
+                <button id="approveBtn" class="btn-approve">Approve Application</button>
+                <button id="denyBtn" class="btn-deny">Deny Application</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    if (localStorage.getItem('isAdmin') !== 'true') { window.location.href = 'signin.html'; }
+    function adminLogout() { localStorage.removeItem('isAdmin'); window.location.href = 'signin.html'; }
 
     function loadAdminData() {
         const users = JSON.parse(localStorage.getItem('users')) || [];
@@ -119,69 +147,82 @@
 
         document.getElementById('totalUsers').innerText = users.length;
         document.getElementById('totalApps').innerText = apps.length;
-        document.getElementById('pendingPayments').innerText = apps.filter(a => a.paymentStatus === 'Awaiting Verification').length;
+        document.getElementById('pendingPayments').innerText = apps.filter(a => a.status === 'Pending Review').length;
         document.getElementById('approvedApps').innerText = apps.filter(a => a.status === 'Approved').length;
 
-        // Load Applications
         const appsTable = document.getElementById('appsTableBody');
         appsTable.innerHTML = apps.length ? '' : '<tr><td colspan="6" style="text-align:center">No applications found</td></tr>';
         apps.forEach(app => {
-            const row = `
+            appsTable.innerHTML += `
                 <tr>
                     <td>${app.date}</td>
-                    <td><b>${app.fullName}</b><br><small>${app.email}</small></td>
+                    <td><b>${app.fullName}</b></td>
                     <td>${app.jobTitle}</td>
                     <td><code style="background:#F1F5F9;padding:4px 8px;border-radius:4px;color:var(--primary)">${app.txnCode}</code></td>
                     <td><span class="status-badge status-${app.status === 'Approved' ? 'approved' : (app.status === 'Denied' ? 'denied' : 'pending')}">${app.status || 'Pending'}</span></td>
-                    <td>
-                        <button onclick="updateAppStatus(${app.id}, 'Approved')" class="action-btn btn-approve">Approve</button>
-                        <button onclick="updateAppStatus(${app.id}, 'Denied')" class="action-btn btn-deny">Deny</button>
-                    </td>
+                    <td><button onclick="viewApplication(${app.id})" class="action-btn btn-view">Review</button></td>
                 </tr>
             `;
-            appsTable.innerHTML += row;
         });
 
-        // Load Users
         const usersTable = document.getElementById('usersTableBody');
-        usersTable.innerHTML = users.length ? '' : '<tr><td colspan="6" style="text-align:center">No users found</td></tr>';
+        usersTable.innerHTML = users.length ? '' : '<tr><td colspan="5" style="text-align:center">No users found</td></tr>';
         users.forEach(user => {
-            const row = `
+            usersTable.innerHTML += `
                 <tr>
                     <td><b>${user.firstName} ${user.lastName}</b></td>
                     <td>${user.email}</td>
                     <td>${user.destination || 'N/A'}</td>
                     <td>${user.field || 'N/A'}</td>
                     <td><span class="status-badge status-approved">Active</span></td>
-                    <td>
-                        <button onclick="toggleUserAccess('${user.email}')" class="action-btn btn-deny">Revoke Access</button>
-                    </td>
                 </tr>
             `;
-            usersTable.innerHTML += row;
         });
     }
 
-    function updateAppStatus(id, status) {
+    function viewApplication(id) {
+        const apps = JSON.parse(localStorage.getItem('applications')) || [];
+        const app = apps.find(a => a.id === id);
+        if (!app) return;
+
+        const content = `
+            <div class="detail-row"><div class="detail-label">Full Name</div><div class="detail-value">${app.fullName}</div></div>
+            <div class="detail-row"><div class="detail-label">Email Address</div><div class="detail-value">${app.email}</div></div>
+            <div class="detail-row"><div class="detail-label">Phone Number</div><div class="detail-value">${app.phone}</div></div>
+            <div class="detail-row"><div class="detail-label">Nationality</div><div class="detail-value">${app.nationality}</div></div>
+            <div class="detail-row"><div class="detail-label">Job Applied</div><div class="detail-value">${app.jobTitle}</div></div>
+            <div class="detail-row"><div class="detail-label">TXN Code</div><div class="detail-value" style="color:var(--primary)"><b>${app.txnCode}</b></div></div>
+            <div class="detail-row"><div class="detail-label">CV Filename</div><div class="detail-value">${app.cvName}</div></div>
+            <div class="detail-row"><div class="detail-label">Passport Filename</div><div class="detail-value">${app.passportName}</div></div>
+            <div class="detail-row"><div class="detail-label">Cover Letter</div><div class="detail-value" style="white-space:pre-wrap">${app.coverLetter || 'No cover letter provided.'}</div></div>
+        `;
+        document.getElementById('reviewContent').innerHTML = content;
+        document.getElementById('adminReason').value = app.adminNote || '';
+        
+        document.getElementById('approveBtn').onclick = () => processDecision(id, 'Approved');
+        document.getElementById('denyBtn').onclick = () => processDecision(id, 'Denied');
+        
+        document.getElementById('reviewModal').style.display = 'flex';
+    }
+
+    function processDecision(id, status) {
+        const reason = document.getElementById('adminReason').value;
+        if (!reason && status === 'Denied') { alert('Please provide a reason for denial.'); return; }
+
         let apps = JSON.parse(localStorage.getItem('applications')) || [];
         const index = apps.findIndex(a => a.id === id);
         if (index !== -1) {
-            const reason = status === 'Denied' ? prompt('Reason for denial:') : null;
             apps[index].status = status;
             apps[index].adminNote = reason;
             apps[index].paymentStatus = status === 'Approved' ? 'Verified' : 'Failed';
             localStorage.setItem('applications', JSON.stringify(apps));
             alert(`Application ${status} successfully.`);
+            closeReview();
             loadAdminData();
         }
     }
 
-    function toggleUserAccess(email) {
-        if (confirm('Are you sure you want to revoke access for this user?')) {
-            alert('User access revoked successfully.');
-        }
-    }
-
+    function closeReview() { document.getElementById('reviewModal').style.display = 'none'; }
     window.onload = loadAdminData;
 </script>
 
