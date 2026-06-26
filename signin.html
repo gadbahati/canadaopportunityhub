@@ -109,6 +109,16 @@
             text-decoration: none;
         }
 
+        .alert {
+            padding: 16px;
+            border-radius: 12px;
+            margin-bottom: 24px;
+            font-weight: 700;
+            display: none;
+        }
+        .alert-error { background: #FEE2E2; color: #991B1B; border: 1px solid #F87171; }
+        .alert-success { background: #DCFCE7; color: #166534; border: 1px solid #4ADE80; }
+
         @media (max-width: 480px) {
             .auth-card {
                 padding: 48px 24px;
@@ -127,14 +137,16 @@
         <h2 style="font-size: 2.25rem; margin-bottom: 12px;"><b>Welcome Back</b></h2>
         <p style="color: var(--text-muted); margin-bottom: 40px; font-weight: 500;"><b>Sign in to your secure career portal.</b></p>
         
-        <form action="#">
+        <div id="alert" class="alert"></div>
+
+        <form id="signinForm">
             <div class="form-group">
                 <label>Personal Email Address</label>
-                <input type="email" required placeholder="Enter your email address">
+                <input type="email" id="email" required placeholder="Enter your email address">
             </div>
             <div class="form-group">
                 <label>Password</label>
-                <input type="password" required placeholder="Enter your password">
+                <input type="password" id="password" required placeholder="Enter your password">
             </div>
             <div style="text-align: right; margin-bottom: 32px;">
                 <a href="#" style="font-size: 0.9rem; color: var(--primary); font-weight: 800;">Forgot Password?</a>
@@ -147,6 +159,36 @@
         </div>
     </div>
 </div>
+
+<script>
+    document.getElementById('signinForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        const alertDiv = document.getElementById('alert');
+
+        // Check if user exists in localStorage
+        const users = JSON.parse(localStorage.getItem('users') || '[]');
+        const user = users.find(u => u.email === email && u.password === password);
+
+        if (user) {
+            alertDiv.style.display = 'block';
+            alertDiv.className = 'alert alert-success';
+            alertDiv.innerHTML = '<b>Login successful! Redirecting to dashboard...</b>';
+            
+            // Set session
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            
+            setTimeout(() => {
+                window.location.href = 'index.html';
+            }, 1500);
+        } else {
+            alertDiv.style.display = 'block';
+            alertDiv.className = 'alert alert-error';
+            alertDiv.innerHTML = '<b>Invalid email or password. Please try again.</b>';
+        }
+    });
+</script>
 
 </body>
 </html>
