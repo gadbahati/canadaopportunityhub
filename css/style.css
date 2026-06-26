@@ -184,6 +184,54 @@ nav {
     padding-left: 30px;
 }
 
+/* Live Notification Styles */
+.live-notification {
+    position: fixed;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--white);
+    padding: 16px 32px;
+    border-radius: 100px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    border: 1px solid var(--border);
+    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    width: auto;
+    max-width: 90%;
+}
+
+.live-notification.show {
+    top: 24px;
+}
+
+.notif-icon {
+    width: 44px;
+    height: 44px;
+    background: var(--primary);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--white);
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+}
+
+.notif-content {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--secondary);
+    white-space: nowrap;
+}
+
+.notif-content b {
+    color: var(--primary);
+}
+
 /* Trustpilot Widget */
 .trustpilot-widget {
     display: inline-flex;
@@ -452,6 +500,7 @@ footer {
     .auth-card { padding: 48px 24px !important; }
     .menu-toggle span { display: none; }
     .sidebar { width: 100%; left: -100%; }
+    .live-notification { padding: 12px 24px; font-size: 0.85rem; }
 }
 
 @media (max-width: 480px) {
