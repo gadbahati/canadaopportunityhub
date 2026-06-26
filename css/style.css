@@ -28,6 +28,7 @@
 
 html {
     scroll-behavior: smooth;
+    font-size: 16px;
 }
 
 body {
@@ -36,12 +37,14 @@ body {
     color: var(--text-main);
     background-color: var(--bg-light);
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Plus Jakarta Sans', sans-serif;
     color: var(--secondary);
     font-weight: 700;
+    line-height: 1.2;
 }
 
 .container {
@@ -58,6 +61,11 @@ a {
 
 b, strong {
     font-weight: 700;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
 }
 
 /* Header & Sidebar Navigation */
@@ -140,7 +148,7 @@ nav {
     list-style: none;
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 16px;
 }
 
 .sidebar-menu a {
@@ -168,6 +176,8 @@ nav {
     box-shadow: var(--shadow-sm);
     border: 1px solid var(--border);
     margin-top: 32px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .tp-star {
@@ -270,7 +280,7 @@ nav {
 footer {
     background: var(--secondary);
     color: var(--white);
-    padding: 100px 0 40px;
+    padding: 80px 0 40px;
     text-align: center;
 }
 
@@ -278,9 +288,13 @@ footer {
     list-style: none;
     display: flex;
     justify-content: center;
-    gap: 32px;
+    gap: 24px;
     flex-wrap: wrap;
     margin-top: 32px;
+}
+
+.footer-links a:hover {
+    color: var(--primary);
 }
 
 /* Buttons */
@@ -292,6 +306,9 @@ footer {
     align-items: center;
     justify-content: center;
     transition: var(--transition);
+    cursor: pointer;
+    border: none;
+    font-family: inherit;
 }
 
 .btn-primary {
@@ -304,9 +321,46 @@ footer {
     transform: translateY(-2px);
 }
 
+.btn-outline {
+    background: transparent;
+    border: 2px solid var(--border);
+    color: var(--secondary);
+}
+
+.btn-outline:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+/* Responsive Media Queries */
+@media (max-width: 1024px) {
+    h1 { font-size: 3.5rem !important; }
+    .ceo-grid { gap: 40px !important; }
+}
+
 @media (max-width: 768px) {
-    .country-selection { grid-template-columns: 1fr; }
-    .ceo-grid { grid-template-columns: 1fr !important; }
+    h1 { font-size: 2.5rem !important; }
+    h2 { font-size: 2rem !important; }
+    .hero { padding: 100px 0 !important; }
+    .country-selection { grid-template-columns: 1fr; gap: 24px; }
+    .ceo-grid { grid-template-columns: 1fr !important; gap: 40px !important; text-align: center; }
+    .ceo-content blockquote { font-size: 1.25rem !important; }
     .tp-grid { grid-template-columns: 1fr !important; }
     .testimonial-grid { grid-template-columns: 1fr !important; }
+    .footer-links { flex-direction: column; gap: 16px; }
+    .job-card { padding: 24px; }
+    .auth-card { padding: 40px 24px !important; }
+    .logo span { display: none; }
+    .menu-toggle span { display: none; }
+    .nav-auth { gap: 8px !important; }
+    .btn { padding: 10px 20px; font-size: 0.9rem; }
+}
+
+@media (max-width: 480px) {
+    h1 { font-size: 2rem !important; }
+    .hero p { font-size: 1rem !important; }
+    .container { padding: 0 16px; }
+    .sidebar { width: 100%; left: -100%; }
+    .auth-logo { font-size: 1.5rem; }
+    .form-grid { grid-template-columns: 1fr !important; }
 }
