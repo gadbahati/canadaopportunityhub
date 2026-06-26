@@ -3,52 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign In | Canada Opportunity Hub</title>
+    <title>Sign In | Global Opportunity Hub</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        .auth-container {
-            padding: 100px 0;
-            background: var(--bg-light);
-            display: flex;
-            justify-content: center;
-        }
-
-        .auth-card {
-            width: 100%;
-            max-width: 480px;
-        }
-
-        .auth-header {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .auth-header h1 {
-            font-size: 2rem;
-            margin-bottom: 12px;
-        }
-
-        .motivational-alert {
-            background: #EBF8FF;
-            border-left: 4px solid #3182CE;
-            padding: 20px;
-            margin-bottom: 30px;
-            border-radius: 4px;
-            font-size: 0.95rem;
-            color: #2B6CB0;
-            line-height: 1.5;
-        }
-    </style>
 </head>
 <body>
 
 <header>
     <div class="container">
         <nav>
-            <a href="index.html" class="logo">Canada Hub</a>
+            <a href="index.html" class="logo">Global Hub</a>
             <ul class="nav-links">
                 <li><a href="about.html">About</a></li>
-                <li><a href="jobs.html">Browse Jobs</a></li>
+                <li><a href="jobs-ca.html">Canada Jobs</a></li>
+                <li><a href="jobs-us.html">US Jobs</a></li>
                 <li><a href="faq.html">FAQ</a></li>
                 <li><a href="contact.html">Contact</a></li>
             </ul>
@@ -64,37 +31,35 @@
     <div class="auth-card">
         <div class="auth-header">
             <h1>Welcome Back</h1>
-            <p>Continue your professional journey in Canada.</p>
+            <p>Continue your professional journey in North America.</p>
         </div>
 
-        <div class="motivational-alert">
-            <strong>Milestone Achievement:</strong> Every successful career in Canada starts with a single login. Our platform has helped over 10,000 professionals earn their first $1,000 CAD and beyond.
+        <div style="background: #EFF6FF; border-left: 4px solid #2563EB; padding: 20px; border-radius: 8px; margin-bottom: 32px; font-size: 0.9rem; color: #1E40AF;">
+            <strong>Pro Tip:</strong> Completing your profile increases your visibility to verified employers by up to 80%.
         </div>
 
-        <div class="form-card">
-            <form action="#">
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" required placeholder="name@company.com">
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" required placeholder="Enter your password">
-                </div>
-                
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; font-size: 0.9rem;">
-                    <label style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
-                        <input type="checkbox" style="width: auto;"> Remember me
-                    </label>
-                    <a href="#" style="color: var(--primary); font-weight: 600;">Forgot Password?</a>
-                </div>
-
-                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 16px;">Sign In to Account</button>
-            </form>
-
-            <div style="text-align: center; margin-top: 30px; font-size: 0.95rem;">
-                <p>New to Canada Opportunity Hub? <a href="signup.html" style="color: var(--primary); font-weight: 700;">Create an account</a></p>
+        <form action="#">
+            <div class="form-group">
+                <label for="email">Work Email Address</label>
+                <input type="email" id="email" required placeholder="name@company.com">
             </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" required placeholder="Enter your password">
+            </div>
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; font-size: 0.875rem;">
+                <label style="display: flex; align-items: center; gap: 8px; cursor: pointer; color: var(--text-muted);">
+                    <input type="checkbox" style="width: auto;"> Remember me
+                </label>
+                <a href="#" style="color: var(--primary); font-weight: 700;">Forgot Password?</a>
+            </div>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 16px; font-size: 1rem;">Sign In to Portal</button>
+        </form>
+
+        <div style="text-align: center; margin-top: 32px; font-size: 0.9rem; color: var(--text-muted);">
+            Don't have an account? <a href="signup.html" style="color: var(--primary); font-weight: 700;">Create one for free</a>
         </div>
     </div>
 </main>
@@ -103,35 +68,33 @@
     <div class="container">
         <div class="footer-grid">
             <div class="footer-brand">
-                <a href="index.html" class="logo">Canada Hub</a>
-                <p>Empowering global talent to find meaningful employment and build successful lives in Canada through professional placement and comprehensive support.</p>
+                <a href="index.html" class="logo">Global Hub</a>
+                <p>Legitimate professional and skilled-trade career placements across North America.</p>
             </div>
             <div>
-                <h4 class="footer-heading">Platform</h4>
+                <h4 class="footer-heading">Portals</h4>
                 <ul class="footer-links">
-                    <li><a href="jobs.html">Browse Jobs</a></li>
-                    <li><a href="about.html">Our Mission</a></li>
-                    <li><a href="faq.html">Help Center</a></li>
-                    <li><a href="contact.html">Contact Support</a></li>
+                    <li><a href="jobs-ca.html">Canada Jobs</a></li>
+                    <li><a href="jobs-us.html">USA Jobs</a></li>
                 </ul>
             </div>
             <div>
                 <h4 class="footer-heading">Legal</h4>
                 <ul class="footer-links">
-                    <li><a href="terms.html">Terms of Service</a></li>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms</a></li>
+                    <li><a href="privacy.html">Privacy</a></li>
                 </ul>
             </div>
             <div>
-                <h4 class="footer-heading">Account</h4>
+                <h4 class="footer-heading">Support</h4>
                 <ul class="footer-links">
-                    <li><a href="signin.html">Sign In</a></li>
-                    <li><a href="signup.html">Create Account</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Canada Opportunity Hub. All rights reserved.</p>
+            <p>&copy; 2026 Global Opportunity Hub.</p>
         </div>
     </div>
 </footer>

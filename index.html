@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="css/style.css">
     <style>
         .hero {
-            padding: 140px 0;
-            background: linear-gradient(135deg, rgba(26, 54, 93, 0.95) 0%, rgba(42, 67, 101, 0.9) 100%), url('https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=1920&q=80');
+            padding: 160px 0;
+            background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1449034446853-66c86144b0ad?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             color: var(--white);
@@ -16,36 +16,37 @@
         }
 
         .hero h1 {
-            font-size: 4rem;
+            font-size: 4.5rem;
             color: var(--white);
             margin-bottom: 24px;
-            line-height: 1.1;
+            letter-spacing: -0.05em;
         }
 
         .hero p {
-            font-size: 1.3rem;
-            max-width: 800px;
+            font-size: 1.25rem;
+            max-width: 700px;
             margin: 0 auto 48px;
-            opacity: 0.9;
+            color: #CBD5E0;
         }
 
-        .country-selector-section {
-            padding: 100px 0;
-            background: var(--bg-light);
+        .browse-section {
+            padding: 120px 0;
+            background: var(--white);
         }
 
         .section-header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 80px;
         }
 
         .section-header h2 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin-bottom: 20px;
+            letter-spacing: -0.025em;
         }
 
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
+            .hero h1 { font-size: 3rem; }
         }
     </style>
 </head>
@@ -56,7 +57,7 @@
         <nav>
             <a href="index.html" class="logo">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z"/></svg>
-                Opportunity Hub
+                Global Hub
             </a>
             <ul class="nav-links">
                 <li><a href="about.html">About</a></li>
@@ -76,33 +77,33 @@
 <main>
     <section class="hero">
         <div class="container">
-            <h1>Your Professional Gateway to North America</h1>
-            <p>Direct access to verified career opportunities in the United States and Canada. Start your international journey with expert support.</p>
+            <h1>Your Future Awaits in North America</h1>
+            <p>Direct access to thousands of verified professional and skilled-trade opportunities across the United States and Canada.</p>
             <div class="hero-btns">
-                <a href="#explore" class="btn btn-primary" style="padding: 16px 40px; font-size: 1.1rem;">Explore Opportunities</a>
-                <a href="about.html" class="btn btn-outline" style="color: white; border-color: white; margin-left: 20px;">Learn More</a>
+                <a href="#browse" class="btn btn-primary" style="padding: 16px 40px; font-size: 1.1rem;">Browse All Jobs</a>
+                <a href="signup.html" class="btn btn-outline" style="background: transparent; color: white; border-color: white; margin-left: 20px;">Join the Hub</a>
             </div>
         </div>
     </section>
 
-    <section id="explore" class="country-selector-section">
+    <section id="browse" class="browse-section">
         <div class="container">
             <div class="section-header">
-                <h2>Choose Your Destination</h2>
-                <p>Select a country to view dedicated job listings and immigration pathways.</p>
+                <h2>Browse by Destination</h2>
+                <p>Choose your target country to view dedicated job listings and immigration support.</p>
             </div>
             <div class="country-selection">
                 <a href="jobs-ca.html" class="country-card">
-                    <img src="https://flagcdn.com/w160/ca.png" alt="Canada Flag" class="flag-icon">
+                    <img src="https://flagcdn.com/w160/ca.png" alt="Canada" class="flag-icon">
                     <h3>Canada Opportunities</h3>
-                    <p>Explore high-demand roles in Ontario, BC, Alberta, and more. Full support for Express Entry and PNP pathways.</p>
-                    <span class="btn btn-outline" style="margin-top: 20px;">View Canada Jobs</span>
+                    <p>Verified roles in Healthcare, Tech, and Skilled Trades across all provinces. Full support for Express Entry and PNP pathways.</p>
+                    <span class="btn btn-primary" style="margin-top: 24px; width: 100%;">View Canada Jobs</span>
                 </a>
                 <a href="jobs-us.html" class="country-card">
-                    <img src="https://flagcdn.com/w160/us.png" alt="USA Flag" class="flag-icon">
+                    <img src="https://flagcdn.com/w160/us.png" alt="USA" class="flag-icon">
                     <h3>USA Opportunities</h3>
-                    <p>Access premium roles in Tech, Healthcare, and Finance. Guidance on H-1B, EB-2, and specialized work visas.</p>
-                    <span class="btn btn-outline" style="margin-top: 20px;">View USA Jobs</span>
+                    <p>Access premium roles in Finance, Healthcare, and Logistics. Expert guidance on H-1B, L-1, and specialized work visas.</p>
+                    <span class="btn btn-primary" style="margin-top: 24px; width: 100%; background: #1E40AF;">View USA Jobs</span>
                 </a>
             </div>
         </div>
@@ -113,27 +114,28 @@
     <div class="container">
         <div class="footer-grid">
             <div class="footer-brand">
-                <a href="index.html" class="logo">Opportunity Hub</a>
+                <a href="index.html" class="logo">Global Hub</a>
                 <p>The premier platform for international professionals seeking legitimate and rewarding career opportunities across North America.</p>
             </div>
             <div>
-                <h4 class="footer-heading">Destinations</h4>
+                <h4 class="footer-heading">Career Portals</h4>
                 <ul class="footer-links">
-                    <li><a href="jobs-ca.html">Canada Career Portal</a></li>
-                    <li><a href="jobs-us.html">USA Career Portal</a></li>
-                    <li><a href="about.html">Our Mission</a></li>
-                    <li><a href="contact.html">Contact Support</a></li>
+                    <li><a href="jobs-ca.html">Canada Jobs</a></li>
+                    <li><a href="jobs-us.html">USA Jobs</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
             <div>
-                <h4 class="footer-heading">Legal</h4>
+                <h4 class="footer-heading">Resources</h4>
                 <ul class="footer-links">
+                    <li><a href="faq.html">FAQ Center</a></li>
                     <li><a href="terms.html">Terms of Service</a></li>
                     <li><a href="privacy.html">Privacy Policy</a></li>
                 </ul>
             </div>
             <div>
-                <h4 class="footer-heading">Account</h4>
+                <h4 class="footer-heading">Join Us</h4>
                 <ul class="footer-links">
                     <li><a href="signin.html">Sign In</a></li>
                     <li><a href="signup.html">Create Account</a></li>
@@ -141,7 +143,7 @@
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Opportunity Hub. All professional placements adhere to international labor standards.</p>
+            <p>&copy; 2026 Global Opportunity Hub. All rights reserved.</p>
             <div class="social-links">
                 <a href="#">LinkedIn</a> | <a href="#">Twitter</a>
             </div>

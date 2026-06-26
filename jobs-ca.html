@@ -3,56 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Canada Careers | Opportunity Hub</title>
+    <title>Canada Careers | Global Hub</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
-        .jobs-container {
+        .page-header {
+            padding: 100px 0;
+            background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .jobs-layout {
             padding: 80px 0;
             display: grid;
             grid-template-columns: 300px 1fr;
-            gap: 40px;
+            gap: 48px;
         }
 
         .filters {
             background: var(--white);
-            padding: 30px;
-            border-radius: var(--radius);
+            padding: 32px;
+            border-radius: 20px;
             border: 1px solid var(--border);
             height: fit-content;
             position: sticky;
-            top: 110px;
-        }
-
-        .job-card {
-            background: var(--white);
-            padding: 32px;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            margin-bottom: 24px;
-            transition: var(--transition);
-            position: relative;
-        }
-
-        .job-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 4px;
-            height: 100%;
-            background: #C53030;
-        }
-
-        .job-meta {
-            display: flex;
-            gap: 24px;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            margin-bottom: 20px;
+            top: 100px;
         }
 
         @media (max-width: 992px) {
-            .jobs-container { grid-template-columns: 1fr; }
+            .jobs-layout { grid-template-columns: 1fr; }
             .filters { position: static; }
         }
     </style>
@@ -62,7 +42,7 @@
 <header>
     <div class="container">
         <nav>
-            <a href="index.html" class="logo">Opportunity Hub</a>
+            <a href="index.html" class="logo">Global Hub</a>
             <ul class="nav-links">
                 <li><a href="about.html">About</a></li>
                 <li><a href="jobs-ca.html" style="color: var(--primary);">Canada Jobs</a></li>
@@ -78,72 +58,104 @@
     </div>
 </header>
 
-<section class="page-header" style="background: linear-gradient(rgba(26, 54, 93, 0.8), rgba(26, 54, 93, 0.8)), url('https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=1920&q=80'); background-size: cover;">
+<section class="page-header">
     <div class="container">
-        <img src="https://flagcdn.com/w80/ca.png" alt="Canada Flag" style="width: 60px; margin-bottom: 20px; border-radius: 4px;">
-        <h1>Professional Careers in Canada</h1>
-        <p>Explore verified high-demand roles across all Canadian provinces.</p>
+        <img src="https://flagcdn.com/w80/ca.png" alt="Canada" style="width: 48px; margin-bottom: 24px; border-radius: 4px;">
+        <h1 style="color: white; font-size: 3.5rem;">Canada Career Portal</h1>
+        <p style="color: #E2E8F0; font-size: 1.25rem;">Verified professional and skilled-trade opportunities across Canada.</p>
     </div>
 </section>
 
 <main class="container">
-    <div class="jobs-container">
+    <div class="jobs-layout">
         <aside class="filters">
-            <div class="filter-group">
-                <h4>Sector</h4>
-                <select class="form-group" style="width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid var(--border); border-radius: 4px;">
-                    <option>All Sectors</option>
-                    <option>Healthcare</option>
-                    <option>Technology</option>
+            <h4 style="margin-bottom: 24px;">Filter Results</h4>
+            <div class="form-group">
+                <label>Job Sector</label>
+                <select>
+                    <option>All Categories</option>
+                    <option>Logistics & Driving</option>
+                    <option>Caregiving & Healthcare</option>
                     <option>Construction</option>
+                    <option>Technology</option>
                 </select>
             </div>
-            <button class="btn btn-primary" style="width: 100%;">Search Canada Jobs</button>
+            <button class="btn btn-primary" style="width: 100%;">Search Jobs</button>
         </aside>
 
         <section class="jobs-feed">
+            <!-- Job 1: Driver -->
             <div class="job-card">
-                <div class="job-header">
+                <div class="job-badge badge-ca">
+                    <img src="https://flagcdn.com/w20/ca.png" alt="" class="job-flag">
+                    Canada • Logistics
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
                     <div>
-                        <span class="job-badge badge-ca">Canada • High Demand</span>
-                        <h3 style="margin-top: 10px;">Registered Nurse (Acute Care)</h3>
-                        <p style="color: var(--primary); font-weight: 600;">Toronto General Hospital</p>
+                        <h3>Long-Haul Truck Driver (Class 1)</h3>
+                        <p style="color: var(--primary); font-weight: 600;">Canadian Pacific Logistics</p>
                     </div>
                     <div style="text-align: right;">
-                        <p style="font-weight: 700; color: var(--secondary);">$82,000 - $105,000 CAD</p>
+                        <p style="font-weight: 800; color: var(--secondary);">$28 - $35 / hour</p>
+                        <p style="font-size: 0.8rem; color: var(--text-muted);">Relocation Support</p>
                     </div>
                 </div>
-                <div class="job-meta">
+                <div style="display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">
+                    <span>Calgary, AB</span>
+                    <span>Full-time</span>
+                    <span>LMIA Approved</span>
+                </div>
+                <p style="margin-bottom: 24px;">Seeking experienced drivers for cross-province routes. Employer provides assistance with LMIA and permanent residency pathways for qualified international applicants.</p>
+                <a href="apply.html?country=ca&id=driver-ca" class="btn btn-primary">Apply Now</a>
+            </div>
+
+            <!-- Job 2: Caretaker -->
+            <div class="job-card">
+                <div class="job-badge badge-ca">
+                    <img src="https://flagcdn.com/w20/ca.png" alt="" class="job-flag">
+                    Canada • Caregiving
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                    <div>
+                        <h3>Home Care Provider / Caretaker</h3>
+                        <p style="color: var(--primary); font-weight: 600;">Comfort Keepers Canada</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <p style="font-weight: 800; color: var(--secondary);">$22 - $26 / hour</p>
+                        <p style="font-size: 0.8rem; color: var(--text-muted);">Training Provided</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">
+                    <span>Vancouver, BC</span>
+                    <span>Full-time</span>
+                    <span>NOC 44101</span>
+                </div>
+                <p style="margin-bottom: 24px;">Provide essential support to seniors in their homes. No medical degree required, but compassionate nature and basic caregiving experience are essential. Visa sponsorship available.</p>
+                <a href="apply.html?country=ca&id=caretaker-ca" class="btn btn-primary">Apply Now</a>
+            </div>
+
+            <!-- Job 3: Nurse -->
+            <div class="job-card">
+                <div class="job-badge badge-ca">
+                    <img src="https://flagcdn.com/w20/ca.png" alt="" class="job-flag">
+                    Canada • Healthcare
+                </div>
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
+                    <div>
+                        <h3>Registered Nurse (Acute Care)</h3>
+                        <p style="color: var(--primary); font-weight: 600;">Unity Health Toronto</p>
+                    </div>
+                    <div style="text-align: right;">
+                        <p style="font-weight: 800; color: var(--secondary);">$85,000 - $110,000 CAD</p>
+                    </div>
+                </div>
+                <div style="display: flex; gap: 20px; font-size: 0.9rem; color: var(--text-muted); margin-bottom: 20px;">
                     <span>Toronto, ON</span>
                     <span>Full-time</span>
                     <span>NOC 31301</span>
                 </div>
-                <p style="margin-bottom: 24px;">Actively seeking experienced RNs for critical care units. Comprehensive relocation support and assistance with provincial licensing provided.</p>
-                <div class="job-footer">
-                    <a href="apply.html?country=ca&id=31301" class="btn btn-primary">Apply for Position</a>
-                </div>
-            </div>
-
-            <div class="job-card">
-                <div class="job-header">
-                    <div>
-                        <span class="job-badge badge-ca">Canada • Verified</span>
-                        <h3 style="margin-top: 10px;">Senior Cloud Architect</h3>
-                        <p style="color: var(--primary); font-weight: 600;">Shopify Inc.</p>
-                    </div>
-                    <div style="text-align: right;">
-                        <p style="font-weight: 700; color: var(--secondary);">$140,000 - $185,000 CAD</p>
-                    </div>
-                </div>
-                <div class="job-meta">
-                    <span>Remote / Ottawa, ON</span>
-                    <span>Full-time</span>
-                    <span>NOC 21231</span>
-                </div>
-                <p style="margin-bottom: 24px;">Leading the evolution of global commerce. Join our infrastructure team to build highly resilient cloud systems. Visa sponsorship available for qualified seniors.</p>
-                <div class="job-footer">
-                    <a href="apply.html?country=ca&id=21231" class="btn btn-primary">Apply for Position</a>
-                </div>
+                <p style="margin-bottom: 24px;">Join a leading research hospital. We provide comprehensive support for international nurses, including licensing guidance and Express Entry sponsorship.</p>
+                <a href="apply.html?country=ca&id=nurse-ca" class="btn btn-primary">Apply Now</a>
             </div>
         </section>
     </div>
@@ -153,35 +165,33 @@
     <div class="container">
         <div class="footer-grid">
             <div class="footer-brand">
-                <a href="index.html" class="logo">Opportunity Hub</a>
-                <p>Empowering global talent to find meaningful employment and build successful lives in North America through professional placement and comprehensive support.</p>
+                <a href="index.html" class="logo">Global Hub</a>
+                <p>Legitimate professional and skilled-trade career placements across North America.</p>
             </div>
             <div>
-                <h4 class="footer-heading">Destinations</h4>
+                <h4 class="footer-heading">Portals</h4>
                 <ul class="footer-links">
-                    <li><a href="jobs-ca.html">Canada Careers</a></li>
-                    <li><a href="jobs-us.html">USA Careers</a></li>
-                    <li><a href="about.html">Our Mission</a></li>
-                    <li><a href="contact.html">Contact Support</a></li>
+                    <li><a href="jobs-ca.html">Canada Jobs</a></li>
+                    <li><a href="jobs-us.html">USA Jobs</a></li>
                 </ul>
             </div>
             <div>
                 <h4 class="footer-heading">Legal</h4>
                 <ul class="footer-links">
-                    <li><a href="terms.html">Terms of Service</a></li>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms</a></li>
+                    <li><a href="privacy.html">Privacy</a></li>
                 </ul>
             </div>
             <div>
-                <h4 class="footer-heading">Account</h4>
+                <h4 class="footer-heading">Support</h4>
                 <ul class="footer-links">
-                    <li><a href="signin.html">Sign In</a></li>
-                    <li><a href="signup.html">Create Account</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Opportunity Hub. All rights reserved.</p>
+            <p>&copy; 2026 Global Opportunity Hub.</p>
         </div>
     </div>
 </footer>
