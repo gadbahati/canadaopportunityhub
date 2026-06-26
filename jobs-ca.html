@@ -3,277 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Canada Careers | Global Hub</title>
+    <title>Canada Jobs | Global Opportunity Hub</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        .page-header {
-            padding: 100px 0;
-            background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)), url('https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            color: var(--white);
-            text-align: center;
-        }
-
-        .category-nav {
-            background: var(--white);
-            padding: 20px 0;
-            border-bottom: 1px solid var(--border);
-            position: sticky;
-            top: 80px;
-            z-index: 900;
-        }
-
-        .category-nav .container {
-            display: flex;
-            gap: 40px;
-            justify-content: center;
-        }
-
-        .category-link {
-            font-weight: 700;
-            color: var(--text-muted);
-            font-size: 0.95rem;
-            cursor: pointer;
-            padding: 8px 0;
-            border-bottom: 2px solid transparent;
-        }
-
-        .category-link.active {
-            color: var(--primary);
-            border-bottom-color: var(--primary);
-        }
-
-        .jobs-section {
-            padding: 80px 0;
-        }
-
-        .section-title {
-            margin-bottom: 40px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-        }
-
-        .section-title h2 { font-size: 2rem; }
-
-        .job-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 24px;
-        }
-
-        /* Auth Modal Placeholder */
-        .auth-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(15, 23, 42, 0.8);
-            backdrop-filter: blur(4px);
-            z-index: 2000;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .auth-modal {
-            background: var(--white);
-            padding: 48px;
-            border-radius: 24px;
-            max-width: 480px;
-            text-align: center;
-            box-shadow: var(--shadow-lg);
-        }
-    </style>
 </head>
 <body>
 
 <header>
     <div class="container">
         <nav>
-            <a href="index.html" class="logo">Global Hub</a>
-            <ul class="nav-links">
-                <li><a href="about.html">About</a></li>
-                <li><a href="jobs-ca.html" style="color: var(--primary);">Canada Jobs</a></li>
-                <li><a href="jobs-us.html">US Jobs</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="contact.html">Contact</a></li>
+            <a href="index.html" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z"/></svg>
+                Global Hub
+            </a>
+            <ul class="nav-menu">
+                <li><a href="about.html"><b>About</b></a></li>
+                <li><a href="jobs-ca.html"><b>Canada Jobs</b></a></li>
+                <li><a href="jobs-us.html"><b>US Jobs</b></a></li>
+                <li><a href="faq.html"><b>FAQ</b></a></li>
+                <li><a href="contact.html"><b>Contact</b></a></li>
             </ul>
-            <div class="nav-auth">
-                <a href="signin.html" class="btn btn-outline">Sign In</a>
+            <div style="display: flex; gap: 16px;">
+                <a href="signin.html" class="btn btn-outline" style="border: none; font-weight: 700;">Sign In</a>
                 <a href="signup.html" class="btn btn-primary">Get Started</a>
             </div>
         </nav>
     </div>
 </header>
 
-<section class="page-header">
+<main style="padding: 80px 0;">
     <div class="container">
-        <img src="https://flagcdn.com/w80/ca.png" alt="Canada" style="width: 48px; margin-bottom: 24px; border-radius: 4px;">
-        <h1 style="color: white;">Canada Career Portal</h1>
-        <p style="color: #E2E8F0;">From professional expertise to entry-level opportunities.</p>
+        <div style="text-align: center; margin-bottom: 60px;">
+            <img src="https://flagcdn.com/w160/ca.png" alt="Canada" style="width: 80px; margin-bottom: 24px;">
+            <h1 style="font-size: 3rem; margin-bottom: 16px;"><b>Canada Opportunities</b></h1>
+            <p style="color: var(--text-muted); font-size: 1.1rem; max-width: 700px; margin: 0 auto;"><b>Explore verified roles across Canada. We provide full support for Express Entry, PNP, and work permit applications.</b></p>
+        </div>
+
+        <div style="margin-bottom: 80px;">
+            <h2 style="text-align: center; margin-bottom: 40px; font-size: 2rem; color: var(--primary);"><b>No Experience / Essential Roles</b></h2>
+            <div style="max-width: 900px; margin: 0 auto;">
+                <div class="job-card">
+                    <div class="job-badge"><b>Canada • Logistics</b></div>
+                    <h3><b>Warehouse Associate (No Experience)</b></h3>
+                    <p style="color: var(--primary); font-weight: 800; margin-bottom: 12px;"><b>Amazon Canada</b></p>
+                    <p style="font-size: 1.25rem; font-weight: 700; margin-bottom: 20px;"><b>$19.50 - $22.00 / hour</b></p>
+                    <p style="color: var(--text-muted); margin-bottom: 32px;"><b>Immediate openings for fulfillment centers. No previous experience required. Training provided on-site. Health benefits and career growth pathways available.</b></p>
+                    <button onclick="showAuthModal()" class="btn btn-primary" style="width: 100%; max-width: 300px;"><b>Apply for Position</b></button>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-badge"><b>Canada • General Labour</b></div>
+                    <h3><b>Construction General Labourer</b></h3>
+                    <p style="color: var(--primary); font-weight: 800; margin-bottom: 12px;"><b>EllisDon Construction</b></p>
+                    <p style="font-size: 1.25rem; font-weight: 700; margin-bottom: 20px;"><b>$24 - $30 / hour</b></p>
+                    <p style="color: var(--text-muted); margin-bottom: 32px;"><b>Support major infrastructure projects. No experience necessary; willingness to learn and physical fitness required. PPE and safety training provided.</b></p>
+                    <button onclick="showAuthModal()" class="btn btn-primary" style="width: 100%; max-width: 300px;"><b>Apply for Position</b></button>
+                </div>
+
+                <div class="job-card">
+                    <div class="job-badge"><b>Canada • Hospitality</b></div>
+                    <h3><b>Hotel Guest Service Associate</b></h3>
+                    <p style="color: var(--primary); font-weight: 800; margin-bottom: 12px;"><b>Fairmont Hotels & Resorts</b></p>
+                    <p style="font-size: 1.25rem; font-weight: 700; margin-bottom: 20px;"><b>$21 - $25 / hour</b></p>
+                    <p style="color: var(--text-muted); margin-bottom: 32px;"><b>Start your career in world-class hospitality. No experience required. We value positive attitude and communication skills. Staff housing options available.</b></p>
+                    <button onclick="showAuthModal()" class="btn btn-primary" style="width: 100%; max-width: 300px;"><b>Apply for Position</b></button>
+                </div>
+            </div>
+        </div>
     </div>
-</section>
-
-<div class="category-nav">
-    <div class="container">
-        <a href="#professional" class="category-link active">Professional Expertise</a>
-        <a href="#entry-level" class="category-link">No Experience / General</a>
-    </div>
-</div>
-
-<main class="container">
-    <!-- Professional Section -->
-    <section id="professional" class="jobs-section">
-        <div class="section-title">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            <h2>Professional Expertise</h2>
-        </div>
-        <div class="job-grid">
-            <div class="job-card">
-                <div class="job-badge badge-ca"><img src="https://flagcdn.com/w20/ca.png" class="job-flag"> Canada • Technology</div>
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
-                    <div>
-                        <h3>Cloud Systems Architect</h3>
-                        <p style="color: var(--primary); font-weight: 600;">Telus Communications</p>
-                    </div>
-                    <div style="text-align: right;">
-                        <p style="font-weight: 800; color: var(--secondary);">$135,000 - $170,000 CAD</p>
-                    </div>
-                </div>
-                <p style="margin-bottom: 24px;">Leading digital transformation projects. Requires 5+ years experience in AWS/Azure and degree in CS or Engineering. Visa sponsorship provided.</p>
-                <button onclick="checkAuth()" class="btn btn-primary">Apply for Position</button>
-            </div>
-
-            <div class="job-card">
-                <div class="job-badge badge-ca"><img src="https://flagcdn.com/w20/ca.png" class="job-flag"> Canada • Healthcare</div>
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
-                    <div>
-                        <h3>Senior Medical Laboratory Technologist</h3>
-                        <p style="color: var(--primary); font-weight: 600;">LifeLabs Canada</p>
-                    </div>
-                    <div style="text-align: right;">
-                        <p style="font-weight: 800; color: var(--secondary);">$78,000 - $95,000 CAD</p>
-                    </div>
-                </div>
-                <p style="margin-bottom: 24px;">Critical role in diagnostic services. Requires provincial certification and specialized expertise in clinical chemistry or hematology.</p>
-                <button onclick="checkAuth()" class="btn btn-primary">Apply for Position</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Entry Level Section -->
-    <section id="entry-level" class="jobs-section" style="border-top: 1px solid var(--border);">
-        <div class="section-title">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-            <h2>No Experience / Essential Roles</h2>
-        </div>
-        <div class="job-grid">
-            <div class="job-card">
-                <div class="job-badge badge-ca"><img src="https://flagcdn.com/w20/ca.png" class="job-flag"> Canada • Logistics</div>
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
-                    <div>
-                        <h3>Warehouse Associate (No Experience)</h3>
-                        <p style="color: var(--primary); font-weight: 600;">Amazon Canada</p>
-                    </div>
-                    <div style="text-align: right;">
-                        <p style="font-weight: 800; color: var(--secondary);">$19.50 - $22.00 / hour</p>
-                    </div>
-                </div>
-                <p style="margin-bottom: 24px;">Immediate openings for fulfillment centers. No previous experience required. Training provided on-site. Health benefits and career growth pathways available.</p>
-                <button onclick="checkAuth()" class="btn btn-primary">Apply for Position</button>
-            </div>
-
-            <div class="job-card">
-                <div class="job-badge badge-ca"><img src="https://flagcdn.com/w20/ca.png" class="job-flag"> Canada • General Labour</div>
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
-                    <div>
-                        <h3>Construction General Labourer</h3>
-                        <p style="color: var(--primary); font-weight: 600;">EllisDon Construction</p>
-                    </div>
-                    <div style="text-align: right;">
-                        <p style="font-weight: 800; color: var(--secondary);">$24 - $30 / hour</p>
-                    </div>
-                </div>
-                <p style="margin-bottom: 24px;">Support major infrastructure projects. No experience necessary; willingness to learn and physical fitness required. PPE and safety training provided.</p>
-                <button onclick="checkAuth()" class="btn btn-primary">Apply for Position</button>
-            </div>
-
-            <div class="job-card">
-                <div class="job-badge badge-ca"><img src="https://flagcdn.com/w20/ca.png" class="job-flag"> Canada • Hospitality</div>
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px;">
-                    <div>
-                        <h3>Hotel Guest Service Associate</h3>
-                        <p style="color: var(--primary); font-weight: 600;">Fairmont Hotels & Resorts</p>
-                    </div>
-                    <div style="text-align: right;">
-                        <p style="font-weight: 800; color: var(--secondary);">$21 - $25 / hour</p>
-                    </div>
-                </div>
-                <p style="margin-bottom: 24px;">Start your career in world-class hospitality. No experience required. We value positive attitude and communication skills. Staff housing options available.</p>
-                <button onclick="checkAuth()" class="btn btn-primary">Apply for Position</button>
-            </div>
-        </div>
-    </section>
 </main>
 
-<!-- Auth Modal -->
-<div id="authModal" class="auth-overlay">
-    <div class="auth-modal">
-        <div style="background: #EFF6FF; width: 64px; height: 64px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 24px;">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#2563EB" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-        </div>
-        <h2 style="margin-bottom: 16px;">Account Required</h2>
-        <p style="color: var(--text-muted); margin-bottom: 32px; line-height: 1.5;">To protect your professional data and process applications securely, you must sign in or create an account before applying for positions.</p>
-        <div style="display: flex; flex-direction: column; gap: 12px;">
-            <a href="signin.html" class="btn btn-primary" style="width: 100%;">Sign In to Account</a>
-            <a href="signup.html" class="btn btn-outline" style="width: 100%;">Create New Account</a>
-            <button onclick="closeModal()" style="background: none; border: none; color: var(--text-muted); font-size: 0.875rem; cursor: pointer; margin-top: 10px;">Maybe Later</button>
+<div id="authModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(8px); z-index: 2000; align-items: center; justify-content: center; padding: 24px;">
+    <div style="background: white; padding: 48px; border-radius: 32px; max-width: 500px; width: 100%; text-align: center; position: relative;">
+        <button onclick="hideAuthModal()" style="position: absolute; top: 24px; right: 24px; background: none; border: none; cursor: pointer; color: var(--text-muted);">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+        <h2 style="margin-bottom: 16px;"><b>Account Required</b></h2>
+        <p style="color: var(--text-muted); margin-bottom: 32px; line-height: 1.5;"><b>To apply for this position and access our full support services, please sign in or create a free account.</b></p>
+        <div style="display: flex; flex-direction: column; gap: 16px;">
+            <a href="signin.html" class="btn btn-primary" style="width: 100%;"><b>Sign In</b></a>
+            <a href="signup.html" class="btn btn-outline" style="width: 100%;"><b>Create Account</b></a>
         </div>
     </div>
 </div>
 
 <script>
-    function checkAuth() {
-        document.getElementById('authModal').style.display = 'flex';
-    }
-    function closeModal() {
-        document.getElementById('authModal').style.display = 'none';
-    }
+    function showAuthModal() { document.getElementById('authModal').style.display = 'flex'; }
+    function hideAuthModal() { document.getElementById('authModal').style.display = 'none'; }
 </script>
 
 <footer>
     <div class="container">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <a href="index.html" class="logo">Global Hub</a>
-                <p>Legitimate professional and skilled-trade career placements across North America.</p>
-            </div>
-            <div>
-                <h4 class="footer-heading">Portals</h4>
-                <ul class="footer-links">
-                    <li><a href="jobs-ca.html">Canada Jobs</a></li>
-                    <li><a href="jobs-us.html">USA Jobs</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="footer-heading">Legal</h4>
-                <ul class="footer-links">
-                    <li><a href="terms.html">Terms</a></li>
-                    <li><a href="privacy.html">Privacy</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="footer-heading">Support</h4>
-                <ul class="footer-links">
-                    <li><a href="contact.html">Contact Us</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                </ul>
-            </div>
+        <div class="footer-brand">
+            <a href="index.html" class="logo" style="color: white; margin-bottom: 24px; justify-content: center;">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z"/></svg>
+                Global Hub
+            </a>
+            <p style="color: #94A3B8; margin-bottom: 32px;">The premier platform for international professionals seeking legitimate and rewarding career opportunities across North America.</p>
+            <ul class="footer-links">
+                <li><a href="about.html"><b>About Us</b></a></li>
+                <li><a href="jobs-ca.html"><b>Canada Jobs</b></a></li>
+                <li><a href="jobs-us.html"><b>USA Jobs</b></a></li>
+                <li><a href="faq.html"><b>FAQ Center</b></a></li>
+                <li><a href="contact.html"><b>Contact Support</b></a></li>
+            </ul>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Global Opportunity Hub.</p>
+            <p><b>&copy; 2026 Global Opportunity Hub. All rights reserved.</b></p>
         </div>
     </div>
 </footer>
