@@ -3,237 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Job Application | Canada Opportunity Hub</title>
+    <title>Apply Now | Global Opportunity Hub</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        .apply-container {
-            padding: 80px 0;
-            background: var(--bg-light);
-        }
-
-        .apply-card {
-            background: var(--white);
-            padding: 50px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-lg);
-            max-width: 900px;
-            margin: 0 auto;
-        }
-
-        .section-header {
-            border-bottom: 2px solid var(--bg-light);
-            padding-bottom: 15px;
-            margin-bottom: 30px;
-            margin-top: 40px;
-        }
-
-        .section-header:first-child {
-            margin-top: 0;
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px;
-        }
-
-        .full-width {
-            grid-column: span 2;
-        }
-
-        .file-drop {
-            border: 2px dashed var(--border);
-            padding: 30px;
-            text-align: center;
-            border-radius: var(--radius);
-            background: var(--bg-light);
-            transition: var(--transition);
-            cursor: pointer;
-        }
-
-        .file-drop:hover {
-            border-color: var(--primary);
-            background: var(--white);
-        }
-
-        @media (max-width: 768px) {
-            .apply-card { padding: 30px; }
-            .form-grid { grid-template-columns: 1fr; }
-            .full-width { grid-column: span 1; }
-        }
-    </style>
 </head>
 <body>
+
+<div class="sidebar-overlay" id="overlay"></div>
+<aside class="sidebar" id="sidebar">
+    <div class="sidebar-close" id="closeSidebar">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </div>
+    <ul class="sidebar-menu">
+        <li><a href="about.html">About</a></li>
+        <li><a href="jobs-ca.html">Canada Jobs</a></li>
+        <li><a href="jobs-us.html">US Jobs</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div id="sidebarAuth" style="margin-top: auto; padding-top: 40px;">
+        <a href="signup.html" class="btn btn-primary" style="width: 100%;">Get Started</a>
+    </div>
+</aside>
 
 <header>
     <div class="container">
         <nav>
-            <a href="index.html" class="logo">Canada Hub</a>
-            <ul class="nav-links">
-                <li><a href="about.html">About</a></li>
-                <li><a href="jobs.html">Browse Jobs</a></li>
-                <li><a href="faq.html">FAQ</a></li>
-                <li><a href="contact.html">Contact</a></li>
-            </ul>
-            <div class="nav-auth">
-                <a href="signin.html" class="btn btn-outline">Sign In</a>
+            <div class="menu-toggle" id="openSidebar">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                <span>MENU</span>
+            </div>
+            <a href="index.html" class="logo" style="display: flex; align-items: center; gap: 10px; font-size: 1.5rem; font-weight: 800;">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z"/></svg>
+                Global Hub
+            </a>
+            <div id="navAuth" style="display: flex; gap: 16px;">
+                <a href="signin.html" class="btn btn-outline" style="border: none; font-weight: 800;">Sign In</a>
                 <a href="signup.html" class="btn btn-primary">Get Started</a>
             </div>
         </nav>
     </div>
 </header>
 
-<section class="page-header">
+<main style="padding: 100px 0; background: var(--bg-light);">
     <div class="container">
-        <h1>Professional Application</h1>
-        <p>Your data is protected and will be reviewed by verified Canadian employers.</p>
-    </div>
-</section>
-
-<main class="apply-container">
-    <div class="container">
-        <div class="apply-card">
-            <form action="#">
-                <!-- Personal -->
-                <div class="section-header">
-                    <h3>Personal Information</h3>
-                </div>
-                <div class="form-grid">
-                    <div class="form-group full-width">
-                        <label for="fullname">Full Legal Name (as per Passport)</label>
-                        <input type="text" id="fullname" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="dob">Date of Birth</label>
-                        <input type="date" id="dob" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="nationality">Nationality</label>
-                        <input type="text" id="nationality" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="passport">Passport Number</label>
-                        <input type="text" id="passport" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="nationalid">National ID Number</label>
-                        <input type="text" id="nationalid" required>
-                    </div>
-                </div>
-
-                <!-- Professional -->
-                <div class="section-header">
-                    <h3>Professional Background</h3>
-                </div>
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label for="position">Desired Position</label>
-                        <input type="text" id="position" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="experience">Years of Relevant Experience</label>
-                        <input type="number" id="experience" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="education">Highest Level of Education</label>
-                        <select id="education" required>
-                            <option value="">Select Level</option>
-                            <option value="diploma">Diploma</option>
-                            <option value="bachelors">Bachelor's Degree</option>
-                            <option value="masters">Master's Degree</option>
-                            <option value="phd">Doctorate</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="language">English Proficiency (IELTS/CLB)</label>
-                        <input type="text" id="language" required placeholder="e.g. CLB 7">
-                    </div>
-                    <div class="form-group full-width">
-                        <label for="skills">Key Professional Skills</label>
-                        <textarea id="skills" rows="4" placeholder="List your core competencies..."></textarea>
-                    </div>
-                </div>
-
-                <!-- Documents -->
-                <div class="section-header">
-                    <h3>Required Documents</h3>
-                </div>
-                <div class="form-grid">
-                    <div class="form-group">
-                        <label>Professional CV / Resume</label>
-                        <div class="file-drop">
-                            <input type="file" required style="width: 100%;">
+        <div style="max-width: 800px; margin: 0 auto;">
+            <div class="job-card" style="text-align: left; padding: 60px;">
+                <h1 style="font-size: 2.5rem; margin-bottom: 12px;"><b>Complete Your Application</b></h1>
+                <p style="color: var(--text-muted); margin-bottom: 40px;"><b>You are applying for: <span id="jobTitleDisplay" style="color: var(--primary); font-weight: 800;">Job Title</span></b></p>
+                
+                <form id="applyForm">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px;">
+                        <div>
+                            <label style="display: block; margin-bottom: 10px; font-weight: 700;">Full Legal Name</label>
+                            <input type="text" id="applicantName" required style="width: 100%; padding: 16px; border: 2px solid var(--border); border-radius: 12px; font-family: inherit;">
+                        </div>
+                        <div>
+                            <label style="display: block; margin-bottom: 10px; font-weight: 700;">Email Address</label>
+                            <input type="email" id="applicantEmail" required style="width: 100%; padding: 16px; border: 2px solid var(--border); border-radius: 12px; font-family: inherit;">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label>Passport (Bio Page)</label>
-                        <div class="file-drop">
-                            <input type="file" required style="width: 100%;">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 24px;">
+                        <div>
+                            <label style="display: block; margin-bottom: 10px; font-weight: 700;">Phone Number</label>
+                            <input type="tel" required style="width: 100%; padding: 16px; border: 2px solid var(--border); border-radius: 12px; font-family: inherit;">
+                        </div>
+                        <div>
+                            <label style="display: block; margin-bottom: 10px; font-weight: 700;">Current Nationality</label>
+                            <input type="text" required style="width: 100%; padding: 16px; border: 2px solid var(--border); border-radius: 12px; font-family: inherit;">
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label>Cover Letter</label>
-                        <div class="file-drop">
-                            <input type="file" style="width: 100%;">
-                        </div>
+                    <div style="margin-bottom: 24px;">
+                        <label style="display: block; margin-bottom: 10px; font-weight: 700;">Upload CV / Resume (PDF)</label>
+                        <input type="file" accept=".pdf" required style="width: 100%; padding: 12px; border: 2px dashed var(--border); border-radius: 12px; font-family: inherit;">
                     </div>
-                    <div class="form-group">
-                        <label>Educational Credentials</label>
-                        <div class="file-drop">
-                            <input type="file" style="width: 100%;">
-                        </div>
+                    <div style="margin-bottom: 32px;">
+                        <label style="display: block; margin-bottom: 10px; font-weight: 700;">Cover Letter / Personal Statement</label>
+                        <textarea rows="6" required style="width: 100%; padding: 16px; border: 2px solid var(--border); border-radius: 12px; font-family: inherit; resize: vertical;" placeholder="Tell us why you are the best fit for this role..."></textarea>
                     </div>
-                </div>
-
-                <!-- Submission -->
-                <div style="margin-top: 50px; border-top: 2px solid var(--bg-light); padding-top: 30px;">
-                    <label style="display: flex; align-items: flex-start; gap: 12px; cursor: pointer; margin-bottom: 30px;">
-                        <input type="checkbox" required style="width: auto; margin-top: 4px;">
-                        <span style="font-size: 0.9rem; color: var(--text-muted);">I certify that all information provided is accurate and I understand that misrepresentation will lead to immediate disqualification. I consent to the processing of my data for employment purposes.</span>
-                    </label>
-                    <button type="submit" class="btn btn-primary" style="width: 100%; padding: 18px; font-size: 1.1rem;">Submit Professional Application</button>
-                </div>
-            </form>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;"><b>Submit Final Application</b></button>
+                </form>
+            </div>
         </div>
     </div>
 </main>
 
 <footer>
     <div class="container">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <a href="index.html" class="logo">Canada Hub</a>
-                <p>Empowering global talent to find meaningful employment and build successful lives in Canada through professional placement and comprehensive support.</p>
-            </div>
-            <div>
-                <h4 class="footer-heading">Quick Links</h4>
-                <ul class="footer-links">
-                    <li><a href="jobs.html">Browse Jobs</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="footer-heading">Legal</h4>
-                <ul class="footer-links">
-                    <li><a href="terms.html">Terms & Conditions</a></li>
-                    <li><a href="privacy.html">Privacy Policy</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4 class="footer-heading">Account</h4>
-                <ul class="footer-links">
-                    <li><a href="signin.html">Sign In</a></li>
-                    <li><a href="signup.html">Sign Up</a></li>
-                </ul>
-            </div>
+        <div class="footer-brand">
+            <a href="index.html" class="logo" style="color: white; margin-bottom: 24px; justify-content: center;">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z"/></svg>
+                Global Hub
+            </a>
+            <p style="color: #94A3B8; margin-bottom: 32px;">The premier platform for international professionals seeking legitimate and rewarding career opportunities across North America.</p>
+            <ul class="footer-links">
+                <li><a href="about.html"><b>About Us</b></a></li>
+                <li><a href="jobs-ca.html"><b>Canada Jobs</b></a></li>
+                <li><a href="jobs-us.html"><b>USA Jobs</b></a></li>
+                <li><a href="faq.html"><b>FAQ Center</b></a></li>
+                <li><a href="contact.html"><b>Contact Support</b></a></li>
+            </ul>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Canada Opportunity Hub. All rights reserved.</p>
+            <p><b>&copy; 2026 Global Opportunity Hub. All rights reserved.</b></p>
         </div>
     </div>
 </footer>
+
+<script src="js/auth.js"></script>
+<script>
+    const openBtn = document.getElementById('openSidebar');
+    const closeBtn = document.getElementById('closeSidebar');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+
+    openBtn.addEventListener('click', () => {
+        sidebar.classList.add('active');
+        overlay.classList.add('active');
+    });
+
+    closeBtn.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+    });
+
+    overlay.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+    });
+
+    // Get job title from URL
+    const urlParams = new URLSearchParams(window.location.search);
+    const jobTitle = urlParams.get('job');
+    if (jobTitle) {
+        document.getElementById('jobTitleDisplay').innerText = decodeURIComponent(jobTitle);
+    }
+
+    // Prefill user data if logged in
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser) {
+        document.getElementById('applicantName').value = currentUser.fullName;
+        document.getElementById('applicantEmail').value = currentUser.email;
+    }
+
+    document.getElementById('applyForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        alert('Application submitted successfully! Our recruitment team will review your profile and contact you within 3-5 business days.');
+        window.location.href = 'index.html';
+    });
+</script>
 
 </body>
 </html>
