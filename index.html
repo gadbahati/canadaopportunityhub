@@ -3,89 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Canada Opportunity Hub | Professional Job Placement & Immigration Support</title>
+    <title>Canada Opportunity Hub | Professional Careers & Immigration</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
         .hero {
-            padding: 100px 0;
-            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), url('https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=1920&q=80');
+            padding: 140px 0;
+            background: linear-gradient(135deg, rgba(26, 54, 93, 0.95) 0%, rgba(42, 67, 101, 0.9) 100%), url('https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
+            color: var(--white);
             text-align: center;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
-            color: var(--secondary);
-            margin-bottom: 20px;
-            font-weight: 800;
+            font-size: 4rem;
+            color: var(--white);
+            margin-bottom: 24px;
+            line-height: 1.1;
         }
 
         .hero p {
-            font-size: 1.25rem;
-            color: var(--text-light);
-            max-width: 700px;
-            margin: 0 auto 40px;
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto 48px;
+            opacity: 0.9;
         }
 
-        .features {
-            padding: 100px 0;
+        .stats {
             background: var(--white);
+            padding: 60px 0;
+            margin-top: -60px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-lg);
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            text-align: center;
+        }
+
+        .stat-item h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-item p {
+            font-weight: 600;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            text-transform: uppercase;
+        }
+
+        .services {
+            padding: 120px 0;
         }
 
         .section-title {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 80px;
         }
 
         .section-title h2 {
             font-size: 2.5rem;
-            color: var(--secondary);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
         }
 
         .grid-3 {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
+            gap: 32px;
         }
 
-        .card {
-            padding: 40px;
-            background: var(--bg);
+        .service-card {
+            background: var(--white);
+            padding: 48px;
             border-radius: var(--radius);
-            transition: 0.3s;
             border: 1px solid var(--border);
+            transition: var(--transition);
         }
 
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
         }
 
-        .card h3 {
-            margin-bottom: 15px;
-            color: var(--secondary);
-        }
-
-        .cta-section {
-            background: var(--primary);
-            color: var(--white);
-            padding: 80px 0;
-            text-align: center;
-        }
-
-        .cta-section h2 {
-            font-size: 2.25rem;
+        .service-card h3 {
+            font-size: 1.5rem;
             margin-bottom: 20px;
         }
 
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .grid-3 { grid-template-columns: 1fr; }
+        @media (max-width: 992px) {
+            .hero h1 { font-size: 3rem; }
+            .grid-3, .stats { grid-template-columns: 1fr 1fr; }
+            .stats { margin-top: 0; border-radius: 0; }
+        }
+
+        @media (max-width: 576px) {
+            .grid-3, .stats { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -94,7 +108,10 @@
 <header>
     <div class="container">
         <nav>
-            <a href="index.html" class="logo">Canada Hub</a>
+            <a href="index.html" class="logo">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z"/></svg>
+                Canada Hub
+            </a>
             <ul class="nav-links">
                 <li><a href="about.html">About</a></li>
                 <li><a href="jobs.html">Browse Jobs</a></li>
@@ -112,43 +129,56 @@
 <main>
     <section class="hero">
         <div class="container">
-            <h1>Your Gateway to Professional Success in Canada</h1>
-            <p>We connect skilled international professionals with premium career opportunities across all Canadian provinces. Start your journey today.</p>
+            <h1>Build Your Professional Future in Canada</h1>
+            <p>Direct access to premium career opportunities and comprehensive immigration support for skilled global professionals.</p>
             <div class="hero-btns">
-                <a href="jobs.html" class="btn btn-primary">Browse Available Jobs</a>
-                <a href="about.html" class="btn btn-outline">Learn More About Us</a>
+                <a href="jobs.html" class="btn btn-primary" style="padding: 16px 40px; font-size: 1.1rem;">Browse Real Opportunities</a>
+                <a href="signup.html" class="btn btn-outline" style="color: white; border-color: white; margin-left: 20px;">Create Profile</a>
             </div>
         </div>
     </section>
 
-    <section class="features">
+    <div class="container">
+        <section class="stats">
+            <div class="stat-item">
+                <h2>5,000+</h2>
+                <p>Verified Jobs</p>
+            </div>
+            <div class="stat-item">
+                <h2>120+</h2>
+                <p>Partner Employers</p>
+            </div>
+            <div class="stat-item">
+                <h2>98%</h2>
+                <p>Success Rate</p>
+            </div>
+            <div class="stat-item">
+                <h2>24/7</h2>
+                <p>Expert Support</p>
+            </div>
+        </section>
+    </div>
+
+    <section class="services">
         <div class="container">
             <div class="section-title">
-                <h2>Why Choose Canada Opportunity Hub</h2>
-                <p>Comprehensive support for your international career transition</p>
+                <h2>Professional Solutions</h2>
+                <p>Tailored services designed to facilitate your successful integration into the Canadian workforce.</p>
             </div>
             <div class="grid-3">
-                <div class="card">
-                    <h3>Verified Employers</h3>
-                    <p>We partner only with legitimate Canadian organizations and registered businesses to ensure your professional security.</p>
+                <div class="service-card">
+                    <h3>Strategic Placement</h3>
+                    <p>We connect you directly with employers in high-demand sectors like Healthcare, Technology, and Infrastructure.</p>
                 </div>
-                <div class="card">
-                    <h3>Immigration Support</h3>
-                    <p>Access expert guidance on work permits, visa requirements, and the legal aspects of relocating to Canada.</p>
+                <div class="service-card">
+                    <h3>Legal Compliance</h3>
+                    <p>Expert guidance on work permits, visa sponsorship, and permanent residency pathways for skilled workers.</p>
                 </div>
-                <div class="card">
-                    <h3>Career Development</h3>
-                    <p>From resume optimization to interview preparation, we provide the tools you need to succeed in the Canadian market.</p>
+                <div class="service-card">
+                    <h3>Career Optimization</h3>
+                    <p>Professional resume tailoring, interview coaching, and market insights specifically for the Canadian landscape.</p>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section class="cta-section">
-        <div class="container">
-            <h2>Ready to Take the Next Step in Your Career?</h2>
-            <p style="margin-bottom: 30px; opacity: 0.9;">Join thousands of professionals who have successfully relocated and built rewarding careers in Canada.</p>
-            <a href="signup.html" class="btn" style="background: var(--white); color: var(--primary);">Create Your Free Account</a>
         </div>
     </section>
 </main>
@@ -158,21 +188,21 @@
         <div class="footer-grid">
             <div class="footer-brand">
                 <a href="index.html" class="logo">Canada Hub</a>
-                <p>Empowering global talent to find meaningful employment and build successful lives in Canada through professional placement and comprehensive support.</p>
+                <p>The premier platform for international professionals seeking legitimate and rewarding career opportunities across Canada.</p>
             </div>
             <div>
-                <h4 class="footer-heading">Quick Links</h4>
+                <h4 class="footer-heading">Platform</h4>
                 <ul class="footer-links">
                     <li><a href="jobs.html">Browse Jobs</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="about.html">Our Mission</a></li>
+                    <li><a href="faq.html">Help Center</a></li>
+                    <li><a href="contact.html">Contact Support</a></li>
                 </ul>
             </div>
             <div>
                 <h4 class="footer-heading">Legal</h4>
                 <ul class="footer-links">
-                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
                     <li><a href="privacy.html">Privacy Policy</a></li>
                 </ul>
             </div>
@@ -180,12 +210,15 @@
                 <h4 class="footer-heading">Account</h4>
                 <ul class="footer-links">
                     <li><a href="signin.html">Sign In</a></li>
-                    <li><a href="signup.html">Sign Up</a></li>
+                    <li><a href="signup.html">Create Account</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Canada Opportunity Hub. All rights reserved. All professional placements are subject to Canadian immigration laws.</p>
+            <p>&copy; 2026 Canada Opportunity Hub. All professional placements adhere to federal labor standards.</p>
+            <div class="social-links">
+                <a href="#">LinkedIn</a> | <a href="#">Twitter</a>
+            </div>
         </div>
     </div>
 </footer>

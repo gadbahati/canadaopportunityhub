@@ -3,76 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Account | Canada Opportunity Hub</title>
+    <title>Create Professional Profile | Canada Opportunity Hub</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
     <style>
-        .auth-wrapper {
+        .auth-container {
+            padding: 80px 0;
+            background: var(--bg-light);
             display: flex;
-            align-items: center;
             justify-content: center;
-            padding: 60px 20px;
         }
 
         .auth-card {
-            background: var(--white);
-            padding: 40px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
             width: 100%;
-            max-width: 600px;
+            max-width: 700px;
         }
 
         .auth-header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
         .auth-header h1 {
-            font-size: 1.75rem;
-            color: var(--secondary);
-            margin-bottom: 10px;
+            font-size: 2.2rem;
+            margin-bottom: 12px;
         }
 
         .form-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: 600;
-        }
-
-        .form-group input, .form-group select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius);
+            gap: 24px;
         }
 
         .full-width {
             grid-column: span 2;
         }
 
-        .motivational-note {
-            background: #fff5f5;
-            border-left: 4px solid var(--primary);
-            padding: 15px;
-            margin-bottom: 25px;
-            font-size: 0.9rem;
-            color: var(--primary-dark);
+        .motivational-alert {
+            background: #F0FFF4;
+            border-left: 4px solid #38A169;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            color: #2F855A;
+            line-height: 1.5;
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 640px) {
             .form-grid { grid-template-columns: 1fr; }
             .full-width { grid-column: span 1; }
         }
@@ -98,71 +75,77 @@
     </div>
 </header>
 
-<main class="auth-wrapper">
+<main class="auth-container">
     <div class="auth-card">
         <div class="auth-header">
-            <h1>Create Your Professional Profile</h1>
-            <p>Start your journey to a successful career in Canada</p>
+            <h1>Start Your Career in Canada</h1>
+            <p>Join thousands of professionals finding legitimate opportunities.</p>
         </div>
 
-        <div class="motivational-note">
-            <strong>Professional Milestone:</strong> Join our platform today and take the first step toward making your first thousand dollars in the Canadian professional landscape.
+        <div class="motivational-alert">
+            <strong>Professional Commitment:</strong> Our platform is dedicated to your financial success. We provide the tools and connections to help you earn your first $1,000 CAD in the Canadian market.
         </div>
 
-        <form action="#">
-            <div class="form-grid">
-                <div class="form-group full-width">
-                    <label for="fullname">Full Name</label>
-                    <input type="text" id="fullname" required placeholder="Enter your full name">
-                </div>
-                <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" required placeholder="Enter your email">
-                </div>
-                <div class="form-group">
-                    <label for="phone">Phone Number</label>
-                    <input type="tel" id="phone" required placeholder="Enter your phone number">
-                </div>
-                <div class="form-group">
-                    <label for="country">Country of Residence</label>
-                    <select id="country">
-                        <option value="">Select your country</option>
-                        <option value="UK">United Kingdom</option>
-                        <option value="US">United States</option>
-                        <option value="CA">Canada</option>
-                        <option value="AU">Australia</option>
-                        <!-- Add more countries as needed -->
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="category">Professional Category</label>
-                    <select id="category">
-                        <option value="">Select your field</option>
-                        <option value="IT">Information Technology</option>
-                        <option value="Healthcare">Healthcare</option>
-                        <option value="Construction">Construction</option>
-                        <option value="Finance">Finance</option>
-                        <option value="Education">Education</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" required placeholder="Create a password">
-                </div>
-                <div class="form-group">
-                    <label for="confirm">Confirm Password</label>
-                    <input type="password" id="confirm" required placeholder="Confirm your password">
-                </div>
-                
-                <div class="form-group full-width">
-                    <label><input type="checkbox" required> I agree to the <a href="terms.html" style="color: var(--primary);">Terms & Conditions</a> and <a href="privacy.html" style="color: var(--primary);">Privacy Policy</a>.</label>
-                </div>
+        <div class="form-card">
+            <form action="#">
+                <div class="form-grid">
+                    <div class="form-group full-width">
+                        <label for="fullname">Full Name (Legal)</label>
+                        <input type="text" id="fullname" required placeholder="Enter your full legal name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <input type="email" id="email" required placeholder="name@example.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" required placeholder="+1 (000) 000-0000">
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Country of Residence</label>
+                        <select id="country" required>
+                            <option value="">Select your country</option>
+                            <option value="UK">United Kingdom</option>
+                            <option value="US">United States</option>
+                            <option value="IN">India</option>
+                            <option value="NG">Nigeria</option>
+                            <option value="PH">Philippines</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Professional Sector</label>
+                        <select id="category" required>
+                            <option value="">Select your field</option>
+                            <option value="IT">Information Technology</option>
+                            <option value="Healthcare">Healthcare</option>
+                            <option value="Engineering">Engineering</option>
+                            <option value="Trades">Skilled Trades</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Create Password</label>
+                        <input type="password" id="password" required placeholder="Minimum 8 characters">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm">Confirm Password</label>
+                        <input type="password" id="confirm" required placeholder="Re-enter password">
+                    </div>
+                    
+                    <div class="form-group full-width" style="margin-bottom: 30px;">
+                        <label style="display: flex; align-items: flex-start; gap: 10px; cursor: pointer; font-weight: 400;">
+                            <input type="checkbox" required style="width: auto; margin-top: 4px;"> 
+                            <span>I agree to the <a href="terms.html" style="color: var(--primary); font-weight: 600;">Terms of Service</a> and <a href="privacy.html" style="color: var(--primary); font-weight: 600;">Privacy Policy</a>.</span>
+                        </label>
+                    </div>
 
-                <button type="submit" class="btn btn-primary full-width" style="padding: 15px;">Create Account</button>
+                    <button type="submit" class="btn btn-primary full-width" style="padding: 16px; font-size: 1.1rem;">Create Professional Account</button>
+                </div>
+            </form>
+
+            <div style="text-align: center; margin-top: 30px; font-size: 0.95rem;">
+                <p>Already have an account? <a href="signin.html" style="color: var(--primary); font-weight: 700;">Sign In</a></p>
             </div>
-        </form>
-
-        <p style="text-align: center; font-size: 0.95rem; margin-top: 25px;">Already have an account? <a href="signin.html" style="color: var(--primary); font-weight: 600;">Sign In</a></p>
+        </div>
     </div>
 </main>
 
@@ -171,21 +154,21 @@
         <div class="footer-grid">
             <div class="footer-brand">
                 <a href="index.html" class="logo">Canada Hub</a>
-                <p>Empowering global talent to find meaningful employment and build successful lives in Canada through professional placement and comprehensive support.</p>
+                <p>The premier platform for international professionals seeking legitimate and rewarding career opportunities across Canada.</p>
             </div>
             <div>
-                <h4 class="footer-heading">Quick Links</h4>
+                <h4 class="footer-heading">Platform</h4>
                 <ul class="footer-links">
                     <li><a href="jobs.html">Browse Jobs</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="faq.html">FAQ</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="about.html">Our Mission</a></li>
+                    <li><a href="faq.html">Help Center</a></li>
+                    <li><a href="contact.html">Contact Support</a></li>
                 </ul>
             </div>
             <div>
                 <h4 class="footer-heading">Legal</h4>
                 <ul class="footer-links">
-                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
                     <li><a href="privacy.html">Privacy Policy</a></li>
                 </ul>
             </div>
@@ -193,12 +176,12 @@
                 <h4 class="footer-heading">Account</h4>
                 <ul class="footer-links">
                     <li><a href="signin.html">Sign In</a></li>
-                    <li><a href="signup.html">Sign Up</a></li>
+                    <li><a href="signup.html">Create Account</a></li>
                 </ul>
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2026 Canada Opportunity Hub. All rights reserved. All professional placements are subject to Canadian immigration laws.</p>
+            <p>&copy; 2026 Canada Opportunity Hub. All rights reserved.</p>
         </div>
     </div>
 </footer>
