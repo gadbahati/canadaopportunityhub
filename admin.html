@@ -25,18 +25,18 @@
         
         /* Modal Styling */
         .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 3000; align-items: center; justify-content: center; padding: 20px; }
-        .modal-content { background: white; padding: 40px; border-radius: 32px; max-width: 800px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative; }
-        .detail-row { display: grid; grid-template-columns: 1fr 2fr; gap: 20px; padding: 16px 0; border-bottom: 1px solid var(--border); }
-        .detail-label { font-weight: 800; color: var(--text-muted); text-transform: uppercase; font-size: 0.75rem; }
-        .detail-value { font-weight: 600; color: var(--secondary); }
+        .modal-content { background: white; padding: 40px; border-radius: 32px; max-width: 900px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative; }
         
         .form-group { margin-bottom: 20px; }
         .form-group label { display: block; margin-bottom: 8px; font-weight: 800; color: var(--secondary); }
         .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 14px; border: 1px solid var(--border); border-radius: 12px; font-family: inherit; }
         
-        .google-auth-banner { background: #F8FAFC; border: 1px solid var(--border); padding: 20px; border-radius: 16px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 32px; }
-        
-        @media (max-width: 768px) { .data-table { display: block; overflow-x: auto; } .detail-row { grid-template-columns: 1fr; gap: 4px; } .google-auth-banner { flex-direction: column; gap: 16px; text-align: center; } }
+        .ai-assistant-box { background: #F0F9FF; border: 1px solid #BAE6FD; padding: 24px; border-radius: 20px; margin-bottom: 24px; }
+        .email-type-toggle { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 24px; }
+        .type-btn { padding: 12px; border: 2px solid var(--border); border-radius: 12px; font-weight: 800; cursor: pointer; background: white; transition: var(--transition); }
+        .type-btn.active { border-color: var(--primary); color: var(--primary); background: #EFF6FF; }
+
+        @media (max-width: 768px) { .modal-content { padding: 24px; } }
     </style>
 </head>
 <body>
@@ -58,25 +58,6 @@
 
 <main class="admin-container">
     <div class="container">
-        <!-- Google Integration Status -->
-        <div class="google-auth-banner">
-            <div style="display: flex; align-items: center; gap: 16px;">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12.48 10.92V13.6h5.81c-.24 1.48-1.58 4.35-5.81 4.35-3.66 0-6.64-3.03-6.64-6.77s2.98-6.77 6.64-6.77c2.08 0 3.48.89 4.28 1.66l2.12-2.04C17.51 2.65 15.21 1.5 12.48 1.5 7.14 1.5 2.8 5.84 2.8 11.18s4.34 9.68 9.68 9.68c5.58 0 9.28-3.92 9.28-9.44 0-.64-.07-1.13-.16-1.5h-9.12z"/></svg>
-                <div>
-                    <p style="font-weight: 800; color: var(--secondary);">Gmail Integration (canadajobs368@gmail.com)</p>
-                    <p id="googleStatus" style="font-size: 0.85rem; color: #10B981;"><b>● Connected & Ready to Send</b></p>
-                </div>
-            </div>
-            <div id="g_id_onload"
-                 data-client_id="YOUR_GOOGLE_CLIENT_ID"
-                 data-context="use"
-                 data-ux_mode="popup"
-                 data-login_uri="http://localhost:3000"
-                 data-auto_prompt="false">
-            </div>
-            <div class="g_id_signin" data-type="standard"></div>
-        </div>
-
         <div class="stats-grid">
             <div class="stat-box">
                 <p style="color: var(--text-muted); font-weight: 800;">Total Users</p>
@@ -99,22 +80,19 @@
         <!-- Document & Email Center -->
         <div class="admin-card">
             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
-                <h2><b>Email & Document Center</b></h2>
-                <button onclick="openEmailModal()" class="btn btn-primary"><b>Send New Document</b></button>
+                <h2><b>Email & AI Assistant</b></h2>
+                <button onclick="openEmailModal()" class="btn btn-primary"><b>New AI Drafted Email</b></button>
             </div>
-            <p style="color: var(--text-muted); margin-bottom: 24px;">Upload and send official documents (Job Offers, Visa Docs, etc.) to clients via <b>canadajobs368@gmail.com</b>.</p>
             <table class="data-table">
                 <thead>
                     <tr>
                         <th>Date Sent</th>
                         <th>Recipient</th>
-                        <th>Document Type</th>
+                        <th>Type</th>
                         <th>Status</th>
                     </tr>
                 </thead>
-                <tbody id="sentHistoryBody">
-                    <!-- Dynamic Content -->
-                </tbody>
+                <tbody id="sentHistoryBody"></tbody>
             </table>
         </div>
 
@@ -131,9 +109,7 @@
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody id="appsTableBody">
-                    <!-- Dynamic Content -->
-                </tbody>
+                <tbody id="appsTableBody"></tbody>
             </table>
         </div>
 
@@ -145,81 +121,96 @@
                         <th>Name</th>
                         <th>Email</th>
                         <th>Destination</th>
-                        <th>Field</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody id="usersTableBody">
-                    <!-- Dynamic Content -->
-                </tbody>
+                <tbody id="usersTableBody"></tbody>
             </table>
         </div>
     </div>
 </main>
 
-<!-- Review Modal -->
-<div class="modal" id="reviewModal">
-    <div class="modal-content">
-        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px;">
-            <h2 style="color: var(--primary);"><b>Review Application</b></h2>
-            <button onclick="closeModal('reviewModal')" style="background: none; border: none; cursor: pointer; color: var(--text-muted);">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            </button>
-        </div>
-        <div id="reviewContent"></div>
-        <div style="margin-top: 32px; padding: 24px; background: var(--bg-light); border-radius: 20px;">
-            <h3 style="margin-bottom: 16px;"><b>Admin Decision</b></h3>
-            <textarea id="adminReason" rows="3" placeholder="Enter reason for approval or denial..." style="width: 100%; padding: 14px; border: 1px solid var(--border); border-radius: 12px; font-family: inherit; margin-bottom: 20px;"></textarea>
-            <div style="display: flex; gap: 12px;">
-                <button id="approveBtn" class="btn-approve" style="background: #059669; color: white; padding: 12px 24px; border-radius: 12px; font-weight: 800; border: none; cursor: pointer;">Approve</button>
-                <button id="denyBtn" class="btn-deny" style="background: #DC2626; color: white; padding: 12px 24px; border-radius: 12px; font-weight: 800; border: none; cursor: pointer;">Deny</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Email Modal -->
+<!-- Email Modal with AI Assistant -->
 <div class="modal" id="emailModal">
     <div class="modal-content">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px;">
-            <h2 style="color: var(--primary);"><b>Send Document to Client</b></h2>
+            <h2 style="color: var(--primary);"><b>AI Email Assistant</b></h2>
             <button onclick="closeModal('emailModal')" style="background: none; border: none; cursor: pointer; color: var(--text-muted);">
                 <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
         </div>
+
+        <div class="ai-assistant-box">
+            <h4 style="margin-bottom: 12px; color: #0369A1;"><b>✨ AI Drafting Assistant</b></h4>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+                <button onclick="aiDraft('Offer')" class="btn btn-outline" style="font-size: 0.8rem; padding: 10px;">Draft Job Offer</button>
+                <button onclick="aiDraft('Visa')" class="btn btn-outline" style="font-size: 0.8rem; padding: 10px;">Draft Visa Update</button>
+                <button onclick="aiDraft('Payment')" class="btn btn-outline" style="font-size: 0.8rem; padding: 10px;">Draft Payment Receipt</button>
+                <button onclick="aiDraft('General')" class="btn btn-outline" style="font-size: 0.8rem; padding: 10px;">Draft Welcome Note</button>
+            </div>
+        </div>
+
         <form id="sendEmailForm">
+            <div class="email-type-toggle">
+                <button type="button" class="type-btn active" id="typeNormal" onclick="setType('Normal')">Normal Email</button>
+                <button type="button" class="type-btn" id="typeProfessional" onclick="setType('Professional')">Professional Styled</button>
+            </div>
+
             <div class="form-group">
                 <label>Recipient Client</label>
-                <select id="emailRecipient" required>
-                    <option value="">Select a client...</option>
-                </select>
+                <select id="emailRecipient" required></select>
             </div>
+
             <div class="form-group">
-                <label>Document Type</label>
-                <select id="docType" required>
-                    <option value="Job Offer Letter">Job Offer Letter</option>
-                    <option value="Visa Support Document">Visa Support Document</option>
-                    <option value="Medical Certificate">Medical Certificate</option>
-                    <option value="Payment Receipt">Payment Receipt</option>
-                    <option value="Contract Agreement">Contract Agreement</option>
-                </select>
+                <label>Subject Line</label>
+                <input type="text" id="emailSubject" placeholder="e.g., Official Job Offer - Global Hub" required>
             </div>
+
             <div class="form-group">
-                <label>Upload Document (PDF/Image)</label>
-                <input type="file" id="adminDoc" required>
+                <label>Message Content</label>
+                <textarea id="emailMsg" rows="8" placeholder="The AI assistant can help draft this for you..." required></textarea>
             </div>
-            <div class="form-group">
-                <label>Email Message</label>
-                <textarea id="emailMsg" rows="5" placeholder="Write a professional message to the client..." required></textarea>
+
+            <div id="profOptions" style="display: none; background: #F8FAFC; padding: 20px; border-radius: 12px; margin-bottom: 20px;">
+                <label style="font-weight: 800; display: block; margin-bottom: 12px;">Professional Template Options</label>
+                <div style="display: flex; gap: 12px;">
+                    <label><input type="checkbox" checked> Include Official Logo</label>
+                    <label><input type="checkbox" checked> Include Signature</label>
+                    <label><input type="checkbox" checked> Bold Layout</label>
+                </div>
             </div>
-            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 20px;"><b>SEND DOCUMENT VIA GMAIL</b></button>
+
+            <button type="submit" class="btn btn-primary" style="width: 100%; padding: 20px;"><b>SEND VIA CANADAJOBS368@GMAIL.COM</b></button>
         </form>
     </div>
 </div>
 
 <script>
+    let emailType = 'Normal';
     if (localStorage.getItem('isAdmin') !== 'true') { window.location.href = 'signin.html'; }
     function adminLogout() { localStorage.removeItem('isAdmin'); window.location.href = 'signin.html'; }
+
+    function setType(type) {
+        emailType = type;
+        document.getElementById('typeNormal').classList.toggle('active', type === 'Normal');
+        document.getElementById('typeProfessional').classList.toggle('active', type === 'Professional');
+        document.getElementById('profOptions').style.display = type === 'Professional' ? 'block' : 'none';
+    }
+
+    function aiDraft(topic) {
+        const recipient = document.getElementById('emailRecipient').selectedOptions[0]?.text || 'Client';
+        const name = recipient.split(' (')[0];
+        
+        const drafts = {
+            'Offer': { sub: `Official Job Offer - ${name}`, msg: `Dear ${name},\n\nWe are thrilled to inform you that your application has been successful. Following our review, you have been selected for the position. Attached are your offer details.\n\nBest regards,\nJames Anderson\nCEO, Global Opportunity Hub` },
+            'Visa': { sub: `Visa Processing Update - ${name}`, msg: `Dear ${name},\n\nYour visa support documents are now ready. Please review the attached file for instructions on your biometrics appointment and next steps.\n\nBest regards,\nAdmin Team` },
+            'Payment': { sub: `Payment Verification - Step 1 Successful`, msg: `Dear ${name},\n\nThis is to confirm that your Step 1 processing fee of 180 CAD has been verified. You may now proceed to Step 2 in your dashboard.\n\nBest regards,\nFinance Department` },
+            'General': { sub: `Welcome to Global Opportunity Hub`, msg: `Dear ${name},\n\nWelcome to the future of global employment. We are excited to support your journey to North America. Our team is now reviewing your profile.\n\nBest regards,\nJames Anderson` }
+        };
+
+        document.getElementById('emailSubject').value = drafts[topic].sub;
+        document.getElementById('emailMsg').value = drafts[topic].msg;
+    }
 
     function loadAdminData() {
         const users = JSON.parse(localStorage.getItem('users')) || [];
@@ -231,57 +222,40 @@
         document.getElementById('pendingPayments').innerText = apps.filter(a => a.status === 'Pending Review').length;
         document.getElementById('approvedApps').innerText = apps.filter(a => a.status === 'Approved').length;
 
-        // Populate Apps Table
         const appsTable = document.getElementById('appsTableBody');
-        appsTable.innerHTML = apps.length ? '' : '<tr><td colspan="6" style="text-align:center">No applications found</td></tr>';
-        apps.forEach(app => {
-            appsTable.innerHTML += `
-                <tr>
-                    <td>${app.date}</td>
-                    <td><b>${app.fullName}</b></td>
-                    <td>${app.jobTitle}</td>
-                    <td><code style="background:#F1F5F9;padding:4px 8px;border-radius:4px;color:var(--primary)">${app.txnCode}</code></td>
-                    <td><span class="status-badge status-${app.status === 'Approved' ? 'approved' : (app.status === 'Denied' ? 'denied' : 'pending')}">${app.status || 'Pending'}</span></td>
-                    <td><button onclick="viewApplication(${app.id})" class="action-btn btn-view">Review</button></td>
-                </tr>
-            `;
-        });
+        appsTable.innerHTML = apps.map(app => `
+            <tr>
+                <td>${app.date}</td>
+                <td><b>${app.fullName}</b></td>
+                <td>${app.jobTitle}</td>
+                <td><code>${app.txnCode}</code></td>
+                <td><span class="status-badge status-${app.status === 'Approved' ? 'approved' : (app.status === 'Denied' ? 'denied' : 'pending')}">${app.status || 'Pending'}</span></td>
+                <td><button onclick="viewApplication(${app.id})" class="action-btn btn-view">Review</button></td>
+            </tr>
+        `).join('');
 
-        // Populate Users Table
         const usersTable = document.getElementById('usersTableBody');
-        usersTable.innerHTML = users.length ? '' : '<tr><td colspan="5" style="text-align:center">No users found</td></tr>';
-        users.forEach(user => {
-            usersTable.innerHTML += `
-                <tr>
-                    <td><b>${user.firstName} ${user.lastName}</b></td>
-                    <td>${user.email}</td>
-                    <td>${user.destination || 'N/A'}</td>
-                    <td>${user.field || 'N/A'}</td>
-                    <td><button onclick="openEmailModal('${user.email}')" class="action-btn btn-email">Send Email</button></td>
-                </tr>
-            `;
-        });
+        usersTable.innerHTML = users.map(user => `
+            <tr>
+                <td><b>${user.firstName} ${user.lastName}</b></td>
+                <td>${user.email}</td>
+                <td>${user.destination || 'N/A'}</td>
+                <td><button onclick="openEmailModal('${user.email}')" class="action-btn btn-email">Send AI Email</button></td>
+            </tr>
+        `).join('');
 
-        // Populate Sent History
         const historyTable = document.getElementById('sentHistoryBody');
-        historyTable.innerHTML = sentDocs.length ? '' : '<tr><td colspan="4" style="text-align:center">No documents sent yet</td></tr>';
-        sentDocs.reverse().forEach(doc => {
-            historyTable.innerHTML += `
-                <tr>
-                    <td>${doc.date}</td>
-                    <td><b>${doc.recipient}</b></td>
-                    <td>${doc.type}</td>
-                    <td><span class="status-badge status-approved">Sent via Gmail</span></td>
-                </tr>
-            `;
-        });
+        historyTable.innerHTML = sentDocs.reverse().map(doc => `
+            <tr>
+                <td>${doc.date}</td>
+                <td><b>${doc.recipient}</b></td>
+                <td>${doc.emailType}</td>
+                <td><span class="status-badge status-approved">Sent via Gmail</span></td>
+            </tr>
+        `).join('');
 
-        // Populate Recipient Dropdown
         const select = document.getElementById('emailRecipient');
-        select.innerHTML = '<option value="">Select a client...</option>';
-        users.forEach(user => {
-            select.innerHTML += `<option value="${user.email}">${user.firstName} ${user.lastName} (${user.email})</option>`;
-        });
+        select.innerHTML = '<option value="">Select a client...</option>' + users.map(u => `<option value="${u.email}">${u.firstName} ${u.lastName} (${u.email})</option>`).join('');
     }
 
     function openEmailModal(prefillEmail = '') {
@@ -296,50 +270,16 @@
         const doc = {
             date: new Date().toLocaleDateString(),
             recipient: document.getElementById('emailRecipient').value,
-            type: document.getElementById('docType').value,
-            message: document.getElementById('emailMsg').value,
-            filename: document.getElementById('adminDoc').files[0].name
+            emailType: emailType,
+            subject: document.getElementById('emailSubject').value
         };
-
         let sentDocs = JSON.parse(localStorage.getItem('sentDocuments')) || [];
         sentDocs.push(doc);
         localStorage.setItem('sentDocuments', JSON.stringify(sentDocs));
-
-        alert(`Document "${doc.type}" sent successfully to ${doc.recipient} via canadajobs368@gmail.com`);
+        alert(`${emailType} Email sent successfully to ${doc.recipient} via canadajobs368@gmail.com`);
         closeModal('emailModal');
         loadAdminData();
     });
-
-    function viewApplication(id) {
-        const apps = JSON.parse(localStorage.getItem('applications')) || [];
-        const app = apps.find(a => a.id === id);
-        if (!app) return;
-
-        document.getElementById('reviewContent').innerHTML = `
-            <div class="detail-row"><div class="detail-label">Full Name</div><div class="detail-value">${app.fullName}</div></div>
-            <div class="detail-row"><div class="detail-label">Email</div><div class="detail-value">${app.email}</div></div>
-            <div class="detail-row"><div class="detail-label">Job</div><div class="detail-value">${app.jobTitle}</div></div>
-            <div class="detail-row"><div class="detail-label">TXN Code</div><div class="detail-value" style="color:var(--primary)"><b>${app.txnCode}</b></div></div>
-            <div class="detail-row"><div class="detail-label">Cover Letter</div><div class="detail-value">${app.coverLetter || 'N/A'}</div></div>
-        `;
-        document.getElementById('adminReason').value = app.adminNote || '';
-        document.getElementById('approveBtn').onclick = () => processDecision(id, 'Approved');
-        document.getElementById('denyBtn').onclick = () => processDecision(id, 'Denied');
-        document.getElementById('reviewModal').style.display = 'flex';
-    }
-
-    function processDecision(id, status) {
-        let apps = JSON.parse(localStorage.getItem('applications')) || [];
-        const index = apps.findIndex(a => a.id === id);
-        if (index !== -1) {
-            apps[index].status = status;
-            apps[index].adminNote = document.getElementById('adminReason').value;
-            localStorage.setItem('applications', JSON.stringify(apps));
-            alert(`Application ${status} successfully.`);
-            closeModal('reviewModal');
-            loadAdminData();
-        }
-    }
 
     window.onload = loadAdminData;
 </script>
