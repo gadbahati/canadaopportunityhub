@@ -9,54 +9,27 @@
         .apply-container { padding: 80px 0; background: var(--bg-light); min-height: 80vh; }
         .apply-card { background: white; padding: 48px; border-radius: 32px; border: 1px solid var(--border); max-width: 800px; margin: 0 auto; box-shadow: var(--shadow-lg); }
         
-        /* Interactive Currency Converter Styling */
         .currency-converter { 
-            background: white; 
-            padding: 40px; 
-            border-radius: 32px; 
-            border: 1px solid var(--border); 
-            max-width: 800px; 
-            margin: 0 auto 40px; 
-            box-shadow: var(--shadow-md);
-            text-align: center;
+            background: white; padding: 40px; border-radius: 32px; border: 1px solid var(--border); 
+            max-width: 800px; margin: 0 auto 40px; box-shadow: var(--shadow-md); text-align: center;
         }
-        .converter-grid { 
-            display: grid; 
-            grid-template-columns: repeat(3, 1fr); 
-            gap: 24px; 
-            margin-top: 32px; 
-        }
-        .currency-box { 
-            background: var(--bg-light); 
-            padding: 24px; 
-            border-radius: 20px; 
-            border: 1px solid var(--border); 
-            transition: var(--transition);
-        }
-        .currency-box:focus-within { border-color: var(--primary); background: white; box-shadow: var(--shadow-sm); }
-        .currency-box label { display: block; color: var(--text-muted); font-size: 0.75rem; margin-bottom: 12px; text-transform: uppercase; font-weight: 800; letter-spacing: 1px; }
-        .currency-box input { 
-            width: 100%; 
-            background: transparent; 
-            border: none; 
-            text-align: center; 
-            font-size: 1.5rem; 
-            font-weight: 800; 
-            color: var(--secondary); 
-            font-family: inherit;
-        }
+        .converter-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 32px; }
+        .currency-box { background: var(--bg-light); padding: 24px; border-radius: 20px; border: 1px solid var(--border); transition: var(--transition); }
+        .currency-box:focus-within { border-color: var(--primary); background: white; }
+        .currency-box label { display: block; color: var(--text-muted); font-size: 0.75rem; margin-bottom: 12px; text-transform: uppercase; font-weight: 800; }
+        .currency-box input { width: 100%; background: transparent; border: none; text-align: center; font-size: 1.5rem; font-weight: 800; color: var(--secondary); font-family: inherit; }
         .currency-box input:focus { outline: none; color: var(--primary); }
 
-        .payment-notice { background: #FFFBEB; border: 1px solid #FEF3C7; padding: 24px; border-radius: 16px; margin-bottom: 32px; color: #92400E; }
-        .payment-methods-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 3000; align-items: center; justify-content: center; padding: 20px; overflow-y: auto; }
+        .payment-notice { background: #EFF6FF; border: 1px solid var(--primary); padding: 24px; border-radius: 16px; margin-bottom: 32px; color: var(--primary); }
+        .payment-methods-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); z-index: 3000; align-items: center; justify-content: center; padding: 20px; }
         .modal-content { background: white; padding: 40px; border-radius: 32px; max-width: 700px; width: 100%; max-height: 90vh; overflow-y: auto; position: relative; }
         .payment-option { border: 1px solid var(--border); padding: 24px; border-radius: 20px; margin-bottom: 20px; transition: var(--transition); }
-        .payment-option:hover { border-color: var(--primary); background: var(--bg-light); }
-        @media (max-width: 768px) { 
-            .apply-card { padding: 32px 20px; } 
-            .converter-grid { grid-template-columns: 1fr; }
-            .currency-converter { padding: 32px 20px; }
-        }
+        
+        #multiStepContainer { display: none; }
+        .step-title { color: var(--primary); font-size: 1.5rem; margin-bottom: 16px; font-weight: 800; }
+        .step-desc { color: var(--text-muted); margin-bottom: 32px; font-weight: 500; }
+        
+        @media (max-width: 768px) { .apply-card { padding: 32px 20px; } .converter-grid { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
@@ -101,7 +74,7 @@
             <div class="converter-grid">
                 <div class="currency-box">
                     <label>Canadian Dollar (CAD)</label>
-                    <input type="number" id="cadInput" value="180" step="0.01">
+                    <input type="number" id="cadInput" value="170" step="0.01">
                 </div>
                 <div class="currency-box">
                     <label>US Dollar (USD)</label>
@@ -112,18 +85,18 @@
                     <input type="number" id="kesInput">
                 </div>
             </div>
-            <p style="margin-top: 24px; font-size: 0.8rem; color: var(--text-muted);">Processing fee is fixed at <b>180 CAD</b>.</p>
         </div>
 
-        <div class="apply-card">
+        <!-- Main Application Card -->
+        <div class="apply-card" id="initialFormCard">
             <h1 style="margin-bottom: 12px;"><b>Complete Your Application</b></h1>
             <p id="jobDisplay" style="color: var(--primary); font-weight: 800; font-size: 1.2rem; margin-bottom: 32px;">Applying for: [Job Title]</p>
 
             <div class="payment-notice">
-                <p><b>⚠️ IMPORTANT NOTICE:</b> A processing fee of <b>180 CAD</b> is required to finalize your application. This covers visa assessment, document verification, and priority processing.</p>
+                <p><b>⚠️ IMPORTANT NOTICE:</b> A processing fee of <b id="currentStepPrice">170 CAD</b> is required for <b>Step 1: Application Fee</b>.</p>
             </div>
 
-            <form id="finalApplyForm">
+            <form id="initialApplyForm">
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 24px;">
                     <div>
                         <label style="display: block; margin-bottom: 8px; font-weight: 800;">Full Legal Name</label>
@@ -156,175 +129,153 @@
                     <input type="file" id="passportFile" accept=".jpg,.jpeg,.png,.pdf" required style="width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 12px;">
                 </div>
 
-                <div style="margin-bottom: 32px;">
-                    <label style="display: block; margin-bottom: 8px; font-weight: 800;">Cover Letter / Personal Statement</label>
-                    <textarea id="coverLetter" rows="5" placeholder="Tell us why you are the best fit for this role..." style="width: 100%; padding: 14px; border: 1px solid var(--border); border-radius: 12px; font-family: inherit; resize: vertical;"></textarea>
+                <div style="background: var(--bg-light); padding: 24px; border-radius: 20px; border: 2px solid var(--primary); margin-bottom: 32px;">
+                    <h3 style="margin-bottom: 16px; color: var(--primary);"><b>Step 1 Payment Verification</b></h3>
+                    <button type="button" onclick="showPaymentMethods()" class="btn btn-outline" style="width: 100%; margin-bottom: 20px; border-color: var(--primary); color: var(--primary);"><b>VIEW PAYMENT METHODS</b></button>
+                    <label style="display: block; margin-bottom: 8px; font-weight: 800;">Transaction Reference Code</label>
+                    <input type="text" id="txnCode" required placeholder="Enter Step 1 receipt code" style="width: 100%; padding: 14px; border: 1px solid var(--primary); border-radius: 12px; font-weight: 800;">
+                </div>
+
+                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 20px;"><b>SUBMIT STEP 1 & PROCEED</b></button>
+            </form>
+        </div>
+
+        <!-- Multi-Step Payment Card -->
+        <div class="apply-card" id="multiStepContainer">
+            <div class="step-progress" id="stepProgress">
+                <div class="step-item active">1</div>
+                <div class="step-item">2</div>
+                <div class="step-item">3</div>
+                <div class="step-item">4</div>
+                <div class="step-item">5</div>
+                <div class="step-item">6</div>
+                <div class="step-item">7</div>
+                <div class="step-item">8</div>
+            </div>
+            
+            <div id="stepContent">
+                <h2 class="step-title" id="stepTitle">Step 2: Medical Examination</h2>
+                <p class="step-desc" id="stepDesc">Please pay the medical fee to proceed with your health assessment.</p>
+                
+                <div class="payment-notice">
+                    <p><b>Required Payment:</b> <b id="stepPriceDisplay">250 CAD</b></p>
                 </div>
 
                 <div style="background: var(--bg-light); padding: 24px; border-radius: 20px; border: 2px solid var(--primary); margin-bottom: 32px;">
-                    <h3 style="margin-bottom: 16px; color: var(--primary);"><b>Payment Verification</b></h3>
-                    <p style="margin-bottom: 16px; font-size: 0.9rem;">Please pay <b>180 CAD</b> using any method below and input your <b>Transaction Reference Code</b>.</p>
-                    
-                    <button type="button" onclick="showPaymentMethods()" class="btn btn-outline" style="width: 100%; margin-bottom: 20px; border-color: var(--primary); color: var(--primary);">
-                        <b>VIEW PAYMENT METHODS</b>
-                    </button>
-
+                    <button type="button" onclick="showPaymentMethods()" class="btn btn-outline" style="width: 100%; margin-bottom: 20px;"><b>VIEW PAYMENT METHODS</b></button>
                     <label style="display: block; margin-bottom: 8px; font-weight: 800;">Transaction Reference Code</label>
-                    <input type="text" id="txnCode" placeholder="Enter the code from your receipt" style="width: 100%; padding: 14px; border: 1px solid var(--primary); border-radius: 12px; font-weight: 800; color: var(--primary);">
+                    <input type="text" id="stepTxnCode" placeholder="Enter receipt code for this step" style="width: 100%; padding: 14px; border: 1px solid var(--primary); border-radius: 12px; font-weight: 800;">
                 </div>
 
-                <button type="submit" class="btn btn-primary" style="width: 100%; padding: 20px; font-size: 1.1rem;"><b>SUBMIT FINAL APPLICATION</b></button>
-            </form>
+                <button onclick="processNextStep()" class="btn btn-primary" style="width: 100%; padding: 20px;"><b>VERIFY & PROCEED TO NEXT STEP</b></button>
+            </div>
         </div>
     </div>
 </main>
 
-<!-- Payment Methods Modal -->
+<!-- WhatsApp Button -->
+<a href="https://wa.me/19029124908" class="whatsapp-float" target="_blank">
+    <svg width="35" height="35" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-2.135 0-4.141.832-5.651 2.342-1.51 1.51-2.342 3.516-2.342 5.651 0 2.135.832 4.141 2.342 5.651l.011.011c1.51 1.51 3.516 2.342 5.651 2.342 2.135 0 4.141-.832 5.651-2.342l.011-.011c1.51-1.51 2.342-3.516 2.342-5.651 0-2.135-.832-4.141-2.342-5.651-1.51-1.51-3.516-2.342-5.651-2.342zm.031 1.031c1.854 0 3.598.722 4.911 2.035 1.313 1.313 2.035 3.057 2.035 4.911 0 1.854-.722 3.598-2.035 4.911l-.011.011c-1.313 1.313-3.057 2.035-4.911 2.035-1.854 0-3.598-.722-4.911-2.035l-.011-.011c-1.313-1.313-2.035-3.057-2.035-4.911 0-1.854.722-3.598 2.035-4.911 1.313-1.313 3.057-2.035 4.911-2.035zm-3.836 3.031c-.135 0-.27.051-.371.152l-.475.475c-.19.19-.241.475-.127.712.354.741.861 1.411 1.492 1.972.631.561 1.352.981 2.132 1.232.237.076.5-.011.631-.211l.311-.475c.101-.152.076-.354-.051-.475l-1.041-1.041c-.127-.127-.329-.127-.456 0l-.354.354c-.051.051-.127.076-.201.051-.421-.127-.811-.329-1.151-.591-.341-.261-.631-.581-.851-.951-.031-.051-.031-.127 0-.171l.354-.354c.127-.127.127-.329 0-.456l-1.041-1.041c-.051-.051-.118-.076-.152-.076z"/></svg>
+</a>
+
+<!-- Payment Modal -->
 <div class="payment-methods-modal" id="paymentModal">
     <div class="modal-content">
         <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px;">
             <h2 style="color: var(--primary);"><b>PAYMENT OPTIONS</b></h2>
-            <button onclick="closePaymentMethods()" style="background: none; border: none; cursor: pointer; color: var(--text-muted);">
-                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-            </button>
+            <button onclick="closePaymentMethods()" style="background: none; border: none; cursor: pointer;"><svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
         </div>
-
-        <p style="text-align: center; margin-bottom: 32px; font-weight: 800; color: var(--primary);">FAST • SECURE • RELIABLE</p>
-
         <div class="payment-option">
-            <h3><b>1. BANK TRANSFER (RBC)</b></h3>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px;">Recommended for large payments</p>
-            <p><b>Bank Name:</b> Royal Bank of Canada</p>
+            <h3><b>BANK TRANSFER (RBC)</b></h3>
             <p><b>Account Name:</b> Patrick</p>
             <p><b>Account Number:</b> 4867456911462184</p>
-            <p><b>Address:</b> 68 Thompson Ave, Toronto, ON M8Z 3T4</p>
         </div>
-
         <div class="payment-option">
-            <h3><b>2. MPESA / GLOBAL (KENYA)</b></h3>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px;">Fast & Convenient</p>
-            <p><b>Send Money To:</b> +254 700 619 572</p>
-            <p><b>Name:</b> Abdia Abdi</p>
+            <h3><b>MPESA / GLOBAL (KENYA)</b></h3>
+            <p><b>Send Money To:</b> +254 700 619 572 (Abdia Abdi)</p>
         </div>
-
         <div class="payment-option">
-            <h3><b>3. ZELLE (NORTH AMERICA)</b></h3>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px;">Quick & Easy Transfers</p>
-            <p><b>Mobile Number:</b> +1 365 809 2009</p>
-            <p><b>Name:</b> Abdia</p>
+            <h3><b>ZELLE (USA)</b></h3>
+            <p><b>Mobile Number:</b> +1 365 809 2009 (Abdia)</p>
         </div>
-
         <div class="payment-option">
-            <h3><b>4. VODACOM M-PESA (TANZANIA)</b></h3>
-            <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 12px;">Local & Fast</p>
-            <p><b>Mobile Number:</b> +255 797 175 336</p>
-            <p><b>Name:</b> Chacha Getabo</p>
-        </div>
-
-        <div style="background: #F1F5F9; padding: 24px; border-radius: 16px; font-size: 0.9rem;">
-            <p><b>NOTICE:</b> Processing begins only after <b>full payment is confirmed</b>. Ensure all details are entered correctly.</p>
+            <h3><b>VODACOM M-PESA (TZ)</b></h3>
+            <p><b>Mobile Number:</b> +255 797 175 336 (Chacha Getabo)</p>
         </div>
     </div>
 </div>
 
 <script src="js/auth.js"></script>
 <script>
-    // Interactive Currency Logic
-    let rates = { USD: 0.74, KES: 97.0 }; // Default fallbacks
+    let currentStep = 1;
+    const paymentSteps = [
+        { id: 1, name: "Application Fee", price: 170, desc: "Initial processing and file creation." },
+        { id: 2, name: "Medical Examination", price: 250, desc: "Health assessment and certification." },
+        { id: 3, name: "Language Assessment", price: 100, desc: "English/French proficiency verification." },
+        { id: 4, name: "Interview Preparation", price: 190, desc: "Professional coaching for employer interviews." },
+        { id: 5, name: "Job Matching & Verification", price: 250, desc: "Direct matching with verified employers." },
+        { id: 6, name: "Job Offer Documentation", price: 350, desc: "Legal employment contract processing." },
+        { id: 7, name: "Work Permit Fee", price: 155, desc: "Government permit application filing." },
+        { id: 8, name: "Biometrics Fee", price: 185, desc: "Fingerprinting and identity verification." }
+    ];
 
-    async function fetchRates() {
-        try {
-            const response = await fetch('https://api.exchangerate-api.com/v4/latest/CAD');
-            const data = await response.json();
-            rates = data.rates;
-            updateValues('CAD');
-        } catch (error) {
-            console.error('Rates fetch failed, using fallbacks');
-            updateValues('CAD');
+    function showPaymentMethods() { document.getElementById('paymentModal').style.display = 'flex'; }
+    function closePaymentMethods() { document.getElementById('paymentModal').style.display = 'none'; }
+
+    document.getElementById('initialApplyForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        document.getElementById('initialFormCard').style.display = 'none';
+        document.getElementById('multiStepContainer').style.display = 'block';
+        currentStep = 2;
+        updateStepUI();
+    });
+
+    function updateStepUI() {
+        const step = paymentSteps[currentStep - 1];
+        document.getElementById('stepTitle').innerText = `Step ${step.id}: ${step.name}`;
+        document.getElementById('stepDesc').innerText = step.desc;
+        document.getElementById('stepPriceDisplay').innerText = `${step.price} CAD`;
+        document.getElementById('cadInput').value = step.price;
+        document.getElementById('stepTxnCode').value = '';
+        
+        const steps = document.querySelectorAll('.step-item');
+        steps.forEach((s, idx) => {
+            s.classList.remove('active', 'completed');
+            if (idx + 1 < currentStep) s.classList.add('completed');
+            if (idx + 1 === currentStep) s.classList.add('active');
+        });
+        updateValues('CAD');
+    }
+
+    function processNextStep() {
+        const code = document.getElementById('stepTxnCode').value;
+        if (!code) { alert('Please enter your transaction code.'); return; }
+        
+        if (currentStep < paymentSteps.length) {
+            currentStep++;
+            updateStepUI();
+            window.scrollTo(0, 0);
+        } else {
+            alert('Congratulations! Your final application is complete. Our team will contact you for the Sponsored Air Ticket and Visa details.');
+            window.location.href = 'dashboard.html';
         }
     }
 
+    // Currency Logic
+    let rates = { USD: 0.74, KES: 97.0 };
     function updateValues(source) {
         const cad = document.getElementById('cadInput');
         const usd = document.getElementById('usdInput');
         const kes = document.getElementById('kesInput');
-
-        if (source === 'CAD') {
-            const val = parseFloat(cad.value) || 0;
-            usd.value = (val * rates.USD).toFixed(2);
-            kes.value = Math.round(val * rates.KES);
-        } else if (source === 'USD') {
-            const val = parseFloat(usd.value) || 0;
-            cad.value = (val / rates.USD).toFixed(2);
-            kes.value = Math.round((val / rates.USD) * rates.KES);
-        } else if (source === 'KES') {
-            const val = parseFloat(kes.value) || 0;
-            cad.value = (val / rates.KES).toFixed(2);
-            usd.value = ((val / rates.KES) * rates.USD).toFixed(2);
-        }
+        const val = parseFloat(document.getElementById(source === 'CAD' ? 'cadInput' : source === 'USD' ? 'usdInput' : 'kesInput').value) || 0;
+        
+        if (source === 'CAD') { usd.value = (val * rates.USD).toFixed(2); kes.value = Math.round(val * rates.KES); }
+        else if (source === 'USD') { cad.value = (val / rates.USD).toFixed(2); kes.value = Math.round((val / rates.USD) * rates.KES); }
+        else { cad.value = (val / rates.KES).toFixed(2); usd.value = ((val / rates.KES) * rates.USD).toFixed(2); }
     }
-
     document.getElementById('cadInput').addEventListener('input', () => updateValues('CAD'));
     document.getElementById('usdInput').addEventListener('input', () => updateValues('USD'));
     document.getElementById('kesInput').addEventListener('input', () => updateValues('KES'));
-
-    fetchRates();
-
-    const urlParams = new URLSearchParams(window.location.search);
-    const jobTitle = urlParams.get('job') ? decodeURIComponent(urlParams.get('job')) : 'General Application';
-    document.getElementById('jobDisplay').innerText = `Applying for: ${jobTitle}`;
-
-    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
-    if (currentUser) {
-        document.getElementById('fullName').value = currentUser.fullName || (currentUser.firstName + ' ' + currentUser.lastName);
-        document.getElementById('email').value = currentUser.email;
-    }
-
-    function showPaymentMethods() {
-        document.getElementById('paymentModal').style.display = 'flex';
-    }
-
-    function closePaymentMethods() {
-        document.getElementById('paymentModal').style.display = 'none';
-    }
-
-    document.getElementById('finalApplyForm').addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const txnCode = document.getElementById('txnCode').value.trim();
-        if (!txnCode) {
-            alert('Please pay the 180 CAD processing fee and enter your Transaction Reference Code before submitting.');
-            return;
-        }
-
-        const applicationData = {
-            jobTitle: jobTitle,
-            fullName: document.getElementById('fullName').value,
-            email: document.getElementById('email').value,
-            phone: document.getElementById('phone').value,
-            nationality: document.getElementById('nationality').value,
-            txnCode: txnCode,
-            paymentStatus: 'Awaiting Verification',
-            cvName: document.getElementById('cvFile').files[0].name,
-            passportName: document.getElementById('passportFile').files[0].name,
-            coverLetter: document.getElementById('coverLetter').value
-        };
-
-        if (saveApplication(applicationData)) {
-            alert('Application submitted successfully! Our team will verify your payment and contact you within 24-48 hours.');
-            window.location.href = 'dashboard.html';
-        }
-    });
-
-    // Sidebar Logic
-    const openBtn = document.getElementById('openSidebar');
-    const closeBtn = document.getElementById('closeSidebar');
-    const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('overlay');
-
-    openBtn.addEventListener('click', () => { sidebar.classList.add('active'); overlay.classList.add('active'); });
-    closeBtn.addEventListener('click', () => { sidebar.classList.remove('active'); overlay.classList.remove('active'); });
-    overlay.addEventListener('click', () => { sidebar.classList.remove('active'); overlay.classList.remove('active'); });
 </script>
 
 </body>
